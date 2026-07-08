@@ -117,6 +117,19 @@
     inset: 0;
     background: linear-gradient(to right, transparent 70%, var(--black) 100%);
   }
+  .hero-reversed {
+    grid-template-columns: 1fr 1fr;
+  }
+  .hero-reversed .hero-text {
+    order: -1;
+    padding: 8rem 3rem 5rem 5rem;
+    text-align: right;
+    align-items: flex-end;
+  }
+  .hero-reversed .hero-line { margin-left: auto; }
+  .hero-reversed .hero-photo::after {
+    background: linear-gradient(to left, transparent 70%, var(--black) 100%);
+  }
   .hero-text {
     display: flex;
     flex-direction: column;
@@ -907,20 +920,22 @@
     </section>
   </div>
 
-  <!-- Slide 2: Immersion full bleed, copy upper left -->
+  <!-- Slide 2: Reversed split grid — copy left, photo right -->
   <div class="hero-slide">
-    <img class="hero-fullbleed-img" src="images/hero.jpg" alt="Deb Katz" />
-    <div class="hero-fullbleed-overlay"></div>
-    <div class="hero-fullbleed-copy">
-      <span class="hero-eyebrow">Executive Coach &amp; Partner to Trailblazers</span>
-      <h1 class="hero-name">
-        Deb<br>
-        <em>Katz</em>
-      </h1>
-      <div class="hero-line"></div>
-      <p class="hero-tagline">For leaders who want<br>more than success.</p>
-      <a href="#about" class="hero-cta">Discover the work</a>
-    </div>
+    <section class="hero hero-reversed">
+      <div class="hero-text">
+        <span class="hero-eyebrow">Executive Coach &amp; Partner to Trailblazers</span>
+        <h1 class="hero-name">
+          Deb<br>
+          <em>Katz</em>
+        </h1>
+        <div class="hero-line"></div>
+        <p class="hero-tagline">For leaders who want<br>more than success.</p>
+      </div>
+      <div class="hero-photo">
+        <img src="images/hero.jpg" alt="Deb Katz" />
+      </div>
+    </section>
   </div>
 
   <!-- Nav -->
