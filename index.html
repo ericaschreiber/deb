@@ -306,57 +306,55 @@
   .about a:hover { color: var(--white); border-color: rgba(240,244,248,0.5); }
 
   /* ── ABOUT ───────────────────────────────────────────── */
-  .about-photo-full {
-    max-width: 520px;
-    margin: 5rem auto 0;
-    padding: 0 3rem;
+  /* ── ABOUT ───────────────────────────────────────────── */
+  .about-section {
+    background: var(--teal-mid);
+    padding: 7rem;
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 6rem;
+    align-items: start;
   }
-  .about-photo-full img {
+  .about-photo-col img {
     width: 100%;
     height: auto;
     display: block;
-    filter: saturate(0.9) contrast(1.05);
+    filter: saturate(0.88) contrast(1.04);
   }
-  .about-content {
-    max-width: 48rem;
-    margin: 0 auto;
-    padding: 5rem 3rem 7rem;
-  }
-  .about-content .section-label {
+  .about-text-col .section-label {
     display: block;
-    margin-bottom: 2.5rem;
+    margin-bottom: 1.5rem;
   }
-  .about-quote {
+  .about-text-col h2 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.7rem, 2.4vw, 2.2rem);
+    font-size: clamp(2rem, 3vw, 2.8rem);
     font-weight: 400;
-    font-style: italic;
-    line-height: 1.5;
+    line-height: 1.1;
     color: var(--white);
-    margin-bottom: 2.8rem;
-  }
-  .about-rule {
-    width: 2rem;
-    height: 1px;
-    background: var(--wine);
     margin-bottom: 2.5rem;
   }
-  .about-bio p {
+  .about-text-col p {
     font-family: 'Inter', sans-serif;
-    font-size: 0.95rem;
+    font-size: 0.93rem;
     font-weight: 300;
     line-height: 1.9;
-    color: rgba(240,244,248,0.75);
-    margin-bottom: 1.4rem;
+    color: rgba(240,244,248,0.8);
+    margin-bottom: 1.3rem;
   }
-  .about-bio p:last-child { margin-bottom: 0; }
-  .about-bio a {
+  .about-text-col p:last-of-type { margin-bottom: 2rem; }
+  .about-text-col a.more-link {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
     color: rgba(240,244,248,0.55);
     text-decoration: none;
-    border-bottom: 1px solid rgba(240,244,248,0.18);
+    border-bottom: 1px solid rgba(240,244,248,0.2);
+    padding-bottom: 0.2rem;
     transition: color 0.2s, border-color 0.2s;
   }
-  .about-bio a:hover { color: var(--white); border-color: rgba(240,244,248,0.45); }
+  .about-text-col a.more-link:hover { color: var(--white); border-color: rgba(240,244,248,0.5); }
 
   /* ── TESTIMONIALS ────────────────────────────────────── */
   .testimonials {
@@ -668,21 +666,17 @@
 </section>
 
 <!-- ABOUT -->
-<section id="about">
-  <div class="about-photo-full">
+<section class="about-section" id="about">
+  <div class="about-photo-col">
     <img src="images/laugh.jpg" alt="Deb Katz" />
   </div>
-  <div class="about-content">
+  <div class="about-text-col">
     <span class="section-label reveal">About Deb</span>
-    <p class="about-quote reveal">"The deepest transformation begins when we stop protecting ourselves and remember who we are."</p>
-    <div class="about-rule reveal"></div>
-    <div class="about-bio">
-      <p class="reveal">Deb has spent her life as a devotee of facing anything and everything that's in the way of freedom.</p>
-      <p class="reveal">She works with trailblazers—founders, executives, coaches—who are successful but not yet free. Leaders whose drive has carried them far, and whose patterns are limiting what they can create next. With relentless love and exacting attention, she helps them recover the heart of the seeker, the mind of the visionary, and the will of the warrior—so they can reckon with their power and forge freedom.</p>
-      <p class="reveal">Her path hasn't been a straight line. She came to coaching through hospice nursing, where she learned to be fully present when it matters most. She trained in earth-based wisdom with RainbowHawk and WindEagle of <a href="https://ehama.org" target="_blank" rel="noopener">Ehama Institute</a> — a homecoming to what can be sensed before it can be named. And she has studied in the mystery schools, lineages that deepened her capacity to hold a person in the fire without flinching.</p>
-      <p class="reveal">She was a coach and founding member of Conscious Leadership Group from 2017–2025.</p>
-      <p class="reveal">Today, Deb coaches leaders, facilitates team trainings, leads Signal Forums and Intensives, supervises coaches, and speaks.</p>
-    </div>
+    <h2 class="reveal">A devotee of facing<br>anything in the way<br>of freedom.</h2>
+    <p class="reveal">She works with trailblazers—founders, executives, coaches—who are successful but not yet free. Leaders whose drive has carried them far, and whose patterns are limiting what they can create next.</p>
+    <p class="reveal">Her path hasn't been a straight line. She came to coaching through hospice nursing, where she learned to be fully present when it matters most. She trained in earth-based wisdom with RainbowHawk and WindEagle of <a href="https://ehama.org" target="_blank" rel="noopener">Ehama Institute</a>. She was a coach and founding member of Conscious Leadership Group from 2017–2025.</p>
+    <p class="reveal">Today, Deb coaches leaders, facilitates team trainings, leads Signal Forums and Intensives, supervises coaches, and speaks.</p>
+    <a href="/about" class="more-link reveal">Full bio →</a>
   </div>
 </section>
 
