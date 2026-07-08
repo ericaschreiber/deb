@@ -676,76 +676,17 @@
 
   /* ── CONTACT ─────────────────────────────────────────── */
   .contact {
-    background: var(--wine);
-    padding: 7rem;
-    text-align: center;
-    position: relative;
-    isolation: isolate;
-    overflow: hidden;
-  }
-  .con-bg {
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    transition: opacity 0.7s ease;
-    pointer-events: none;
-  }
-  .con-bg.active { opacity: 1; }
-  .con-bg-grain {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
-    opacity: 0;
-    mix-blend-mode: soft-light;
-  }
-  .con-bg-grain.active { opacity: 0.6; }
-  .con-bg-pattern {
     background:
       radial-gradient(ellipse at 28% 35%, #7a2d46 0%, transparent 55%),
       radial-gradient(ellipse at 78% 75%, #3a1020 0%, transparent 50%),
-      radial-gradient(ellipse at 60% 10%, #6e2540 0%, transparent 40%);
-    opacity: 0;
+      radial-gradient(ellipse at 60% 10%, #6e2540 0%, transparent 40%),
+      var(--wine);
+    padding: 7rem;
+    text-align: center;
   }
-  .con-bg-pattern.active { opacity: 1; }
-  .con-content { position: relative; z-index: 1; }
-  .con-controls {
-    position: absolute;
-    bottom: 1.8rem;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    z-index: 2;
-  }
-  .con-arrow {
-    background: rgba(13,13,13,0.25);
-    border: 1px solid rgba(240,244,248,0.2);
-    color: var(--white);
-    cursor: pointer;
-    width: 2.2rem;
-    height: 2.2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.85rem;
-    backdrop-filter: blur(4px);
-    transition: background 0.2s;
-  }
-  .con-arrow:hover { background: rgba(13,13,13,0.5); }
-  .con-dots-row { display: flex; gap: 0.5rem; align-items: center; }
-  .con-dot {
-    width: 5px; height: 5px;
-    border-radius: 50%;
-    background: rgba(240,244,248,0.3);
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    transition: background 0.2s, transform 0.2s;
-  }
-  .con-dot.active { background: var(--white); transform: scale(1.4); }
+  .con-content { position: relative; }
   .con-label-tag {
-    position: absolute;
-    bottom: 1.8rem;
-    right: 2rem;
+    display: none;
     font-family: 'Inter', sans-serif;
     font-size: 0.58rem;
     font-weight: 500;
@@ -1089,24 +1030,11 @@
 
 <!-- CONTACT -->
 <section class="contact" id="contact">
-  <div class="con-bg con-bg-flat"></div>
-  <div class="con-bg con-bg-grain"></div>
-  <div class="con-bg con-bg-pattern"></div>
   <div class="con-content">
     <h2 class="reveal">Ready to make<br>the next brave choice?</h2>
     <p class="reveal">If something in you recognizes what you've read here — reach out. The work begins with a conversation.</p>
     <button class="contact-link reveal">Contact Deb</button>
   </div>
-  <div class="con-controls">
-    <button class="con-arrow" id="con-prev">&#8592;</button>
-    <div class="con-dots-row">
-      <button class="con-dot active" data-i="0"></button>
-      <button class="con-dot" data-i="1"></button>
-      <button class="con-dot" data-i="2"></button>
-    </div>
-    <button class="con-arrow" id="con-next">&#8594;</button>
-  </div>
-  <span class="con-label-tag" id="con-label">Flat color</span>
 </section>
 
 <!-- FOOTER -->
@@ -1181,29 +1109,6 @@
   document.getElementById('about-next').addEventListener('click', () => aboutGo(aboutIdx + 1));
   aboutDots.forEach(d => d.addEventListener('click', () => aboutGo(+d.dataset.i)));
 
-  // ── CONTACT SLIDER ──────────────────────────────────────
-  const conBgs = [
-    document.querySelector('.con-bg-flat'),
-    document.querySelector('.con-bg-grain'),
-    document.querySelector('.con-bg-pattern'),
-  ];
-  const conDots = document.querySelectorAll('.con-dot');
-  const conLabel = document.getElementById('con-label');
-  const conLabels = ['Flat color', 'Noise grain', 'Gradient depth'];
-  let conIdx = 0;
-
-  function conGo(n) {
-    conBgs[conIdx].classList.remove('active');
-    conDots[conIdx].classList.remove('active');
-    conIdx = (n + 3) % 3;
-    conBgs[conIdx].classList.add('active');
-    conDots[conIdx].classList.add('active');
-    conLabel.textContent = conLabels[conIdx];
-  }
-
-  document.getElementById('con-prev').addEventListener('click', () => conGo(conIdx - 1));
-  document.getElementById('con-next').addEventListener('click', () => conGo(conIdx + 1));
-  conDots.forEach(d => d.addEventListener('click', () => conGo(+d.dataset.i)));
 </script>
 
 </body>
