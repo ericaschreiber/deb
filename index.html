@@ -835,53 +835,20 @@
 </nav>
 
 <!-- HERO -->
-<div class="hero-slider">
-
-  <!-- Slide 1: Split grid -->
-  <div class="hero-slide active">
-    <section class="hero">
-      <div class="hero-photo">
-        <img src="images/hero.jpg" alt="Deb Katz" />
-      </div>
-      <div class="hero-text">
-        <span class="hero-eyebrow">Executive Coach &amp; Partner to Trailblazers</span>
-        <h1 class="hero-name">
-          Deb<br>
-          <em>Katz</em>
-        </h1>
-        <div class="hero-line"></div>
-        <p class="hero-tagline">The way through<br>is through.</p>
-      </div>
-    </section>
+<section class="hero">
+  <div class="hero-photo">
+    <img src="images/hero.jpg" alt="Deb Katz" />
   </div>
-
-  <!-- Slide 2: Same layout as slide 1 -->
-  <div class="hero-slide">
-    <section class="hero">
-      <div class="hero-photo">
-        <img src="images/hero.jpg" alt="Deb Katz" />
-      </div>
-      <div class="hero-text">
-        <span class="hero-eyebrow">Executive Coach &amp; Partner to Trailblazers</span>
-        <h1 class="hero-name">
-          Deb<br>
-          <em>Katz</em>
-        </h1>
-        <div class="hero-line"></div>
-        <p class="hero-tagline">The way through<br>is through.</p>
-      </div>
-    </section>
+  <div class="hero-text">
+    <span class="hero-eyebrow">Executive Coach &amp; Partner to Trailblazers</span>
+    <h1 class="hero-name">
+      Deb<br>
+      <em>Katz</em>
+    </h1>
+    <div class="hero-line"></div>
+    <p class="hero-tagline">The way through<br>is through.</p>
   </div>
-
-  <!-- Nav -->
-  <button class="hero-arrow hero-prev" id="hero-prev">&#8592;</button>
-  <button class="hero-arrow hero-next" id="hero-next">&#8594;</button>
-  <div class="hero-dots">
-    <button class="hero-dot active" data-i="0"></button>
-    <button class="hero-dot" data-i="1"></button>
-  </div>
-
-</div>
+</section>
 
 <!-- POSITIONING STATEMENT -->
 <section class="positioning">
@@ -1178,20 +1145,6 @@
   document.getElementById('off-next').addEventListener('click', () => offGo(offIdx + 1));
 
   // Hero slider
-  const heroSlides = document.querySelectorAll('.hero-slide');
-  const heroDots = document.querySelectorAll('.hero-dot');
-  let heroIdx = 0;
-  function heroGo(n) {
-    heroSlides[heroIdx].classList.remove('active');
-    heroDots[heroIdx].classList.remove('active');
-    heroIdx = (n + heroSlides.length) % heroSlides.length;
-    heroSlides[heroIdx].classList.add('active');
-    heroDots[heroIdx].classList.add('active');
-  }
-  document.getElementById('hero-prev').addEventListener('click', () => heroGo(heroIdx - 1));
-  document.getElementById('hero-next').addEventListener('click', () => heroGo(heroIdx + 1));
-  heroDots.forEach(d => d.addEventListener('click', () => heroGo(+d.dataset.i)));
-
   // Testimonials slider
   const testiSlides = document.querySelectorAll('.testimonial-slide');
   const testiDots = document.querySelectorAll('.testi-dot');
