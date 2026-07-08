@@ -398,7 +398,7 @@
 
   /* ── TESTIMONIALS ────────────────────────────────────── */
   .testimonials {
-    background: var(--black);
+    background: var(--teal-mid);
     padding: 7rem;
     border-top: 1px solid rgba(240,244,248,0.07);
   }
@@ -414,63 +414,102 @@
     font-weight: 400;
     color: var(--white);
   }
-  .testimonials-grid {
+  /* grid-stacking slider — container auto-sizes to tallest slide */
+  .testimonials-slider {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: rgba(240,244,248,0.07);
   }
-  .testimonial-card {
-    background: var(--black);
-    padding: 3rem 2.5rem;
+  .testimonial-slide {
+    grid-area: 1 / 1;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 6rem;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.6s ease;
+  }
+  .testimonial-slide.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .testi-photo-col {
     display: flex;
     flex-direction: column;
-  }
-  .testimonial-quote {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.1rem;
-    font-weight: 400;
-    font-style: italic;
-    line-height: 1.7;
-    color: rgba(240,244,248,0.88);
-    flex: 1;
-    margin-bottom: 2rem;
-  }
-  .testimonial-rule {
-    width: 2rem;
-    height: 1px;
-    background: var(--wine);
-    margin-bottom: 1.5rem;
-  }
-  .testimonial-person {
-    display: flex;
     align-items: center;
-    gap: 1rem;
+    text-align: center;
   }
-  .testimonial-photo {
-    width: 48px;
-    height: 48px;
+  .testi-photo {
+    width: 220px;
+    height: 220px;
     border-radius: 50%;
     object-fit: cover;
     object-position: center top;
-    flex-shrink: 0;
-    background: var(--teal-mid);
+    display: block;
+    margin-bottom: 1.6rem;
+    border: 1px solid rgba(240,244,248,0.12);
   }
-  .testimonial-name {
+  .testi-name {
     font-family: 'Inter', sans-serif;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     font-weight: 500;
     color: var(--white);
     letter-spacing: 0.02em;
+    margin-bottom: 0.35rem;
   }
-  .testimonial-title {
+  .testi-role {
     font-family: 'Inter', sans-serif;
     font-size: 0.72rem;
     font-weight: 300;
     color: rgba(240,244,248,0.45);
-    margin-top: 0.2rem;
-    line-height: 1.4;
+    line-height: 1.5;
   }
+  .testi-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.2rem, 1.7vw, 1.5rem);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.7;
+    color: rgba(240,244,248,0.92);
+  }
+  /* slider nav */
+  .testi-nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 3.5rem;
+    padding-left: 280px; /* align with quote column */
+    padding-left: calc(280px + 6rem);
+  }
+  .testi-arrow {
+    background: none;
+    border: 1px solid rgba(240,244,248,0.2);
+    color: rgba(240,244,248,0.6);
+    cursor: pointer;
+    width: 2.4rem;
+    height: 2.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .testi-arrow:hover { border-color: rgba(240,244,248,0.6); color: var(--white); }
+  .testi-dots {
+    display: flex;
+    gap: 0.6rem;
+    align-items: center;
+  }
+  .testi-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: rgba(240,244,248,0.25);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .testi-dot.active { background: var(--white); transform: scale(1.4); }
 
   /* ── OFFERINGS ───────────────────────────────────────── */
   .offerings {
@@ -703,69 +742,68 @@
     <span class="section-label">What clients say</span>
     <h2 class="reveal">Leaders who've done the work</h2>
   </div>
-  <div class="testimonials-grid">
 
-    <div class="testimonial-card reveal">
-      <p class="testimonial-quote">"Working with Deb has transformed how I lead. She has helped me identify and work with patterns that are holding me back, while also helping me recognize and celebrate the strengths of my natural leadership style. Her unique ability to balance fierce candor with genuine warmth creates a space where I can explore any topic, drive sustainable change within myself and my team, and expand my vision of what's possible. I find myself drawing on Deb's wisdom and support regularly in board meetings, team discussions, and hard conversations."</p>
-      <div class="testimonial-rule"></div>
-      <div class="testimonial-person">
-        <img class="testimonial-photo" src="images/testimonial-laela.jpg" alt="Laela Sturdy" />
-        <div>
-          <div class="testimonial-name">Laela Sturdy</div>
-          <div class="testimonial-title">Managing Partner, CapitalG</div>
-        </div>
+  <div class="testimonials-slider">
+
+    <div class="testimonial-slide active">
+      <div class="testi-photo-col">
+        <img class="testi-photo" src="images/testimonial-laela.jpg" alt="Laela Sturdy" />
+        <div class="testi-name">Laela Sturdy</div>
+        <div class="testi-role">Managing Partner<br>CapitalG</div>
       </div>
+      <p class="testi-quote">"Working with Deb has transformed how I lead. She has helped me identify and work with patterns that are holding me back, while also helping me recognize and celebrate the strengths of my natural leadership style. Her unique ability to balance fierce candor with genuine warmth creates a space where I can explore any topic, drive sustainable change within myself and my team, and expand my vision of what's possible. I find myself drawing on Deb's wisdom and support regularly in board meetings, team discussions, and hard conversations."</p>
     </div>
 
-    <div class="testimonial-card reveal">
-      <p class="testimonial-quote">"Deb asks powerful questions that challenge assumptions, illuminate blind spots, and foster growth. She has helped us strengthen communication, build a culture of trust and accountability, and unlock measurable improvements in both employee engagement and business performance. Our company is stronger, more aligned, and better prepared because of her work."</p>
-      <div class="testimonial-rule"></div>
-      <div class="testimonial-person">
-        <img class="testimonial-photo" src="images/testimonial-chris.jpg" alt="Chris Mansi" />
-        <div>
-          <div class="testimonial-name">Chris Mansi</div>
-          <div class="testimonial-title">Co-founder & CEO, Viz.ai</div>
-        </div>
+    <div class="testimonial-slide">
+      <div class="testi-photo-col">
+        <img class="testi-photo" src="images/testimonial-chris.jpg" alt="Chris Mansi" />
+        <div class="testi-name">Chris Mansi</div>
+        <div class="testi-role">Co-founder & CEO<br>Viz.ai</div>
       </div>
+      <p class="testi-quote">"Deb asks powerful questions that challenge assumptions, illuminate blind spots, and foster growth. She has helped us strengthen communication, build a culture of trust and accountability, and unlock measurable improvements in both employee engagement and business performance. Our company is stronger, more aligned, and better prepared because of her work."</p>
     </div>
 
-    <div class="testimonial-card reveal">
-      <p class="testimonial-quote">"Deb led my team through the most effective coaching sessions I've ever seen. She has an incredible skill set for guiding a room full of executives through challenging and insightful exercises. She's raw, talented, and authentic. Truly a gem in the world of executive coaching."</p>
-      <div class="testimonial-rule"></div>
-      <div class="testimonial-person">
-        <img class="testimonial-photo" src="images/testimonial-aaron.jpg" alt="Aaron King" />
-        <div>
-          <div class="testimonial-name">Aaron King</div>
-          <div class="testimonial-title">Founder & Executive Chairman, Snapdocs</div>
-        </div>
+    <div class="testimonial-slide">
+      <div class="testi-photo-col">
+        <img class="testi-photo" src="images/testimonial-aaron.jpg" alt="Aaron King" />
+        <div class="testi-name">Aaron King</div>
+        <div class="testi-role">Founder & Executive Chairman<br>Snapdocs</div>
       </div>
+      <p class="testi-quote">"Deb led my team through the most effective coaching sessions I've ever seen. She has an incredible skill set for guiding a room full of executives through challenging and insightful exercises. She's raw, talented, and authentic. Truly a gem in the world of executive coaching."</p>
     </div>
 
-    <div class="testimonial-card reveal">
-      <p class="testimonial-quote">"Deb's heartfelt yet firm guidance has profoundly shaped both my personal and professional growth. She combines empathy with challenge which has helped me amplify my impact while finding greater joy in the journey. I am in awe of her talent for helping me see myself more clearly — as a leader, father and husband. Her partnership is instrumental in transforming our leadership team into a high-performance culture and throughout the organization."</p>
-      <div class="testimonial-rule"></div>
-      <div class="testimonial-person">
-        <img class="testimonial-photo" src="images/testimonial-darragh.jpg" alt="Darragh Hurley" />
-        <div>
-          <div class="testimonial-name">Darragh Hurley</div>
-          <div class="testimonial-title">CEO, Mount Anvil</div>
-        </div>
+    <div class="testimonial-slide">
+      <div class="testi-photo-col">
+        <img class="testi-photo" src="images/testimonial-darragh.jpg" alt="Darragh Hurley" />
+        <div class="testi-name">Darragh Hurley</div>
+        <div class="testi-role">CEO<br>Mount Anvil</div>
       </div>
+      <p class="testi-quote">"Deb's heartfelt yet firm guidance has profoundly shaped both my personal and professional growth. She combines empathy with challenge which has helped me amplify my impact while finding greater joy in the journey. I am in awe of her talent for helping me see myself more clearly — as a leader, father and husband. Her partnership is instrumental in transforming our leadership team into a high-performance culture and throughout the organization."</p>
     </div>
 
-    <div class="testimonial-card reveal">
-      <p class="testimonial-quote">"In entrepreneurship, ideas are either vitamins or Advils. I started working with Deb thinking coaching was a vitamin — and to test Conscious Leadership for others. I quickly realized it was essential. Deb helped me see how my self-perception both served and limited me. As leaders, we often focus outward, but the highest-impact work is within. Deb never forced me to change at her pace but created space that allowed me to have more courage to take the next step. Over time, I became a better executive, spouse, and even parent."</p>
-      <div class="testimonial-rule"></div>
-      <div class="testimonial-person">
-        <img class="testimonial-photo" src="images/testimonial-arron.jpg" alt="Arron Walker" />
-        <div>
-          <div class="testimonial-name">Arron Walker</div>
-          <div class="testimonial-title">Founder & CEO, Ruthless for Good / Camelback Ventures</div>
-        </div>
+    <div class="testimonial-slide">
+      <div class="testi-photo-col">
+        <img class="testi-photo" src="images/testimonial-arron.jpg" alt="Arron Walker" />
+        <div class="testi-name">Arron Walker</div>
+        <div class="testi-role">Founder & CEO, Ruthless for Good<br>Founder & Senior Advisor, Camelback Ventures</div>
       </div>
+      <p class="testi-quote">"In entrepreneurship, ideas are either vitamins or Advils. I started working with Deb thinking coaching was a vitamin — and to test Conscious Leadership for others. I quickly realized it was essential. Deb helped me see how my self-perception both served and limited me. As leaders, we often focus outward, but the highest-impact work is within. Deb never forced me to change at her pace but created space that allowed me to have more courage to take the next step. Over time, I became a better executive, spouse, and even parent."</p>
     </div>
 
   </div>
+
+  <div class="testi-nav">
+    <button class="testi-arrow" id="testi-prev">&#8592;</button>
+    <button class="testi-arrow" id="testi-next">&#8594;</button>
+    <div class="testi-dots">
+      <button class="testi-dot active" data-i="0"></button>
+      <button class="testi-dot" data-i="1"></button>
+      <button class="testi-dot" data-i="2"></button>
+      <button class="testi-dot" data-i="3"></button>
+      <button class="testi-dot" data-i="4"></button>
+    </div>
+  </div>
+
 </section>
 
 <!-- OFFERINGS -->
@@ -839,6 +877,21 @@
   document.getElementById('hero-prev').addEventListener('click', () => heroGo(heroIdx - 1));
   document.getElementById('hero-next').addEventListener('click', () => heroGo(heroIdx + 1));
   heroDots.forEach(d => d.addEventListener('click', () => heroGo(+d.dataset.i)));
+
+  // Testimonials slider
+  const testiSlides = document.querySelectorAll('.testimonial-slide');
+  const testiDots = document.querySelectorAll('.testi-dot');
+  let testiIdx = 0;
+  function testiGo(n) {
+    testiSlides[testiIdx].classList.remove('active');
+    testiDots[testiIdx].classList.remove('active');
+    testiIdx = (n + testiSlides.length) % testiSlides.length;
+    testiSlides[testiIdx].classList.add('active');
+    testiDots[testiIdx].classList.add('active');
+  }
+  document.getElementById('testi-prev').addEventListener('click', () => testiGo(testiIdx - 1));
+  document.getElementById('testi-next').addEventListener('click', () => testiGo(testiIdx + 1));
+  testiDots.forEach(d => d.addEventListener('click', () => testiGo(+d.dataset.i)));
 </script>
 
 </body>
