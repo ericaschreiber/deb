@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deb Katz — Hero Options</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --black: #0D0D0D;
+  --teal: #294749;
+  --wine: #67263A;
+  --violet: #74619E;
+  --white: #F0F4F8;
+}
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+  height: 100vh;
+}
+
+/* ── SLIDE WRAPPER ─────────────────────────────── */
+.slides {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+}
+.slide.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ── SHARED IMAGE ──────────────────────────────── */
+.hero-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+/* ── CHROME: label + nav ───────────────────────── */
+.slide-label {
+  position: absolute;
+  top: 2rem;
+  left: 2.5rem;
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(240,244,248,0.35);
+  z-index: 100;
+  background: rgba(13,13,13,0.4);
+  padding: 0.35rem 0.7rem;
+  border-radius: 2px;
+  backdrop-filter: blur(4px);
+}
+
+/* back to home */
+.back-home {
+  position: fixed;
+  top: 2rem;
+  right: 2.5rem;
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(240,244,248,0.3);
+  text-decoration: none;
+  z-index: 200;
+  transition: color 0.2s;
+}
+.back-home:hover { color: rgba(240,244,248,0.7); }
+
+/* nav dots */
+.nav {
+  position: fixed;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  z-index: 200;
+}
+.nav-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: rgba(240,244,248,0.4);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 0.5rem 0;
+  transition: color 0.2s;
+}
+.nav-btn:hover { color: rgba(240,244,248,0.8); }
+.nav-dots {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+.dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(240,244,248,0.25);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+.dot.active {
+  background: var(--white);
+  transform: scale(1.3);
+}
+
+/* option names */
+.option-name {
+  position: fixed;
+  bottom: 5.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(240,244,248,0.3);
+  z-index: 200;
+  white-space: nowrap;
+  transition: opacity 0.3s;
+}
+
+
+/* ════════════════════════════════════════════════
+   OPTION A — IMMERSION
+   Full-bleed image, copy anchored bottom-left.
+   Cinematic. Gravity pulls you down into the work.
+   ════════════════════════════════════════════════ */
+#option-a .overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top, rgba(13,13,13,0.92) 0%, rgba(13,13,13,0.5) 40%, rgba(13,13,13,0.1) 70%, transparent 100%),
+    linear-gradient(to right, rgba(13,13,13,0.3) 0%, transparent 60%);
+}
+#option-a .copy {
+  position: absolute;
+  bottom: 5rem;
+  left: 5.5rem;
+  max-width: 28rem;
+}
+#option-a .eyebrow {
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #294749;
+  margin-bottom: 1.4rem;
+  opacity: 1;
+  /* use a slightly brighter teal for legibility on dark overlay */
+  color: #3d7a7e;
+}
+#option-a .name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(4.5rem, 8vw, 7.5rem);
+  font-weight: 300;
+  line-height: 0.9;
+  color: var(--white);
+  margin-bottom: 2rem;
+  letter-spacing: -0.01em;
+}
+#option-a .name em {
+  font-style: italic;
+  display: block;
+}
+#option-a .rule {
+  width: 2.5rem;
+  height: 1px;
+  background: var(--wine);
+  margin-bottom: 1.5rem;
+}
+#option-a .tagline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.55;
+  color: rgba(240,244,248,0.85);
+  margin-bottom: 2.8rem;
+}
+#option-a .cta {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--white);
+  text-decoration: none;
+  border-bottom: 1px solid var(--wine);
+  padding-bottom: 0.3rem;
+}
+
+
+/* ════════════════════════════════════════════════
+   OPTION B — THE STATEMENT
+   Full-bleed image, centered declaration.
+   Text meets you head-on. "Successful. Not yet free."
+   leads — name below. Confrontational, editorial.
+   ════════════════════════════════════════════════ */
+#option-b .overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(13,13,13,0.58);
+}
+/* dark vignette at edges */
+#option-b .overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 30%, rgba(13,13,13,0.5) 100%);
+}
+#option-b .copy {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem;
+}
+#option-b .statement {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3.5rem, 8vw, 7rem);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.05;
+  color: var(--white);
+  margin-bottom: 2.5rem;
+  letter-spacing: -0.01em;
+}
+#option-b .rule {
+  width: 3rem;
+  height: 1px;
+  background: var(--wine);
+  margin: 0 auto 2rem;
+}
+#option-b .name {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(240,244,248,0.6);
+  margin-bottom: 0.75rem;
+}
+#option-b .descriptor {
+  font-size: 0.6rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(240,244,248,0.3);
+  margin-bottom: 3.5rem;
+}
+#option-b .cta {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--white);
+  text-decoration: none;
+  border: 1px solid rgba(240,244,248,0.25);
+  padding: 0.8rem 2rem;
+  transition: border-color 0.2s, color 0.2s;
+}
+#option-b .cta:hover {
+  border-color: var(--wine);
+  color: rgba(240,244,248,0.85);
+}
+
+
+/* ════════════════════════════════════════════════
+   OPTION C — THE FIELD
+   Full-bleed image, sparse. A single vertical text
+   column at the far right edge. Image breathes.
+   "Come home to who you are." Quiet authority.
+   ════════════════════════════════════════════════ */
+#option-c .overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to left, rgba(13,13,13,0.95) 0%, rgba(13,13,13,0.7) 30%, rgba(13,13,13,0.05) 65%, transparent 100%);
+}
+#option-c .copy {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 38%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5rem 5rem 5rem 3rem;
+}
+#option-c .eyebrow {
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: #3d7a7e;
+  margin-bottom: 3rem;
+}
+#option-c .statement {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 3.2vw, 3rem);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.35;
+  color: var(--white);
+  margin-bottom: 2.5rem;
+}
+#option-c .rule {
+  width: 2rem;
+  height: 1px;
+  background: var(--wine);
+  margin-bottom: 2rem;
+}
+#option-c .name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem;
+  font-weight: 300;
+  color: var(--white);
+  margin-bottom: 0.3rem;
+  line-height: 1;
+}
+#option-c .name em {
+  font-style: italic;
+}
+#option-c .descriptor {
+  font-size: 0.58rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(240,244,248,0.3);
+  margin-bottom: 3rem;
+}
+#option-c .cta {
+  display: inline-block;
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--white);
+  text-decoration: none;
+  border-bottom: 1px solid var(--wine);
+  padding-bottom: 0.3rem;
+}
+
+/* ── REVEAL animation on active ───────────────── */
+.slide.active .copy {
+  animation: fadeUp 0.7s ease both;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+<body>
+
+<a href="/" class="back-home">← Deb Katz</a>
+
+<div class="slides">
+
+  <!-- ═══ OPTION A: IMMERSION ═══════════════════════════ -->
+  <div class="slide active" id="option-a">
+    <div class="slide-label">Option A &mdash; Immersion</div>
+    <img class="hero-img" src="images/hero.jpg" alt="" />
+    <div class="overlay"></div>
+    <div class="copy">
+      <span class="eyebrow">Executive Coach &nbsp;·&nbsp; Partner to Trailblazers</span>
+      <h1 class="name">Deb<br><em>Katz</em></h1>
+      <div class="rule"></div>
+      <p class="tagline">Successful.<br>Not yet free.</p>
+      <a href="#" class="cta">Discover the work</a>
+    </div>
+  </div>
+
+  <!-- ═══ OPTION B: THE STATEMENT ══════════════════════ -->
+  <div class="slide" id="option-b">
+    <div class="slide-label">Option B &mdash; The Statement</div>
+    <img class="hero-img" src="images/hero.jpg" alt="" />
+    <div class="overlay"></div>
+    <div class="copy">
+      <p class="statement">Successful.<br>Not yet free.</p>
+      <div class="rule"></div>
+      <p class="name">Deb Katz</p>
+      <p class="descriptor">Executive Coach &nbsp;·&nbsp; Partner to Trailblazers</p>
+      <a href="#" class="cta">Discover the work</a>
+    </div>
+  </div>
+
+  <!-- ═══ OPTION C: THE FIELD ═══════════════════════════ -->
+  <div class="slide" id="option-c">
+    <div class="slide-label">Option C &mdash; The Field</div>
+    <img class="hero-img" src="images/hero.jpg" alt="" style="object-position: left top;" />
+    <div class="overlay"></div>
+    <div class="copy">
+      <span class="eyebrow">Executive Coach &nbsp;·&nbsp; Partner to Trailblazers</span>
+      <p class="statement">Come home to who you are beneath the striving.</p>
+      <div class="rule"></div>
+      <p class="name"><em>Deb</em> Katz</p>
+      <p class="descriptor">Coaching &nbsp;·&nbsp; Signal Forums &nbsp;·&nbsp; Intensives</p>
+      <a href="#" class="cta">Discover the work</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- ── OPTION NAME ────────────────── -->
+<div class="option-name" id="option-label">Immersion — full bleed, copy bottom-left</div>
+
+<!-- ── NAV ──────────────────────────────── -->
+<nav class="nav">
+  <button class="nav-btn" id="prev">← Prev</button>
+  <div class="nav-dots">
+    <div class="dot active" data-i="0"></div>
+    <div class="dot" data-i="1"></div>
+    <div class="dot" data-i="2"></div>
+  </div>
+  <button class="nav-btn" id="next">Next →</button>
+</nav>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+const dots = document.querySelectorAll('.dot');
+const label = document.getElementById('option-label');
+const names = [
+  'Immersion — full bleed, copy anchored bottom-left',
+  'The Statement — centered declaration, image behind',
+  'The Field — image breathes left, copy floats right edge',
+];
+let current = 0;
+
+function go(n) {
+  slides[current].classList.remove('active');
+  dots[current].classList.remove('active');
+  current = (n + slides.length) % slides.length;
+  slides[current].classList.add('active');
+  dots[current].classList.add('active');
+  label.textContent = names[current];
+}
+
+document.getElementById('prev').addEventListener('click', () => go(current - 1));
+document.getElementById('next').addEventListener('click', () => go(current + 1));
+dots.forEach(d => d.addEventListener('click', () => go(+d.dataset.i)));
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') go(current + 1);
+  if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   go(current - 1);
+});
+</script>
+</body>
+</html>
