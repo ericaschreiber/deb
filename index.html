@@ -695,6 +695,20 @@
     gap: 0.75rem;
     z-index: 2;
   }
+  .off-arrow {
+    background: transparent;
+    border: 1px solid rgba(240,244,248,0.2);
+    color: rgba(240,244,248,0.5);
+    cursor: pointer;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .off-arrow:hover { border-color: #C8962A; color: #C8962A; }
   .off-dot {
     width: 5px; height: 5px;
     border-radius: 50%;
@@ -1103,8 +1117,10 @@
   </div>
 
   <div class="off-controls">
+    <button class="off-arrow" id="off-prev">&#8592;</button>
     <button class="off-dot active" data-i="0"></button>
     <button class="off-dot" data-i="1"></button>
+    <button class="off-arrow" id="off-next">&#8594;</button>
     <span class="off-label-tag" id="off-label">Option A — gold</span>
   </div>
 </section>
@@ -1158,6 +1174,8 @@
     offLabel.textContent = offLabels[offIdx];
   }
   offDots.forEach(d => d.addEventListener('click', () => offGo(+d.dataset.i)));
+  document.getElementById('off-prev').addEventListener('click', () => offGo(offIdx - 1));
+  document.getElementById('off-next').addEventListener('click', () => offGo(offIdx + 1));
 
   // Hero slider
   const heroSlides = document.querySelectorAll('.hero-slide');
