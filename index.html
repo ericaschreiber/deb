@@ -396,87 +396,80 @@
     color: var(--white);
   }
 
-  /* ── EHAMA / LINEAGE ─────────────────────────────────── */
-  .lineage {
-    background: var(--teal-mid);
-    padding: 7rem 8rem;
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 6rem;
-    align-items: center;
+  /* ── TESTIMONIALS ────────────────────────────────────── */
+  .testimonials {
+    background: var(--black);
+    padding: 7rem;
+    border-top: 1px solid rgba(240,244,248,0.07);
   }
-  .lineage-label-col {
-    border-right: 1px solid rgba(240,244,248,0.12);
-    padding-right: 4rem;
+  .testimonials-header {
+    display: flex;
+    align-items: baseline;
+    gap: 2rem;
+    margin-bottom: 4rem;
   }
-  .lineage-label-col h3 {
+  .testimonials-header h2 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.8rem, 2.5vw, 2.4rem);
-    font-weight: 300;
-    font-style: italic;
-    line-height: 1.2;
+    font-size: clamp(2rem, 3vw, 3rem);
+    font-weight: 400;
     color: var(--white);
   }
-  .lineage-label-col .rule {
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(240,244,248,0.07);
+  }
+  .testimonial-card {
+    background: var(--black);
+    padding: 3rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .testimonial-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.7;
+    color: rgba(240,244,248,0.88);
+    flex: 1;
+    margin-bottom: 2rem;
+  }
+  .testimonial-rule {
     width: 2rem;
     height: 1px;
     background: var(--wine);
-    margin: 1.8rem 0;
+    margin-bottom: 1.5rem;
   }
-  .lineage-label-col a {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.68rem;
-    font-weight: 500;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--teal);
-    text-decoration: none;
-    border-bottom: 1px solid rgba(45,94,114,0.4);
-    padding-bottom: 0.2rem;
-    transition: color 0.2s, border-color 0.2s;
-  }
-  .lineage-label-col a:hover { color: var(--white); border-color: var(--white); }
-  .lineage-text p {
-    font-family: 'Inter', sans-serif;
-    font-size: 1rem;
-    font-weight: 300;
-    line-height: 1.9;
-    color: rgba(240,244,248,0.82);
-    margin-bottom: 1.4rem;
-  }
-  .lineage-text p:last-child { margin-bottom: 0; }
-
-  /* ── ATTRIBUTES STRIP ────────────────────────────────── */
-  .attributes {
-    padding: 5rem 7rem;
+  .testimonial-person {
     display: flex;
-    gap: 0;
-    border-top: 1px solid rgba(240,244,248,0.07);
-    border-bottom: 1px solid rgba(240,244,248,0.07);
-    overflow: hidden;
+    align-items: center;
+    gap: 1rem;
   }
-  .attribute {
-    flex: 1;
-    padding: 2rem 2.5rem;
-    border-right: 1px solid rgba(240,244,248,0.07);
-    transition: background 0.3s;
+  .testimonial-photo {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center top;
+    flex-shrink: 0;
+    background: var(--teal-mid);
   }
-  .attribute:last-child { border-right: none; }
-  .attribute:hover { background: rgba(45,94,114,0.08); }
-  .attr-word {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.35rem;
-    font-weight: 400;
-    font-style: italic;
+  .testimonial-name {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
     color: var(--white);
-    display: block;
-    margin-bottom: 0.5rem;
+    letter-spacing: 0.02em;
   }
-  .attr-line {
-    width: 1.2rem;
-    height: 1px;
-    background: var(--wine);
-    display: block;
+  .testimonial-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 300;
+    color: rgba(240,244,248,0.45);
+    margin-top: 0.2rem;
+    line-height: 1.4;
   }
 
   /* ── OFFERINGS ───────────────────────────────────────── */
@@ -704,28 +697,76 @@
   </div>
 </section>
 
-<!-- LINEAGE / EHAMA -->
-<section class="lineage">
-  <div class="lineage-label-col reveal">
-    <h3>Earth-based<br>wisdom<br>lineage</h3>
-    <div class="rule"></div>
-    <a href="https://ehama.org" target="_blank" rel="noopener">Ehama Institute ↗</a>
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="testimonials-header">
+    <span class="section-label">What clients say</span>
+    <h2 class="reveal">Leaders who've done the work</h2>
   </div>
-  <div class="lineage-text">
-    <p class="reveal">Deb had the great fortune of training in earth-based wisdom with RainbowHawk and WindEagle of Ehama Institute in the Santa Cruz mountains. This exploration of the interdependent web of All Life — of the unseen systems shaping how we see and move in the world — became a seminal homecoming. To her own true nature. To something feral and real beneath the noise of an identity.</p>
-    <p class="reveal">This lineage runs beneath everything she does with clients: the attunement to systems invisible to the analytical mind, the trust in what can be sensed before it can be named, the capacity to hold a person in the fire without flinching.</p>
+  <div class="testimonials-grid">
+
+    <div class="testimonial-card reveal">
+      <p class="testimonial-quote">"Working with Deb has transformed how I lead. She has helped me identify and work with patterns that are holding me back, while also helping me recognize and celebrate the strengths of my natural leadership style. Her unique ability to balance fierce candor with genuine warmth creates a space where I can explore any topic, drive sustainable change within myself and my team, and expand my vision of what's possible. I find myself drawing on Deb's wisdom and support regularly in board meetings, team discussions, and hard conversations."</p>
+      <div class="testimonial-rule"></div>
+      <div class="testimonial-person">
+        <img class="testimonial-photo" src="images/testimonial-laela.jpg" alt="Laela Sturdy" />
+        <div>
+          <div class="testimonial-name">Laela Sturdy</div>
+          <div class="testimonial-title">Managing Partner, CapitalG</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card reveal">
+      <p class="testimonial-quote">"Deb asks powerful questions that challenge assumptions, illuminate blind spots, and foster growth. She has helped us strengthen communication, build a culture of trust and accountability, and unlock measurable improvements in both employee engagement and business performance. Our company is stronger, more aligned, and better prepared because of her work."</p>
+      <div class="testimonial-rule"></div>
+      <div class="testimonial-person">
+        <img class="testimonial-photo" src="images/testimonial-chris.jpg" alt="Chris Mansi" />
+        <div>
+          <div class="testimonial-name">Chris Mansi</div>
+          <div class="testimonial-title">Co-founder & CEO, Viz.ai</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card reveal">
+      <p class="testimonial-quote">"Deb led my team through the most effective coaching sessions I've ever seen. She has an incredible skill set for guiding a room full of executives through challenging and insightful exercises. She's raw, talented, and authentic. Truly a gem in the world of executive coaching."</p>
+      <div class="testimonial-rule"></div>
+      <div class="testimonial-person">
+        <img class="testimonial-photo" src="images/testimonial-aaron.jpg" alt="Aaron King" />
+        <div>
+          <div class="testimonial-name">Aaron King</div>
+          <div class="testimonial-title">Founder & Executive Chairman, Snapdocs</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card reveal">
+      <p class="testimonial-quote">"Deb's heartfelt yet firm guidance has profoundly shaped both my personal and professional growth. She combines empathy with challenge which has helped me amplify my impact while finding greater joy in the journey. I am in awe of her talent for helping me see myself more clearly — as a leader, father and husband. Her partnership is instrumental in transforming our leadership team into a high-performance culture and throughout the organization."</p>
+      <div class="testimonial-rule"></div>
+      <div class="testimonial-person">
+        <img class="testimonial-photo" src="images/testimonial-darragh.jpg" alt="Darragh Hurley" />
+        <div>
+          <div class="testimonial-name">Darragh Hurley</div>
+          <div class="testimonial-title">CEO, Mount Anvil</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card reveal">
+      <p class="testimonial-quote">"In entrepreneurship, ideas are either vitamins or Advils. I started working with Deb thinking coaching was a vitamin — and to test Conscious Leadership for others. I quickly realized it was essential. Deb helped me see how my self-perception both served and limited me. As leaders, we often focus outward, but the highest-impact work is within. Deb never forced me to change at her pace but created space that allowed me to have more courage to take the next step. Over time, I became a better executive, spouse, and even parent."</p>
+      <div class="testimonial-rule"></div>
+      <div class="testimonial-person">
+        <img class="testimonial-photo" src="images/testimonial-arron.jpg" alt="Arron Walker" />
+        <div>
+          <div class="testimonial-name">Arron Walker</div>
+          <div class="testimonial-title">Founder & CEO, Ruthless for Good / Camelback Ventures</div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
-
-<!-- ATTRIBUTES STRIP -->
-<div class="attributes">
-  <div class="attribute reveal"><span class="attr-word">Devotional</span><span class="attr-line"></span></div>
-  <div class="attribute reveal"><span class="attr-word">Freeing</span><span class="attr-line"></span></div>
-  <div class="attribute reveal"><span class="attr-word">Embodied</span><span class="attr-line"></span></div>
-  <div class="attribute reveal"><span class="attr-word">Exacting</span><span class="attr-line"></span></div>
-  <div class="attribute reveal"><span class="attr-word">Reverent</span><span class="attr-line"></span></div>
-  <div class="attribute reveal"><span class="attr-word">Irreverent</span><span class="attr-line"></span></div>
-</div>
 
 <!-- OFFERINGS -->
 <section class="offerings" id="offerings">
