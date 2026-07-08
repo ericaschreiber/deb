@@ -305,15 +305,15 @@
   }
   .about a:hover { color: var(--white); border-color: rgba(240,244,248,0.5); }
 
-  /* ── REVERENCE / IRREVERENCE MODULE ──────────────────── */
+  /* ── ABOUT / PHOTO MODULE ────────────────────────────── */
   .tension-module {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    min-height: 80vh;
   }
   .tension-photo {
     position: relative;
     overflow: hidden;
+    min-height: 70vh;
   }
   .tension-photo img {
     width: 100%;
@@ -337,7 +337,7 @@
     font-weight: 500;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--violet);
+    color: var(--wine);
     margin-bottom: 2.5rem;
   }
   .tension-quote blockquote {
@@ -347,7 +347,30 @@
     font-style: italic;
     line-height: 1.5;
     color: var(--white);
+    margin-bottom: 3rem;
   }
+  .tension-rule {
+    width: 2rem;
+    height: 1px;
+    background: var(--wine);
+    margin-bottom: 2.5rem;
+  }
+  .tension-bio p {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 300;
+    line-height: 1.9;
+    color: rgba(240,244,248,0.72);
+    margin-bottom: 1.3rem;
+  }
+  .tension-bio p:last-child { margin-bottom: 0; }
+  .tension-bio a {
+    color: rgba(240,244,248,0.55);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(240,244,248,0.18);
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .tension-bio a:hover { color: var(--white); border-color: rgba(240,244,248,0.45); }
 
   /* ── TESTIMONIALS ────────────────────────────────────── */
   .testimonials {
@@ -660,25 +683,23 @@
 </section>
 
 <!-- ABOUT -->
-<section class="about" id="about">
-  <span class="section-label reveal">About Deb</span>
-  <h2 class="reveal">A devotee of facing anything<br>in the way of freedom.</h2>
-  <p class="reveal">She works with trailblazers—founders, executives, coaches—who are successful but not yet free. Leaders whose drive has carried them far, and whose patterns are limiting what they can create next. With relentless love and exacting attention, she helps them recover the heart of the seeker, the mind of the visionary, and the will of the warrior—so they can reckon with their power and forge freedom.</p>
-  <p class="reveal">Her path hasn't been a straight line. She came to coaching through hospice nursing, where she learned to be fully present when it matters most. She trained in earth-based wisdom with RainbowHawk and WindEagle of <a href="https://ehama.org" target="_blank" rel="noopener">Ehama Institute</a> — a homecoming to what can be sensed before it can be named. And she has studied in the mystery schools, lineages that deepened her capacity to hold a person in the fire without flinching.</p>
-  <p class="reveal">She was a coach and founding member of Conscious Leadership Group from 2017–2025.</p>
-  <p class="reveal">Today, Deb coaches leaders, facilitates team trainings, leads Signal Forums and Intensives, supervises coaches, and speaks.</p>
-</section>
-
-<!-- REVERENCE / IRREVERENCE MODULE -->
-<section class="tension-module" id="work">
+<section class="tension-module" id="about">
   <div class="tension-photo">
-    <img src="images/laugh.jpg" alt="Deb Katz laughing" />
+    <img src="images/laugh.jpg" alt="Deb Katz" />
   </div>
   <div class="tension-quote">
-    <span class="eyebrow reveal">On transformation</span>
+    <span class="eyebrow reveal">About Deb</span>
     <blockquote class="reveal">
       "The deepest transformation begins when we stop protecting ourselves and remember who we are."
     </blockquote>
+    <div class="tension-rule reveal"></div>
+    <div class="tension-bio">
+      <p class="reveal">Deb has spent her life as a devotee of facing anything and everything that's in the way of freedom.</p>
+      <p class="reveal">She works with trailblazers—founders, executives, coaches—who are successful but not yet free. Leaders whose drive has carried them far, and whose patterns are limiting what they can create next. With relentless love and exacting attention, she helps them recover the heart of the seeker, the mind of the visionary, and the will of the warrior—so they can reckon with their power and forge freedom.</p>
+      <p class="reveal">Her path hasn't been a straight line. She came to coaching through hospice nursing, where she learned to be fully present when it matters most. She trained in earth-based wisdom with RainbowHawk and WindEagle of <a href="https://ehama.org" target="_blank" rel="noopener">Ehama Institute</a> — a homecoming to what can be sensed before it can be named. And she has studied in the mystery schools, lineages that deepened her capacity to hold a person in the fire without flinching.</p>
+      <p class="reveal">She was a coach and founding member of Conscious Leadership Group from 2017–2025.</p>
+      <p class="reveal">Today, Deb coaches leaders, facilitates team trainings, leads Signal Forums and Intensives, supervises coaches, and speaks.</p>
+    </div>
   </div>
 </section>
 
