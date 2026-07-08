@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deb Katz — Color Palette Review</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: #0D0D0D;
+  color: #F0F4F8;
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+.page {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 4rem 3rem 6rem;
+}
+.header {
+  margin-bottom: 3.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(240,244,248,0.08);
+}
+.header h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem;
+  font-weight: 400;
+  color: #F0F4F8;
+  margin-bottom: 0.5rem;
+}
+.header p {
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(240,244,248,0.35);
+}
+.group {
+  margin-bottom: 3.5rem;
+  padding-bottom: 3.5rem;
+  border-bottom: 1px solid rgba(240,244,248,0.06);
+}
+.group:last-child {
+  border-bottom: none;
+}
+.group-label {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(240,244,248,0.35);
+  margin-bottom: 1.5rem;
+}
+.swatches {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  margin-bottom: 1.25rem;
+}
+.swatch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+.block {
+  width: 110px;
+  height: 90px;
+  border-radius: 3px;
+  position: relative;
+  cursor: default;
+}
+.block.selected {
+  outline: 2px solid #F0F4F8;
+  outline-offset: 3px;
+}
+.tag {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 0.35rem 0.5rem;
+  background: rgba(0,0,0,0.38);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  text-align: center;
+  border-radius: 0 0 3px 3px;
+}
+.hex {
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: rgba(240,244,248,0.45);
+  font-variant-numeric: tabular-nums;
+}
+.swatch-name {
+  font-size: 10px;
+  color: rgba(240,244,248,0.3);
+  text-align: center;
+  max-width: 110px;
+  line-height: 1.4;
+}
+.question {
+  font-size: 0.82rem;
+  font-weight: 300;
+  color: rgba(240,244,248,0.5);
+  font-style: italic;
+  line-height: 1.7;
+  max-width: 600px;
+}
+.note-box {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  background: rgba(240,244,248,0.04);
+  border-left: 2px solid rgba(103,38,58,0.5);
+  font-size: 0.78rem;
+  color: rgba(240,244,248,0.4);
+  line-height: 1.6;
+  max-width: 600px;
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <h1>Color Palette Review</h1>
+    <p>Deb Katz &nbsp;·&nbsp; July 2026 &nbsp;·&nbsp; Direction 2</p>
+  </div>
+
+  <!-- TEAL -->
+  <div class="group">
+    <div class="group-label">Teal &nbsp;—&nbsp; primary brand color</div>
+    <div class="swatches">
+      <div class="swatch">
+        <div class="block" style="background:#294749;">
+          <span class="tag">current</span>
+        </div>
+        <span class="hex">#294749</span>
+        <span class="swatch-name">couch-sampled</span>
+      </div>
+      <div class="swatch">
+        <div class="block" style="background:#2E6068;"></div>
+        <span class="hex">#2E6068</span>
+        <span class="swatch-name">brighter, blue-leaning</span>
+      </div>
+      <div class="swatch">
+        <div class="block" style="background:#1D7A82;"></div>
+        <span class="hex">#1D7A82</span>
+        <span class="swatch-name">brightest, least green</span>
+      </div>
+      <div class="swatch">
+        <div class="block" style="background:#2D5E72;"></div>
+        <span class="hex">#2D5E72</span>
+        <span class="swatch-name">earlier swatch read</span>
+      </div>
+    </div>
+    <p class="question">Is the current teal too dark and green-leaning? Deb said she wants brighter and less foresty.</p>
+  </div>
+
+  <!-- WINE -->
+  <div class="group">
+    <div class="group-label">Wine &nbsp;—&nbsp; secondary / accent</div>
+    <div class="swatches">
+      <div class="swatch">
+        <div class="block" style="background:#67263A;">
+          <span class="tag">current</span>
+        </div>
+        <span class="hex">#67263A</span>
+        <span class="swatch-name">current</span>
+      </div>
+      <div class="swatch">
+        <div class="block" style="background:#7A2B44;"></div>
+        <span class="hex">#7A2B44</span>
+        <span class="swatch-name">slightly lighter</span>
+      </div>
+      <div class="swatch">
+        <div class="block" style="background:#8C3050;"></div>
+        <span class="hex">#8C3050</span>
+        <span class="swatch-name">noticeably lighter</span>
+      </div>
+      <div class="swatch">
+        <div class="block" style="background:#5A1F30;"></div>
+        <span class="hex">#5A1F30</span>
+        <span class="swatch-name">darker, deeper</span>
+      </div>
+    </div>
+    <p class="question">Does the current wine feel right, or does it want to go lighter or darker?</p>
+  </div>
+
+  <!-- VIOLET -->
+  <div class="group">
+    <div class="group-label">Violet &nbsp;—&nbsp; supporting</div>
+    <div class="swatches">
+      <div class="swatch">
+        <div class="block" style="background:#74619E;">
+          <span class="tag">current</span>
+        </div>
+        <span class="hex">#74619E</span>
+        <span class="swatch-name">current</span>
+      </div>
+      <div class="swatch">
+        <div class="block" style="background:#7C63B2;"></div>
+        <span class="hex">#7C63B2</span>
+        <span class="swatch-name">brighter, more blue</span>
+      </div>
+      <div class="swatch">
+        <div class="block" style="background:#8B5E9E;"></div>
+        <span class="hex">#8B5E9E</span>
+        <span class="swatch-name">brighter, more red</span>
+      </div>
+    </div>
+    <p class="question">Is the current violet in the right family, or does it need to shift bluer or redder?</p>
+  </div>
+
+  <!-- PINK -->
+  <div class="group">
+    <div class="group-label">Pink &nbsp;—&nbsp; accent (to resolve)</div>
+    <div class="swatches">
+      <div class="swatch">
+        <div class="block" style="background:#C45E7E;"></div>
+        <span class="hex">#C45E7E</span>
+        <span class="swatch-name">warm rose, medium</span>
+      </div>
+      <div class="swatch">
+        <div class="block" style="background:#D4688A;"></div>
+        <span class="hex">#D4688A</span>
+        <span class="swatch-name">brighter rose</span>
+      </div>
+      <div class="swatch">
+        <div class="block" style="background:#C4507A;"></div>
+        <span class="hex">#C4507A</span>
+        <span class="swatch-name">deeper, jewel tone</span>
+      </div>
+      <div class="swatch">
+        <div class="block" style="background:#E07090;"></div>
+        <span class="hex">#E07090</span>
+        <span class="swatch-name">lightest, most vibrant</span>
+      </div>
+    </div>
+    <p class="question">Previous picks were too muted and dusty. These are all brighter. Which direction — deeper jewel tone or lighter and more vibrant?</p>
+    <div class="note-box">Deb's word: "resplendent." Erica's instinct: almost metallic.</div>
+  </div>
+
+  <!-- PERIWINKLE -->
+  <div class="group">
+    <div class="group-label">Periwinkle &nbsp;—&nbsp; accent (to resolve)</div>
+    <div class="swatches">
+      <div class="swatch">
+        <div class="block" style="background:#7080C4;"></div>
+        <span class="hex">#7080C4</span>
+        <span class="swatch-name">medium, blue-leaning</span>
+      </div>
+      <div class="swatch">
+        <div class="block" style="background:#8090D4;"></div>
+        <span class="hex">#8090D4</span>
+        <span class="swatch-name">brighter, lighter</span>
+      </div>
+      <div class="swatch">
+        <div class="block" style="background:#6878B8;"></div>
+        <span class="hex">#6878B8</span>
+        <span class="swatch-name">deeper, more violet</span>
+      </div>
+    </div>
+    <p class="question">Deb said the previous periwinkle was directionally right but needed to be brighter and have more sparkle. Do any of these land?</p>
+  </div>
+
+  <!-- GOLD -->
+  <div class="group">
+    <div class="group-label">Gold &nbsp;—&nbsp; accent (new addition)</div>
+    <div class="swatches">
+      <div class="swatch">
+        <div class="block" style="background:#C49A28;"></div>
+        <span class="hex">#C49A28</span>
+        <span class="swatch-name">warm mustard-gold</span>
+      </div>
+      <div class="swatch">
+        <div class="block" style="background:#D4A830;"></div>
+        <span class="hex">#D4A830</span>
+        <span class="swatch-name">brighter warm gold</span>
+      </div>
+      <div class="swatch">
+        <div class="block" style="background:#B88820;"></div>
+        <span class="hex">#B88820</span>
+        <span class="swatch-name">deeper, richer</span>
+      </div>
+      <div class="swatch">
+        <div class="block" style="background:#E0B840;"></div>
+        <span class="hex">#E0B840</span>
+        <span class="swatch-name">lightest, most vibrant</span>
+      </div>
+    </div>
+    <p class="question">Deb said: warm, bright golds — what's in her home décor, not mustardy. Do any of these feel like that?</p>
+  </div>
+
+  <!-- WHITE -->
+  <div class="group">
+    <div class="group-label">White &nbsp;—&nbsp; text and light backgrounds</div>
+    <div class="swatches">
+      <div class="swatch">
+        <div class="block" style="background:#F0F4F8; border: 1px solid rgba(240,244,248,0.15);">
+          <span class="tag" style="color:rgba(0,0,0,0.4);">current</span>
+        </div>
+        <span class="hex">#F0F4F8</span>
+        <span class="swatch-name">current, cool off-white</span>
+      </div>
+      <div class="swatch">
+        <div class="block" style="background:#F6F8FA; border: 1px solid rgba(240,244,248,0.15);"></div>
+        <span class="hex">#F6F8FA</span>
+        <span class="swatch-name">crisper, cooler</span>
+      </div>
+      <div class="swatch">
+        <div class="block" style="background:#FAFAFA; border: 1px solid rgba(240,244,248,0.15);"></div>
+        <span class="hex">#FAFAFA</span>
+        <span class="swatch-name">near-pure white</span>
+      </div>
+    </div>
+    <p class="question">Deb said: crisp, cool, nothing cream or ivory. Does the current feel right, or does it need to go crisper?</p>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deb Katz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black:   #0D0D0D;
+    --teal:    #294749;
+    --wine:    #67263A;
+    --violet:  #74619E;
+    --white:   #F0F4F8;
+    --teal-mid: #1C3035;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ─────────────────────────────────────────────── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 3rem;
+    background: transparent;
+    transition: background 0.4s;
+  }
+  nav.scrolled {
+    background: rgba(13,13,13,0.92);
+    backdrop-filter: blur(8px);
+  }
+  .nav-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--white);
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--white);
+    text-decoration: none;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+  }
+  .nav-links a:hover { opacity: 1; }
+
+  /* ── HERO ─────────────────────────────────────────────── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-photo {
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    filter: saturate(0.95) contrast(1.03);
+  }
+  .hero-photo::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, transparent 70%, var(--black) 100%);
+  }
+  .hero-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8rem 5rem 5rem 3rem;
+    position: relative;
+  }
+  .hero-eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 1.8rem;
+    opacity: 0.9;
+  }
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(4rem, 7vw, 7rem);
+    font-weight: 300;
+    line-height: 0.92;
+    color: var(--white);
+    margin-bottom: 2.8rem;
+  }
+  .hero-name em {
+    font-style: italic;
+    color: var(--teal);
+    display: block;
+  }
+  .hero-line {
+    width: 2.5rem;
+    height: 1px;
+    background: var(--wine);
+    margin-bottom: 2rem;
+  }
+  .hero-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.45rem;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--white);
+    opacity: 0.88;
+    max-width: 22rem;
+    margin-bottom: 3rem;
+  }
+  .hero-cta {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--white);
+    border-bottom: 1px solid var(--wine);
+    padding-bottom: 0.3rem;
+    text-decoration: none;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .hero-cta:hover { color: var(--wine); }
+
+  /* ── POSITIONING PULL QUOTE ───────────────────────────── */
+  .pull-quote {
+    background: var(--teal-mid);
+    padding: 6rem 8rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .pull-quote::before {
+    content: '\201C';
+    position: absolute;
+    top: -1.5rem;
+    left: 5rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18rem;
+    color: rgba(255,255,255,0.04);
+    line-height: 1;
+    pointer-events: none;
+  }
+  .pull-quote blockquote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.55;
+    color: var(--white);
+    max-width: 52rem;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  .pull-quote cite {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-top: 2.2rem;
+    font-style: normal;
+  }
+
+  /* ── ABOUT ────────────────────────────────────────────── */
+  .about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 90vh;
+  }
+  .about-text {
+    padding: 7rem 5rem 7rem 7rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .section-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--wine);
+    margin-bottom: 2rem;
+  }
+  .about-text h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 3.5vw, 3.2rem);
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--white);
+    margin-bottom: 2.5rem;
+  }
+  .about-text p {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.85;
+    color: rgba(240,244,248,0.78);
+    margin-bottom: 1.4rem;
+    max-width: 34rem;
+  }
+  .about-text p strong {
+    color: var(--white);
+    font-weight: 400;
+  }
+  .about-photo {
+    position: relative;
+    overflow: hidden;
+  }
+  .about-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    filter: saturate(0.92);
+  }
+  .about-photo::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to left, transparent 60%, var(--black) 100%);
+    z-index: 1;
+  }
+
+  /* ── REVERENCE / IRREVERENCE MODULE ──────────────────── */
+  .tension-module {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 80vh;
+  }
+  .tension-photo {
+    position: relative;
+    overflow: hidden;
+  }
+  .tension-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+    display: block;
+    filter: saturate(0.9) contrast(1.05);
+  }
+  .tension-quote {
+    background: var(--black);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6rem 5rem 6rem 6rem;
+    border-left: 1px solid rgba(45,94,114,0.25);
+  }
+  .tension-quote .eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--violet);
+    margin-bottom: 2.5rem;
+  }
+  .tension-quote blockquote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.7rem, 2.6vw, 2.2rem);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--white);
+  }
+
+  /* ── EHAMA / LINEAGE ─────────────────────────────────── */
+  .lineage {
+    background: var(--teal-mid);
+    padding: 7rem 8rem;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 6rem;
+    align-items: center;
+  }
+  .lineage-label-col {
+    border-right: 1px solid rgba(240,244,248,0.12);
+    padding-right: 4rem;
+  }
+  .lineage-label-col h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 2.5vw, 2.4rem);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.2;
+    color: var(--white);
+  }
+  .lineage-label-col .rule {
+    width: 2rem;
+    height: 1px;
+    background: var(--wine);
+    margin: 1.8rem 0;
+  }
+  .lineage-label-col a {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--teal);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(45,94,114,0.4);
+    padding-bottom: 0.2rem;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .lineage-label-col a:hover { color: var(--white); border-color: var(--white); }
+  .lineage-text p {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.9;
+    color: rgba(240,244,248,0.82);
+    margin-bottom: 1.4rem;
+  }
+  .lineage-text p:last-child { margin-bottom: 0; }
+
+  /* ── ATTRIBUTES STRIP ────────────────────────────────── */
+  .attributes {
+    padding: 5rem 7rem;
+    display: flex;
+    gap: 0;
+    border-top: 1px solid rgba(240,244,248,0.07);
+    border-bottom: 1px solid rgba(240,244,248,0.07);
+    overflow: hidden;
+  }
+  .attribute {
+    flex: 1;
+    padding: 2rem 2.5rem;
+    border-right: 1px solid rgba(240,244,248,0.07);
+    transition: background 0.3s;
+  }
+  .attribute:last-child { border-right: none; }
+  .attribute:hover { background: rgba(45,94,114,0.08); }
+  .attr-word {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--white);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  .attr-line {
+    width: 1.2rem;
+    height: 1px;
+    background: var(--wine);
+    display: block;
+  }
+
+  /* ── OFFERINGS ───────────────────────────────────────── */
+  .offerings {
+    padding: 7rem;
+  }
+  .offerings-header {
+    display: flex;
+    align-items: baseline;
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+  .offerings-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3vw, 3rem);
+    font-weight: 400;
+    color: var(--white);
+  }
+  .offerings-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(240,244,248,0.07);
+  }
+  .offering-card {
+    background: var(--black);
+    padding: 3rem 2.5rem;
+    transition: background 0.3s;
+  }
+  .offering-card:hover { background: rgba(45,94,114,0.1); }
+  .offering-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--white);
+    margin-bottom: 1rem;
+  }
+  .offering-card p {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 300;
+    line-height: 1.75;
+    color: rgba(240,244,248,0.65);
+  }
+  .offering-card .tag {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 1.2rem;
+  }
+
+  /* ── CONTACT ─────────────────────────────────────────── */
+  .contact {
+    background: var(--wine);
+    padding: 7rem;
+    text-align: center;
+  }
+  .contact h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.4rem, 4vw, 4rem);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+  }
+  .contact p {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: rgba(240,244,248,0.8);
+    max-width: 30rem;
+    margin: 0 auto 3rem;
+    line-height: 1.75;
+  }
+  .contact-link {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--white);
+    border: 1px solid rgba(240,244,248,0.45);
+    padding: 1.1rem 2.8rem;
+    text-decoration: none;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .contact-link:hover {
+    background: rgba(240,244,248,0.1);
+    border-color: var(--white);
+  }
+
+  /* ── FOOTER ──────────────────────────────────────────── */
+  footer {
+    background: var(--black);
+    padding: 3rem 7rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(240,244,248,0.07);
+  }
+  footer .foot-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.95rem;
+    letter-spacing: 0.1em;
+    color: rgba(240,244,248,0.45);
+  }
+  footer .foot-copy {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: rgba(240,244,248,0.25);
+  }
+
+  /* ── SCROLL REVEAL ───────────────────────────────────── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.75s ease, transform 0.75s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <a href="#" class="nav-name">Deb Katz</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#offerings">Offerings</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-photo">
+    <img src="images/hero.jpg" alt="Deb Katz" />
+  </div>
+  <div class="hero-text reveal">
+    <span class="hero-eyebrow">Executive Coach &amp; Partner to Trailblazers</span>
+    <h1 class="hero-name">
+      Deb<br>
+      <em>Katz</em>
+    </h1>
+    <div class="hero-line"></div>
+    <p class="hero-tagline">Successful.<br>Not yet free.</p>
+    <a href="#about" class="hero-cta">Discover the work</a>
+  </div>
+</section>
+
+<!-- POSITIONING PULL QUOTE -->
+<section class="pull-quote">
+  <blockquote class="reveal">
+    Partners with trailblazers who find themselves in repeating and recycling territories — which limits the possibilities for what they can create next. With relentless love and exacting attention, she helps them recover the heart of the seeker, the mind of the visionary, and the will of the warrior. So they can reckon with their power, make the next brave choice, and forge freedom.
+  </blockquote>
+  <cite class="reveal">The work</cite>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-text">
+    <span class="section-label reveal">About Deb</span>
+    <h2 class="reveal">She has spent her life<br>learning how freedom<br>is made.</h2>
+    <p class="reveal">Deb Katz is an executive coach and partner to visionary leaders — founders, executives, coaches who are <strong>successful, but not yet free</strong>. She brings to her work more than two decades of coaching, executive facilitation, and team leadership, alongside a background in hospice nursing that taught her what it means to be fully present with another person at the edge of what matters most.</p>
+    <p class="reveal">She leads Signal Forums, coaches one-on-one, facilitates teams and boards, and shows up as a <em>balcony coach</em> — stepping into the elevated observer's perspective to help leaders see what they can't see from the ground of their own doing.</p>
+  </div>
+  <div class="about-photo">
+    <img src="images/about.jpg" alt="Deb Katz" />
+  </div>
+</section>
+
+<!-- REVERENCE / IRREVERENCE MODULE -->
+<section class="tension-module" id="work">
+  <div class="tension-photo">
+    <img src="images/laugh.jpg" alt="Deb Katz laughing" />
+  </div>
+  <div class="tension-quote">
+    <span class="eyebrow reveal">On transformation</span>
+    <blockquote class="reveal">
+      "The deepest transformation begins when we stop protecting ourselves and remember who we are."
+    </blockquote>
+  </div>
+</section>
+
+<!-- LINEAGE / EHAMA -->
+<section class="lineage">
+  <div class="lineage-label-col reveal">
+    <h3>Earth-based<br>wisdom<br>lineage</h3>
+    <div class="rule"></div>
+    <a href="https://ehama.org" target="_blank" rel="noopener">Ehama Institute ↗</a>
+  </div>
+  <div class="lineage-text">
+    <p class="reveal">Deb had the great fortune of training in earth-based wisdom with RainbowHawk and WindEagle of Ehama Institute in the Santa Cruz mountains. This exploration of the interdependent web of All Life — of the unseen systems shaping how we see and move in the world — became a seminal homecoming. To her own true nature. To something feral and real beneath the noise of an identity.</p>
+    <p class="reveal">This lineage runs beneath everything she does with clients: the attunement to systems invisible to the analytical mind, the trust in what can be sensed before it can be named, the capacity to hold a person in the fire without flinching.</p>
+  </div>
+</section>
+
+<!-- ATTRIBUTES STRIP -->
+<div class="attributes">
+  <div class="attribute reveal"><span class="attr-word">Devotional</span><span class="attr-line"></span></div>
+  <div class="attribute reveal"><span class="attr-word">Freeing</span><span class="attr-line"></span></div>
+  <div class="attribute reveal"><span class="attr-word">Embodied</span><span class="attr-line"></span></div>
+  <div class="attribute reveal"><span class="attr-word">Exacting</span><span class="attr-line"></span></div>
+  <div class="attribute reveal"><span class="attr-word">Reverent</span><span class="attr-line"></span></div>
+  <div class="attribute reveal"><span class="attr-word">Irreverent</span><span class="attr-line"></span></div>
+</div>
+
+<!-- OFFERINGS -->
+<section class="offerings" id="offerings">
+  <div class="offerings-header">
+    <span class="section-label">The offerings</span>
+    <h2 class="reveal">Ways to work together</h2>
+  </div>
+  <div class="offerings-grid">
+    <div class="offering-card reveal">
+      <span class="tag">One-on-one</span>
+      <h3>Executive Coaching</h3>
+      <p>Deep partnership for leaders ready to stop recycling the same territories and make the next brave choice. Ongoing or intensive formats available.</p>
+    </div>
+    <div class="offering-card reveal">
+      <span class="tag">Peer cohort</span>
+      <h3>Signal Forums</h3>
+      <p>A community of visionary leaders convened for peer learning, courageous conversation, and the kind of reflection that only happens in trusted company.</p>
+    </div>
+    <div class="offering-card reveal">
+      <span class="tag">Teams &amp; boards</span>
+      <h3>Facilitation &amp; Intensives</h3>
+      <p>High-stakes facilitation, team trainings, and board work for organizations at a pivotal moment — where collective clarity is the bottleneck.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <h2 class="reveal">Ready to make<br>the next brave choice?</h2>
+  <p class="reveal">If something in you recognizes what you've read here — reach out. The work begins with a conversation.</p>
+  <a href="mailto:deb@debkatz.com" class="contact-link reveal">deb@debkatz.com</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="foot-name">Deb Katz</span>
+  <span class="foot-copy">&copy; 2026. All rights reserved.</span>
+</footer>
+
+<script>
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
