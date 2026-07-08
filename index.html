@@ -431,9 +431,7 @@
   }
   .testi-photo-col {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+    align-items: flex-start;
   }
   .testi-photo {
     width: 220px;
@@ -442,30 +440,35 @@
     object-fit: cover;
     object-position: center top;
     display: block;
-    margin-bottom: 1.6rem;
   }
-  .testi-name {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: var(--white);
-    letter-spacing: 0.02em;
-    margin-bottom: 0.35rem;
-  }
-  .testi-role {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.72rem;
-    font-weight: 300;
-    color: rgba(240,244,248,0.45);
-    line-height: 1.5;
+  .testi-quote-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
   .testi-quote {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.2rem, 1.7vw, 1.5rem);
+    font-size: clamp(1.1rem, 1.4vw, 1.3rem);
     font-weight: 400;
     font-style: italic;
-    line-height: 1.7;
+    line-height: 1.65;
     color: rgba(240,244,248,0.92);
+    margin-bottom: 1.8rem;
+  }
+  .testi-name {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--white);
+    letter-spacing: 0.02em;
+    margin-bottom: 0.25rem;
+  }
+  .testi-role {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 300;
+    color: rgba(240,244,248,0.4);
+    line-height: 1.5;
   }
   /* slider nav */
   .testi-nav {
@@ -730,46 +733,56 @@
     <div class="testimonial-slide active">
       <div class="testi-photo-col">
         <img class="testi-photo" src="images/testimonial-laela.jpg" alt="Laela Sturdy" />
-        <div class="testi-name">Laela Sturdy</div>
-        <div class="testi-role">Managing Partner<br>CapitalG</div>
       </div>
-      <p class="testi-quote">"Working with Deb has transformed how I lead. She has helped me identify and work with patterns that are holding me back, while also helping me recognize and celebrate the strengths of my natural leadership style. Her unique ability to balance fierce candor with genuine warmth creates a space where I can explore any topic, drive sustainable change within myself and my team, and expand my vision of what's possible. I find myself drawing on Deb's wisdom and support regularly in board meetings, team discussions, and hard conversations."</p>
+      <div class="testi-quote-col">
+        <p class="testi-quote">"Working with Deb has transformed how I lead. She has helped me identify and work with patterns that are holding me back, while also helping me recognize and celebrate the strengths of my natural leadership style. Her unique ability to balance fierce candor with genuine warmth creates a space where I can explore any topic, drive sustainable change within myself and my team, and expand my vision of what's possible. I find myself drawing on Deb's wisdom and support regularly in board meetings, team discussions, and hard conversations."</p>
+        <div class="testi-name">Laela Sturdy</div>
+        <div class="testi-role">Managing Partner, CapitalG</div>
+      </div>
     </div>
 
     <div class="testimonial-slide">
       <div class="testi-photo-col">
         <img class="testi-photo" src="images/testimonial-chris.jpg" alt="Chris Mansi" />
-        <div class="testi-name">Chris Mansi</div>
-        <div class="testi-role">Co-founder & CEO<br>Viz.ai</div>
       </div>
-      <p class="testi-quote">"Deb asks powerful questions that challenge assumptions, illuminate blind spots, and foster growth. She has helped us strengthen communication, build a culture of trust and accountability, and unlock measurable improvements in both employee engagement and business performance. Our company is stronger, more aligned, and better prepared because of her work."</p>
+      <div class="testi-quote-col">
+        <p class="testi-quote">"Deb asks powerful questions that challenge assumptions, illuminate blind spots, and foster growth. She has helped us strengthen communication, build a culture of trust and accountability, and unlock measurable improvements in both employee engagement and business performance. Our company is stronger, more aligned, and better prepared because of her work."</p>
+        <div class="testi-name">Chris Mansi</div>
+        <div class="testi-role">Co-founder & CEO, Viz.ai</div>
+      </div>
     </div>
 
     <div class="testimonial-slide">
       <div class="testi-photo-col">
         <img class="testi-photo" src="images/testimonial-aaron.jpg" alt="Aaron King" />
-        <div class="testi-name">Aaron King</div>
-        <div class="testi-role">Founder & Executive Chairman<br>Snapdocs</div>
       </div>
-      <p class="testi-quote">"Deb led my team through the most effective coaching sessions I've ever seen. She has an incredible skill set for guiding a room full of executives through challenging and insightful exercises. She's raw, talented, and authentic. Truly a gem in the world of executive coaching."</p>
+      <div class="testi-quote-col">
+        <p class="testi-quote">"Deb led my team through the most effective coaching sessions I've ever seen. She has an incredible skill set for guiding a room full of executives through challenging and insightful exercises. She's raw, talented, and authentic. Truly a gem in the world of executive coaching."</p>
+        <div class="testi-name">Aaron King</div>
+        <div class="testi-role">Founder & Executive Chairman, Snapdocs</div>
+      </div>
     </div>
 
     <div class="testimonial-slide">
       <div class="testi-photo-col">
         <img class="testi-photo" src="images/testimonial-darragh.jpg" alt="Darragh Hurley" />
-        <div class="testi-name">Darragh Hurley</div>
-        <div class="testi-role">CEO<br>Mount Anvil</div>
       </div>
-      <p class="testi-quote">"Deb's heartfelt yet firm guidance has profoundly shaped both my personal and professional growth. She combines empathy with challenge which has helped me amplify my impact while finding greater joy in the journey. I am in awe of her talent for helping me see myself more clearly — as a leader, father and husband. Her partnership is instrumental in transforming our leadership team into a high-performance culture and throughout the organization."</p>
+      <div class="testi-quote-col">
+        <p class="testi-quote">"Deb's heartfelt yet firm guidance has profoundly shaped both my personal and professional growth. She combines empathy with challenge which has helped me amplify my impact while finding greater joy in the journey. I am in awe of her talent for helping me see myself more clearly — as a leader, father and husband. Her partnership is instrumental in transforming our leadership team into a high-performance culture and throughout the organization."</p>
+        <div class="testi-name">Darragh Hurley</div>
+        <div class="testi-role">CEO, Mount Anvil</div>
+      </div>
     </div>
 
     <div class="testimonial-slide">
       <div class="testi-photo-col">
         <img class="testi-photo" src="images/testimonial-arron.jpg" alt="Arron Walker" />
-        <div class="testi-name">Arron Walker</div>
-        <div class="testi-role">Founder & CEO, Ruthless for Good<br>Founder & Senior Advisor, Camelback Ventures</div>
       </div>
-      <p class="testi-quote">"In entrepreneurship, ideas are either vitamins or Advils. I started working with Deb thinking coaching was a vitamin — and to test Conscious Leadership for others. I quickly realized it was essential. Deb helped me see how my self-perception both served and limited me. As leaders, we often focus outward, but the highest-impact work is within. Deb never forced me to change at her pace but created space that allowed me to have more courage to take the next step. Over time, I became a better executive, spouse, and even parent."</p>
+      <div class="testi-quote-col">
+        <p class="testi-quote">"In entrepreneurship, ideas are either vitamins or Advils. I started working with Deb thinking coaching was a vitamin — and to test Conscious Leadership for others. I quickly realized it was essential. Deb helped me see how my self-perception both served and limited me. As leaders, we often focus outward, but the highest-impact work is within. Deb never forced me to change at her pace but created space that allowed me to have more courage to take the next step. Over time, I became a better executive, spouse, and even parent."</p>
+        <div class="testi-name">Arron Walker</div>
+        <div class="testi-role">Founder & CEO, Ruthless for Good / Camelback Ventures</div>
+      </div>
     </div>
 
   </div>
