@@ -567,34 +567,19 @@
     font-weight: 400;
     color: var(--white);
   }
-  /* 3-per-page paginated testimonials */
   .testimonials-slider { display: grid; }
-  .testi-page {
+  .testimonial-slide {
     grid-area: 1 / 1;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
-    background: rgba(240,244,248,0.06);
+    grid-template-columns: 280px 1fr;
+    gap: 6rem;
+    align-items: center;
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.6s ease;
   }
-  .testi-page.active { opacity: 1; pointer-events: auto; }
-  .testi-card {
-    background: rgba(255,255,255,0.03);
-    padding: 2.5rem 2rem;
-    display: flex;
-    flex-direction: column;
-  }
-  .testi-photo {
-    width: 72px;
-    height: 86px;
-    border-radius: 6px;
-    object-fit: cover;
-    object-position: center top;
-    display: block;
-    margin-bottom: 1.8rem;
-  }
+  .testimonial-slide.active { opacity: 1; pointer-events: auto; }
+  .testi-photo-col { display: flex; align-items: flex-start; }
   .testi-photo-placeholder {
     display: flex;
     align-items: center;
@@ -602,32 +587,36 @@
     background: rgba(240,244,248,0.08);
     border: 1px solid rgba(240,244,248,0.12);
     font-family: 'Inter', sans-serif;
-    font-size: 1rem;
+    font-size: 1.4rem;
     font-weight: 300;
     letter-spacing: 0.1em;
     color: rgba(240,244,248,0.4);
-    width: 72px;
-    height: 86px;
-    border-radius: 6px;
-    margin-bottom: 1.8rem;
+    width: 220px;
+    height: 260px;
+    border-radius: 10px;
   }
+  .testi-photo {
+    width: 220px;
+    height: 260px;
+    border-radius: 10px;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+  .testi-quote-col { display: flex; flex-direction: column; justify-content: center; }
   .testi-quote {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.1rem, 1.3vw, 1.35rem);
+    font-size: clamp(1.35rem, 1.8vw, 1.7rem);
     font-weight: 400;
     font-style: italic;
-    line-height: 1.7;
+    line-height: 1.65;
     color: rgba(240,244,248,0.92);
     margin-bottom: 1.8rem;
-    flex: 1;
   }
-  .testi-attribution {
-    border-top: 1px solid rgba(240,244,248,0.15);
-    padding-top: 1.2rem;
-  }
+  .testi-attribution { border-top: 1px solid rgba(240,244,248,0.15); padding-top: 1.2rem; }
   .testi-name {
     font-family: 'Inter', sans-serif;
-    font-size: 0.82rem;
+    font-size: 0.88rem;
     font-weight: 500;
     color: var(--white);
     letter-spacing: 0.03em;
@@ -635,7 +624,7 @@
   }
   .testi-role {
     font-family: 'Inter', sans-serif;
-    font-size: 0.68rem;
+    font-size: 0.72rem;
     font-weight: 400;
     color: rgba(240,244,248,0.65);
     line-height: 1.5;
@@ -645,7 +634,8 @@
     display: flex;
     align-items: center;
     gap: 1.5rem;
-    margin-top: 3rem;
+    margin-top: 3.5rem;
+    padding-left: calc(280px + 6rem);
   }
   .testi-arrow {
     background: none;
@@ -661,11 +651,7 @@
     transition: border-color 0.2s, color 0.2s;
   }
   .testi-arrow:hover { border-color: rgba(240,244,248,0.6); color: var(--white); }
-  .testi-dots {
-    display: flex;
-    gap: 0.6rem;
-    align-items: center;
-  }
+  .testi-dots { display: flex; gap: 0.6rem; align-items: center; }
   .testi-dot {
     width: 5px;
     height: 5px;
@@ -1023,26 +1009,37 @@
 
   <div class="testimonials-slider">
 
-    <!-- Page 1 -->
-    <div class="testi-page active">
-      <div class="testi-card">
+    <div class="testimonial-slide active">
+      <div class="testi-photo-col">
         <img class="testi-photo" src="images/testimonial-laela.jpg" alt="Laela Sturdy" />
+      </div>
+      <div class="testi-quote-col">
         <p class="testi-quote">"Working with Deb transformed how I lead. She helped me identify and work with patterns that were holding me back, while helping me recognize and celebrate the strengths of my natural leadership style. Her unique ability to balance fierce candor with genuine warmth creates a space where I can explore any topic, drive sustainable change within myself and my team, and expand my vision of what's possible. I draw on Deb's wisdom and support regularly in board meetings, team discussions, and hard conversations."</p>
         <div class="testi-attribution">
           <div class="testi-name">Laela Sturdy</div>
           <div class="testi-role">Managing Partner, CapitalG</div>
         </div>
       </div>
-      <div class="testi-card">
+    </div>
+
+    <div class="testimonial-slide">
+      <div class="testi-photo-col">
         <img class="testi-photo" src="images/testimonial-chris.jpg" alt="Chris Mansi" />
+      </div>
+      <div class="testi-quote-col">
         <p class="testi-quote">"Deb asks powerful questions that challenge assumptions, illuminate blind spots, and foster growth. She has helped us strengthen communication, build a culture of trust and accountability, and unlock measurable improvements in both employee engagement and business performance. Our company is stronger, more aligned, and better prepared because of her work."</p>
         <div class="testi-attribution">
           <div class="testi-name">Chris Mansi</div>
           <div class="testi-role">Co-founder & CEO, Viz.ai</div>
         </div>
       </div>
-      <div class="testi-card">
+    </div>
+
+    <div class="testimonial-slide">
+      <div class="testi-photo-col">
         <img class="testi-photo" src="images/testimonial-aaron.jpg" alt="Aaron King" />
+      </div>
+      <div class="testi-quote-col">
         <p class="testi-quote">"Deb led my team through the most effective coaching sessions I've ever seen. She has an incredible skill set for guiding a room full of executives through challenging and insightful exercises. She's raw, talented, and authentic. Truly a gem in the world of executive coaching."</p>
         <div class="testi-attribution">
           <div class="testi-name">Aaron King</div>
@@ -1051,42 +1048,54 @@
       </div>
     </div>
 
-    <!-- Page 2 -->
-    <div class="testi-page">
-      <div class="testi-card">
+    <div class="testimonial-slide">
+      <div class="testi-photo-col">
         <img class="testi-photo" src="images/testimonial-darragh.jpg" alt="Darragh Hurley" />
+      </div>
+      <div class="testi-quote-col">
         <p class="testi-quote">"Deb's heartfelt yet firm guidance has profoundly shaped my personal and professional growth. She combines empathy with challenge, which has helped me amplify my impact while finding greater joy in the journey. I am in awe of her talent for helping me see myself more clearly—as a leader, father and husband. Her partnership is instrumental in transforming our leadership team and the organization into a high-performance culture."</p>
         <div class="testi-attribution">
           <div class="testi-name">Darragh Hurley</div>
           <div class="testi-role">CEO, Mount Anvil</div>
         </div>
       </div>
-      <div class="testi-card">
+    </div>
+
+    <div class="testimonial-slide">
+      <div class="testi-photo-col">
         <img class="testi-photo" src="images/testimonial-arron.jpg" alt="Arron Walker" />
+      </div>
+      <div class="testi-quote-col">
         <p class="testi-quote">"In entrepreneurship, ideas are either vitamins or Advils. I started working with Deb thinking coaching was a vitamin—and to test Conscious Leadership for others. I quickly realized it was essential. Deb helped me see how my self-perception both served and limited me. As leaders, we often focus outward, but the highest-impact work is within. Deb never forced me to change at her pace but created space that allowed me to have more courage to take the next step. Over time, I became a better executive, spouse, and even parent."</p>
         <div class="testi-attribution">
           <div class="testi-name">Arron Walker</div>
           <div class="testi-role">Founder & CEO, Ruthless for Good / Camelback Ventures</div>
         </div>
       </div>
-      <div class="testi-card">
-        <div class="testi-photo testi-photo-placeholder">DV</div>
-        <p class="testi-quote">"This is going to sound like wild hyperbole but bear with me because it's true: working with Deb has made me a more courageous leader, a more present parent and more loving wife and friend. Her synthesis with my 360 was truly distinctive — I felt seen, called up and invited into a next level of leadership candor and clarity. She is a powerful presence and working with her, too, reminds me of my own power and agency."</p>
-        <div class="testi-attribution">
-          <div class="testi-name">Dar Vanderbeck</div>
-          <div class="testi-role">Vice President, Aspen Global Leadership Network</div>
-        </div>
-      </div>
     </div>
 
-    <!-- Page 3 -->
-    <div class="testi-page" style="grid-template-columns: 1fr; max-width: 38rem;">
-      <div class="testi-card">
+    <div class="testimonial-slide">
+      <div class="testi-photo-col">
         <div class="testi-photo testi-photo-placeholder">JM</div>
+      </div>
+      <div class="testi-quote-col">
         <p class="testi-quote">"I needed a coach I could trust to be honest with me, and someone who could think alongside me at the level my role requires. Deb Katz is that coach. She listens closely, and she challenges me directly. She helped me recognize that I had toned down some of my strengths over the years. I had adapted in ways that made sense at the time and have since stopped serving me. From there, I reclaimed some of my natural gifts and started trusting my instincts again. The people I value most in my career are the few who are both completely honest with me and fully in my corner. Deb is one of them. She is a coach, a mentor, and an exceptional leader. More than anything, Deb is a partner in my aliveness. I am a more grounded and fully present leader because of her."</p>
         <div class="testi-attribution">
           <div class="testi-name">Jill McClure, CAE</div>
           <div class="testi-role">President & CEO, Hearth, Patio & Barbecue Association</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-slide">
+      <div class="testi-photo-col">
+        <div class="testi-photo testi-photo-placeholder">DV</div>
+      </div>
+      <div class="testi-quote-col">
+        <p class="testi-quote">"This is going to sound like wild hyperbole but bear with me because it's true: working with Deb has made me a more courageous leader, a more present parent and more loving wife and friend. Her synthesis with my 360 was truly distinctive — I felt seen, called up and invited into a next level of leadership candor and clarity. She is a powerful presence and working with her, too, reminds me of my own power and agency."</p>
+        <div class="testi-attribution">
+          <div class="testi-name">Dar Vanderbeck</div>
+          <div class="testi-role">Vice President, Aspen Global Leadership Network</div>
         </div>
       </div>
     </div>
@@ -1100,6 +1109,10 @@
       <button class="testi-dot active" data-i="0"></button>
       <button class="testi-dot" data-i="1"></button>
       <button class="testi-dot" data-i="2"></button>
+      <button class="testi-dot" data-i="3"></button>
+      <button class="testi-dot" data-i="4"></button>
+      <button class="testi-dot" data-i="5"></button>
+      <button class="testi-dot" data-i="6"></button>
     </div>
   </div>
 
@@ -1193,14 +1206,14 @@
   heroDots.forEach(d => d.addEventListener('click', () => heroGo(+d.dataset.i)));
 
   // Testimonials slider
-  const testiPages = document.querySelectorAll('.testi-page');
+  const testiSlides = document.querySelectorAll('.testimonial-slide');
   const testiDots = document.querySelectorAll('.testi-dot');
   let testiIdx = 0;
   function testiGo(n) {
-    testiPages[testiIdx].classList.remove('active');
+    testiSlides[testiIdx].classList.remove('active');
     testiDots[testiIdx].classList.remove('active');
-    testiIdx = (n + testiPages.length) % testiPages.length;
-    testiPages[testiIdx].classList.add('active');
+    testiIdx = (n + testiSlides.length) % testiSlides.length;
+    testiSlides[testiIdx].classList.add('active');
     testiDots[testiIdx].classList.add('active');
   }
   document.getElementById('testi-prev').addEventListener('click', () => testiGo(testiIdx - 1));
