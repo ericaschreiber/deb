@@ -47,11 +47,10 @@
     backdrop-filter: blur(8px);
   }
   .nav-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.15rem;
+    font-family: 'Nothing You Could Do', cursive;
+    font-size: 1.4rem;
     font-weight: 400;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
+    letter-spacing: 0.04em;
     color: var(--white);
     text-decoration: none;
   }
@@ -147,9 +146,9 @@
     margin-bottom: 1.8rem;
   }
   .hero-name {
-    font-family: 'Nothing You Could Do', cursive;
-    font-size: clamp(3rem, 5.5vw, 5.5rem);
-    font-weight: 400;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(4rem, 7vw, 7rem);
+    font-weight: 300;
     line-height: 0.92;
     color: var(--teal);
     margin-bottom: 2.8rem;
@@ -854,9 +853,12 @@
     </section>
   </div>
 
-  <!-- Slide 2: Reversed split grid — copy left, photo right -->
+  <!-- Slide 2: Same layout as slide 1 -->
   <div class="hero-slide">
-    <section class="hero hero-reversed">
+    <section class="hero">
+      <div class="hero-photo">
+        <img src="images/hero.jpg" alt="Deb Katz" />
+      </div>
       <div class="hero-text">
         <span class="hero-eyebrow">Executive Coach &amp; Partner to Trailblazers</span>
         <h1 class="hero-name">
@@ -865,9 +867,6 @@
         </h1>
         <div class="hero-line"></div>
         <p class="hero-tagline">For leaders who want<br>more than success.</p>
-      </div>
-      <div class="hero-photo">
-        <img src="images/hero.jpg" alt="Deb Katz" />
       </div>
     </section>
   </div>
