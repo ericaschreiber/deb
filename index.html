@@ -603,7 +603,16 @@
   /* ── OFFERINGS ───────────────────────────────────────── */
   .offerings {
     padding: 7rem;
+    position: relative;
   }
+  .offerings-slider { display: grid; }
+  .offerings-option {
+    grid-area: 1 / 1;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.6s ease;
+  }
+  .offerings-option.active { opacity: 1; pointer-events: auto; }
   .offerings-header {
     display: flex;
     flex-direction: column;
@@ -652,9 +661,13 @@
     font-weight: 500;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--teal);
     margin-bottom: 1.2rem;
   }
+  /* Option A: gold tags */
+  .off-opt-a .offering-card .tag { color: rgba(200,150,42,0.6); }
+  /* Option B: teal tags (current) */
+  .off-opt-b .offerings-header .section-label { color: var(--wine); }
+  .off-opt-b .offering-card .tag { color: var(--teal); }
 
   .offerings-footer {
     margin-top: 3rem;
@@ -673,6 +686,33 @@
     transition: color 0.2s, border-color 0.2s;
   }
   .offerings-footer .more-link:hover { color: #e0ac3a; border-color: rgba(200,150,42,0.8); }
+  .off-controls {
+    position: absolute;
+    bottom: 2rem;
+    right: 7rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    z-index: 2;
+  }
+  .off-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: rgba(240,244,248,0.25);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .off-dot.active { background: #C8962A; transform: scale(1.4); }
+  .off-label-tag {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.55rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(240,244,248,0.3);
+  }
 
   /* ── CONTACT ─────────────────────────────────────────── */
   .contact {
@@ -1002,29 +1042,70 @@
 
 <!-- OFFERINGS -->
 <section class="offerings" id="offerings">
-  <div class="offerings-header">
-    <span class="section-label">The offerings</span>
-    <h2 class="reveal">Ways to work together</h2>
+  <div class="offerings-slider">
+
+    <!-- Option A: gold-forward -->
+    <div class="offerings-option off-opt-a active">
+      <div class="offerings-header">
+        <span class="section-label" style="color:#C8962A;">The offerings</span>
+        <h2 class="reveal">Ways to work together</h2>
+      </div>
+      <div class="offerings-grid">
+        <div class="offering-card reveal">
+          <span class="tag">One-on-one</span>
+          <h3>Executive Coaching</h3>
+          <p>Deep partnership for leaders ready to stop recycling the same issues, make the next brave choice, and forge freedom.</p>
+        </div>
+        <div class="offering-card reveal">
+          <span class="tag">Peer cohort</span>
+          <h3>Signal Forums</h3>
+          <p>A community of visionary leaders convened for peer learning, courageous conversation, and the kind of reflection that only happens in trusted company.</p>
+        </div>
+        <div class="offering-card reveal">
+          <span class="tag">Teams &amp; boards</span>
+          <h3>Facilitation &amp; Intensives</h3>
+          <p>High-stakes facilitation, team trainings, and board work for organizations at a pivotal moment — where collective clarity is the bottleneck.</p>
+        </div>
+      </div>
+      <div class="offerings-footer reveal">
+        <a href="/offerings" class="more-link">See all offerings →</a>
+      </div>
+    </div>
+
+    <!-- Option B: current (wine eyebrow, teal tags) -->
+    <div class="offerings-option off-opt-b">
+      <div class="offerings-header">
+        <span class="section-label">The offerings</span>
+        <h2>Ways to work together</h2>
+      </div>
+      <div class="offerings-grid">
+        <div class="offering-card">
+          <span class="tag">One-on-one</span>
+          <h3>Executive Coaching</h3>
+          <p>Deep partnership for leaders ready to stop recycling the same issues, make the next brave choice, and forge freedom.</p>
+        </div>
+        <div class="offering-card">
+          <span class="tag">Peer cohort</span>
+          <h3>Signal Forums</h3>
+          <p>A community of visionary leaders convened for peer learning, courageous conversation, and the kind of reflection that only happens in trusted company.</p>
+        </div>
+        <div class="offering-card">
+          <span class="tag">Teams &amp; boards</span>
+          <h3>Facilitation &amp; Intensives</h3>
+          <p>High-stakes facilitation, team trainings, and board work for organizations at a pivotal moment — where collective clarity is the bottleneck.</p>
+        </div>
+      </div>
+      <div class="offerings-footer">
+        <a href="/offerings" class="more-link">See all offerings →</a>
+      </div>
+    </div>
+
   </div>
-  <div class="offerings-grid">
-    <div class="offering-card reveal">
-      <span class="tag">One-on-one</span>
-      <h3>Executive Coaching</h3>
-      <p>Deep partnership for leaders ready to stop recycling the same issues, make the next brave choice, and forge freedom.</p>
-    </div>
-    <div class="offering-card reveal">
-      <span class="tag">Peer cohort</span>
-      <h3>Signal Forums</h3>
-      <p>A community of visionary leaders convened for peer learning, courageous conversation, and the kind of reflection that only happens in trusted company.</p>
-    </div>
-    <div class="offering-card reveal">
-      <span class="tag">Teams &amp; boards</span>
-      <h3>Facilitation &amp; Intensives</h3>
-      <p>High-stakes facilitation, team trainings, and board work for organizations at a pivotal moment — where collective clarity is the bottleneck.</p>
-    </div>
-  </div>
-  <div class="offerings-footer reveal">
-    <a href="/offerings" class="more-link">See all offerings →</a>
+
+  <div class="off-controls">
+    <button class="off-dot active" data-i="0"></button>
+    <button class="off-dot" data-i="1"></button>
+    <span class="off-label-tag" id="off-label">Option A — gold</span>
   </div>
 </section>
 
@@ -1061,6 +1142,22 @@
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Offerings option slider
+  const offOptions = document.querySelectorAll('.offerings-option');
+  const offDots = document.querySelectorAll('.off-dot');
+  const offLabel = document.getElementById('off-label');
+  const offLabels = ['Option A — gold', 'Option B — current'];
+  let offIdx = 0;
+  function offGo(n) {
+    offOptions[offIdx].classList.remove('active');
+    offDots[offIdx].classList.remove('active');
+    offIdx = (n + 2) % 2;
+    offOptions[offIdx].classList.add('active');
+    offDots[offIdx].classList.add('active');
+    offLabel.textContent = offLabels[offIdx];
+  }
+  offDots.forEach(d => d.addEventListener('click', () => offGo(+d.dataset.i)));
 
   // Hero slider
   const heroSlides = document.querySelectorAll('.hero-slide');
