@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deb Katz — Color Exploration</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&family=Nothing+You+Could+Do&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --black:    #0D0D0D;
+  --teal:     #2E6068;
+  --teal-mid: #1E4249;
+  --wine:     #67263A;
+  --gold:     #C8962A;
+  --white:    #F0F4F8;
+}
+
+html { scroll-behavior: smooth; }
+body { background: var(--black); color: var(--white); font-family: 'Inter', sans-serif; font-weight: 300; -webkit-font-smoothing: antialiased; }
+
+/* ── SWITCHER ──────────────────────────────────────── */
+.switcher {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: rgba(13,13,13,0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(240,244,248,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  padding: 0;
+}
+.sw-btn {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(240,244,248,0.35);
+  background: transparent;
+  border: none;
+  border-right: 1px solid rgba(240,244,248,0.08);
+  padding: 1rem 2.5rem;
+  cursor: pointer;
+  transition: color 0.2s, background 0.2s;
+  white-space: nowrap;
+}
+.sw-btn:last-child { border-right: none; }
+.sw-btn:hover { color: rgba(240,244,248,0.7); }
+.sw-btn.active { color: var(--white); background: rgba(240,244,248,0.05); }
+.sw-btn.active.t-a { border-bottom: 2px solid var(--gold); }
+.sw-btn.active.t-b { border-bottom: 2px solid var(--teal); }
+.sw-btn.active.t-c { border-bottom: 2px solid var(--teal); }
+.back-link {
+  position: absolute;
+  right: 2rem;
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(240,244,248,0.25);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.back-link:hover { color: rgba(240,244,248,0.6); }
+
+/* ── PAGE OFFSET ───────────────────────────────────── */
+.page { padding-top: 49px; }
+
+/* ── NAV ───────────────────────────────────────────── */
+nav {
+  position: fixed;
+  top: 49px; left: 0; right: 0;
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.4rem 3rem;
+  transition: background 0.3s, border-color 0.3s;
+}
+nav.scrolled { background: rgba(13,13,13,0.92); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(240,244,248,0.07); }
+.nav-name {
+  font-family: 'Nothing You Could Do', cursive;
+  font-size: 1.4rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  word-spacing: -0.25em;
+  color: var(--white);
+  text-decoration: none;
+}
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--white);
+  text-decoration: none;
+  opacity: 0.7;
+  transition: opacity 0.2s, color 0.2s;
+}
+.nav-links a:hover { opacity: 1; }
+
+/* ── HERO ───────────────────────────────────────────── */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+  align-items: stretch;
+  margin-top: 49px;
+}
+.hero-photo { position: relative; overflow: hidden; min-height: 70vh; }
+.hero-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+.hero-photo::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(to right, transparent 70%, var(--black) 100%);
+  pointer-events: none;
+}
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8rem 5rem 5rem 3rem;
+}
+.hero-eyebrow {
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 1.8rem;
+}
+.hero-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(4rem, 7vw, 7rem);
+  font-weight: 300;
+  line-height: 0.92;
+  margin-bottom: 2.8rem;
+}
+.hero-name em { font-style: normal; display: block; }
+.hero-line { width: 2.5rem; height: 1px; margin-bottom: 2rem; }
+.hero-tagline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.5rem, 2.2vw, 2rem);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.45;
+  color: rgba(240,244,248,0.85);
+}
+
+/* ── POSITIONING ────────────────────────────────────── */
+.positioning {
+  background:
+    radial-gradient(ellipse at 28% 35%, #2e6570 0%, transparent 55%),
+    radial-gradient(ellipse at 78% 75%, #142830 0%, transparent 50%),
+    radial-gradient(ellipse at 55% 10%, #255560 0%, transparent 40%),
+    var(--teal-mid);
+  padding: 7rem 8rem;
+  text-align: center;
+}
+.positioning p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.5rem, 2.4vw, 2.2rem);
+  font-weight: 300;
+  line-height: 1.65;
+  color: rgba(240,244,248,0.92);
+  max-width: 52rem;
+  margin: 0 auto;
+}
+
+/* ── ABOUT ──────────────────────────────────────────── */
+.about { background: var(--black); display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; border-top: 1px solid rgba(240,244,248,0.07); }
+.about-photo { position: relative; min-height: 60vh; }
+.about-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 65% 15%; }
+.about-photo::after {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(to right, rgba(13,13,13,0.92) 0%, rgba(13,13,13,0.5) 20%, transparent 42%),
+    linear-gradient(to bottom, rgba(13,13,13,0.92) 0%, rgba(13,13,13,0.3) 12%, transparent 28%),
+    linear-gradient(to left, rgba(13,13,13,0.85) 0%, rgba(13,13,13,0.3) 12%, transparent 28%),
+    linear-gradient(to top, rgba(13,13,13,0.85) 0%, rgba(13,13,13,0.3) 12%, transparent 28%);
+}
+.about-text {
+  padding: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-left: 1px solid rgba(240,244,248,0.07);
+}
+.section-label {
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+.about-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.5rem, 2.2vw, 2rem);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.45;
+  color: var(--white);
+  margin-bottom: 2.5rem;
+}
+.about-rule { width: 2rem; height: 1px; margin-bottom: 2rem; }
+.about-text p {
+  font-size: 0.9rem;
+  line-height: 1.9;
+  color: rgba(240,244,248,0.75);
+  margin-bottom: 1.2rem;
+}
+.more-link {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(240,244,248,0.45);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(240,244,248,0.18);
+  padding-bottom: 0.2rem;
+  align-self: flex-start;
+}
+
+/* ── TESTIMONIALS ───────────────────────────────────── */
+.testimonials {
+  background:
+    radial-gradient(ellipse at 28% 35%, #2e6570 0%, transparent 55%),
+    radial-gradient(ellipse at 78% 75%, #142830 0%, transparent 50%),
+    radial-gradient(ellipse at 55% 10%, #255560 0%, transparent 40%),
+    var(--teal-mid);
+  padding: 7rem;
+  border-top: 1px solid rgba(240,244,248,0.07);
+}
+.testi-header { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 4rem; }
+.testi-header h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 3vw, 3rem);
+  font-weight: 400;
+  color: var(--white);
+}
+.testi-body { display: grid; grid-template-columns: 280px 1fr; gap: 6rem; align-items: center; }
+.testi-photo-placeholder {
+  width: 220px; height: 260px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 300;
+  color: rgba(240,244,248,0.4);
+  border: 1px solid rgba(240,244,248,0.1);
+}
+.testi-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.35rem, 1.8vw, 1.7rem);
+  font-style: italic;
+  line-height: 1.65;
+  color: rgba(240,244,248,0.92);
+  margin-bottom: 1.8rem;
+}
+.testi-attribution { border-top: 1px solid rgba(240,244,248,0.15); padding-top: 1.2rem; }
+.testi-name { font-size: 0.88rem; font-weight: 500; letter-spacing: 0.03em; margin-bottom: 0.3rem; }
+.testi-role { font-size: 0.72rem; font-weight: 400; letter-spacing: 0.04em; }
+
+/* ── OFFERINGS ──────────────────────────────────────── */
+.offerings { background: var(--black); padding: 7rem; border-top: 1px solid rgba(240,244,248,0.07); }
+.offerings-header { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 4rem; }
+.offerings-header h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 3vw, 3rem);
+  font-weight: 400;
+  color: var(--white);
+}
+.offerings-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(240,244,248,0.07); }
+.offering-card { background: var(--black); padding: 3rem 2.5rem; }
+.offering-card .tag {
+  display: inline-block;
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 1.2rem;
+}
+.offering-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+.offering-card p { font-size: 0.88rem; font-weight: 300; line-height: 1.75; color: rgba(240,244,248,0.65); }
+
+/* ── CONTACT ────────────────────────────────────────── */
+.contact {
+  background:
+    radial-gradient(ellipse at 28% 35%, #7a2d46 0%, transparent 55%),
+    radial-gradient(ellipse at 78% 75%, #3a1020 0%, transparent 50%),
+    radial-gradient(ellipse at 60% 10%, #6e2540 0%, transparent 40%),
+    var(--wine);
+  padding: 7rem;
+  text-align: center;
+}
+.contact h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 3.5vw, 3.5rem);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.3;
+  color: var(--white);
+  margin-bottom: 1.5rem;
+}
+.contact p { font-size: 0.9rem; color: rgba(240,244,248,0.75); line-height: 1.8; margin-bottom: 3rem; }
+.contact-btn {
+  background: transparent;
+  border: 1px solid rgba(240,244,248,0.45);
+  color: var(--white);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  padding: 1rem 2.5rem;
+  cursor: pointer;
+}
+
+/* ── FOOTER ─────────────────────────────────────────── */
+footer {
+  background: var(--black);
+  border-top: 1px solid rgba(240,244,248,0.07);
+  padding: 3rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+}
+.foot-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.1em;
+  color: rgba(240,244,248,0.45);
+}
+.foot-copy { font-size: 0.65rem; letter-spacing: 0.1em; color: rgba(240,244,248,0.25); }
+
+
+/* ══════════════════════════════════════════════════════
+   COLOR TREATMENTS  —  all 3 keep teal + wine + gold
+   ratio question: who leads?
+   ══════════════════════════════════════════════════════ */
+
+/* ── A: WINE LEADS ──────────────────────────────────────
+   wine = eyebrows (hero + every section)
+   teal = name only
+   gold = rules + testimonial names + offering titles
+   wine does the most talking; teal is the visual anchor
+   ────────────────────────────────────────────────────── */
+.t-a .hero-eyebrow              { color: var(--wine); }
+.t-a .hero-name                 { color: var(--teal); }
+.t-a .hero-line                 { background: var(--gold); }
+.t-a .section-label             { color: var(--wine); }
+.t-a .testimonials .section-label { color: var(--wine); }
+.t-a .about-rule                { background: var(--gold); }
+.t-a .testi-name                { color: var(--gold); }
+.t-a .testi-role                { color: rgba(200,150,42,0.65); }
+.t-a .offering-card .tag        { color: var(--wine); }
+.t-a .nav-links a:hover         { opacity: 1; }
+
+/* ── B: TEAL LEADS ──────────────────────────────────────
+   teal = name + section labels (organizes the page)
+   wine = hero eyebrow only (warm entry point)
+   gold = rules + testimonial names + offering titles
+   teal is the through-line; wine warms the top; gold = premium
+   ────────────────────────────────────────────────────── */
+.t-b .hero-eyebrow              { color: var(--wine); }
+.t-b .hero-name                 { color: var(--teal); }
+.t-b .hero-line                 { background: var(--gold); }
+.t-b .section-label             { color: var(--teal); }
+.t-b .testimonials .section-label { color: var(--teal); }
+.t-b .about-rule                { background: var(--gold); }
+.t-b .testi-name                { color: var(--gold); }
+.t-b .testi-role                { color: rgba(200,150,42,0.65); }
+.t-b .offering-card .tag        { color: var(--teal); }
+.t-b .nav-links a:hover         { color: var(--teal); opacity: 1; }
+
+/* ── C: GOLD LEADS ──────────────────────────────────────
+   gold = rules + eyebrows (hero + sections) — most prominent
+   teal = name + offering tags
+   wine = testimonial names + roles (warmth where people appear)
+   gold does the structural work; teal + wine split the accents
+   ────────────────────────────────────────────────────── */
+.t-c .hero-eyebrow              { color: var(--gold); }
+.t-c .hero-name                 { color: var(--teal); }
+.t-c .hero-line                 { background: var(--gold); }
+.t-c .section-label             { color: var(--gold); }
+.t-c .testimonials .section-label { color: var(--gold); }
+.t-c .about-rule                { background: var(--gold); }
+.t-c .testi-name                { color: var(--wine); }
+.t-c .testi-role                { color: rgba(103,38,58,0.75); }
+.t-c .offering-card .tag        { color: var(--teal); }
+.t-c .nav-links a:hover         { opacity: 1; }
+
+</style>
+</head>
+<body class="t-a">
+
+<!-- SWITCHER -->
+<div class="switcher">
+  <button class="sw-btn t-a active" data-t="t-a">A — Wine leads<br><span style="font-size:0.5rem;opacity:0.5;letter-spacing:0.1em;">wine eyebrows everywhere · teal name · gold rules + titles</span></button>
+  <button class="sw-btn t-b" data-t="t-b">B — Teal leads<br><span style="font-size:0.5rem;opacity:0.5;letter-spacing:0.1em;">wine hero eyebrow · teal name + section labels · gold rules + titles</span></button>
+  <button class="sw-btn t-c" data-t="t-c">C — Gold leads<br><span style="font-size:0.5rem;opacity:0.5;letter-spacing:0.1em;">gold eyebrows + rules · teal name + tags · wine on testimonials</span></button>
+  <a href="/" class="back-link">← Site</a>
+</div>
+
+<div class="page">
+
+<!-- NAV -->
+<nav id="main-nav">
+  <a href="/" class="nav-name">Deb Katz</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#offerings">Offerings</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-photo">
+    <img src="images/hero.jpg" alt="Deb Katz" />
+  </div>
+  <div class="hero-text">
+    <span class="hero-eyebrow">Executive Coach &amp; Partner to Trailblazers</span>
+    <h1 class="hero-name">
+      Deb<br>
+      <em>Katz</em>
+    </h1>
+    <div class="hero-line"></div>
+    <p class="hero-tagline">The way through<br>is through.</p>
+  </div>
+</section>
+
+<!-- POSITIONING -->
+<section class="positioning">
+  <p>Deb partners with trailblazers who find themselves in repeating and recycling territories — which limits the possibilities for what they can create next. With relentless love and exacting attention, she helps them recover the heart of the seeker, the mind of the visionary, and the will of the warrior—so they can reckon with their power, make the next brave choice, and forge freedom.</p>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-photo">
+    <img src="images/laugh.jpg" alt="Deb Katz" />
+  </div>
+  <div class="about-text">
+    <span class="section-label">About Deb</span>
+    <p class="about-quote">"The deepest transformation begins when we stop protecting ourselves and remember who we are."</p>
+    <div class="about-rule"></div>
+    <p>Deb works with trailblazers—founders, executives, coaches—who are successful but not yet free. Leaders whose drive has carried them far, and whose patterns are limiting what they can create next.</p>
+    <p>Her path hasn't been a straight line. She came to coaching through hospice nursing, where she learned to be fully present when it matters most.</p>
+    <a href="/about" class="more-link">Full bio →</a>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="testi-header">
+    <span class="section-label">What clients say</span>
+    <h2>Leaders who've done the work</h2>
+  </div>
+  <div class="testi-body">
+    <div class="testi-photo-placeholder">LS</div>
+    <div>
+      <p class="testi-quote">"Working with Deb transformed how I lead. She helped me identify and work with patterns that were holding me back, while helping me recognize and celebrate the strengths of my natural leadership style."</p>
+      <div class="testi-attribution">
+        <div class="testi-name">Laela Sturdy</div>
+        <div class="testi-role">Managing Partner, CapitalG</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFERINGS -->
+<section class="offerings" id="offerings">
+  <div class="offerings-header">
+    <span class="section-label">The offerings</span>
+    <h2>Ways to work together</h2>
+  </div>
+  <div class="offerings-grid">
+    <div class="offering-card">
+      <span class="tag">One-on-one</span>
+      <h3>Executive Coaching</h3>
+      <p>Deep partnership for leaders ready to stop recycling the same issues, make the next brave choice, and forge freedom.</p>
+    </div>
+    <div class="offering-card">
+      <span class="tag">Peer cohort</span>
+      <h3>Signal Forums</h3>
+      <p>A community of visionary leaders convened for peer learning, courageous conversation, and the kind of reflection that only happens in trusted company.</p>
+    </div>
+    <div class="offering-card">
+      <span class="tag">Teams &amp; boards</span>
+      <h3>Facilitation &amp; Intensives</h3>
+      <p>High-stakes facilitation, team trainings, and board work for organizations at a pivotal moment.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <h2>Ready to make<br>the next brave choice?</h2>
+  <p>If something in you recognizes what you've read here — reach out.<br>The work begins with a conversation.</p>
+  <button class="contact-btn">Contact Deb</button>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="foot-name">Deb Katz</span>
+  <span class="foot-copy">&copy; 2026. All rights reserved.</span>
+</footer>
+
+</div><!-- /page -->
+
+<script>
+  // Nav scroll
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Switcher
+  const body = document.body;
+  const btns = document.querySelectorAll('.sw-btn');
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const t = btn.dataset.t;
+      body.className = t;
+      btns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
