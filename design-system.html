@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Deb Katz — Color Palette Review</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<title>Deb Katz — Design System</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Nothing+You+Could+Do&family=Quicksand:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body {
@@ -38,6 +38,39 @@ body {
   text-transform: uppercase;
   color: rgba(240,244,248,0.35);
 }
+/* Section nav */
+.section-nav {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 3.5rem;
+}
+.section-nav a {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(240,244,248,0.35);
+  text-decoration: none;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+}
+.section-nav a:hover {
+  color: rgba(240,244,248,0.7);
+  border-bottom-color: rgba(240,244,248,0.2);
+}
+/* Section divider */
+.section-heading {
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(240,244,248,0.2);
+  margin-bottom: 3rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(240,244,248,0.06);
+}
+/* Color groups */
 .group {
   margin-bottom: 3.5rem;
   padding-bottom: 3.5rem;
@@ -73,10 +106,6 @@ body {
   border-radius: 3px;
   position: relative;
   cursor: default;
-}
-.block.selected {
-  outline: 2px solid #F0F4F8;
-  outline-offset: 3px;
 }
 .tag {
   position: absolute;
@@ -121,15 +150,102 @@ body {
   line-height: 1.6;
   max-width: 600px;
 }
+/* Typography */
+.font-group {
+  margin-bottom: 4rem;
+  padding-bottom: 4rem;
+  border-bottom: 1px solid rgba(240,244,248,0.06);
+}
+.font-group:last-child {
+  border-bottom: none;
+}
+.font-meta {
+  display: flex;
+  align-items: baseline;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+.font-label {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(240,244,248,0.35);
+}
+.font-tag {
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(240,244,248,0.2);
+  padding: 0.2rem 0.5rem;
+  border: 1px solid rgba(240,244,248,0.12);
+  border-radius: 2px;
+}
+.font-tag.current {
+  color: rgba(103,38,58,0.8);
+  border-color: rgba(103,38,58,0.3);
+}
+.font-tag.logo {
+  color: rgba(196,154,40,0.7);
+  border-color: rgba(196,154,40,0.2);
+}
+.specimen-display {
+  margin-bottom: 1.5rem;
+}
+.specimen-display .large {
+  font-size: clamp(2.8rem, 7vw, 5rem);
+  line-height: 1.1;
+  color: #F0F4F8;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.01em;
+}
+.specimen-display .medium {
+  font-size: 1.4rem;
+  line-height: 1.4;
+  color: rgba(240,244,248,0.75);
+  margin-bottom: 0.5rem;
+}
+.specimen-display .small {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: rgba(240,244,248,0.5);
+  max-width: 560px;
+}
+.weight-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+.weight-sample {
+  display: flex;
+  align-items: baseline;
+  gap: 1.5rem;
+}
+.weight-name {
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(240,244,248,0.2);
+  min-width: 80px;
+}
 </style>
 </head>
 <body>
 <div class="page">
 
   <div class="header">
-    <h1>Color Palette Review</h1>
-    <p>Deb Katz &nbsp;·&nbsp; July 2026 &nbsp;·&nbsp; Direction 2</p>
+    <h1>Design System</h1>
+    <p>Deb Katz &nbsp;·&nbsp; July 2026 &nbsp;·&nbsp; In progress</p>
   </div>
+
+  <nav class="section-nav">
+    <a href="#colors">Colors</a>
+    <a href="#typography">Typography</a>
+  </nav>
+
+  <!-- ─── COLORS ─── -->
+  <div class="section-heading" id="colors">Colors</div>
 
   <!-- TEAL -->
   <div class="group">
@@ -349,6 +465,116 @@ body {
       </div>
     </div>
     <p class="question">Deb said: crisp, cool, nothing cream or ivory. Does the current feel right, or does it need to go crisper?</p>
+  </div>
+
+
+  <!-- ─── TYPOGRAPHY ─── -->
+  <div class="section-heading" id="typography">Typography</div>
+
+  <!-- CORMORANT GARAMOND -->
+  <div class="font-group">
+    <div class="font-meta">
+      <span class="font-label">Cormorant Garamond</span>
+      <span class="font-tag current">current · display / headings</span>
+    </div>
+    <div class="specimen-display">
+      <div class="large" style="font-family:'Cormorant Garamond',serif; font-weight:400;">Deb Katz</div>
+      <div class="medium" style="font-family:'Cormorant Garamond',serif; font-weight:400; font-style:italic;">Partner to Visionary Leaders</div>
+      <div class="small" style="font-family:'Cormorant Garamond',serif; font-weight:300;">Deb works with executives and entrepreneurs who want to lead with clarity, courage, and lasting impact. Her approach is direct, warm, and grounded in decades of real-world experience.</div>
+    </div>
+    <div class="weight-row">
+      <div class="weight-sample">
+        <span class="weight-name">Light 300</span>
+        <span style="font-family:'Cormorant Garamond',serif; font-weight:300; font-size:1.1rem; color:rgba(240,244,248,0.6);">Visionary leadership begins here</span>
+      </div>
+      <div class="weight-sample">
+        <span class="weight-name">Regular 400</span>
+        <span style="font-family:'Cormorant Garamond',serif; font-weight:400; font-size:1.1rem; color:rgba(240,244,248,0.75);">Visionary leadership begins here</span>
+      </div>
+      <div class="weight-sample">
+        <span class="weight-name">Italic</span>
+        <span style="font-family:'Cormorant Garamond',serif; font-weight:400; font-style:italic; font-size:1.1rem; color:rgba(240,244,248,0.75);">Visionary leadership begins here</span>
+      </div>
+      <div class="weight-sample">
+        <span class="weight-name">SemiBold 600</span>
+        <span style="font-family:'Cormorant Garamond',serif; font-weight:600; font-size:1.1rem; color:rgba(240,244,248,0.85);">Visionary leadership begins here</span>
+      </div>
+    </div>
+    <p class="question">Cormorant is the current display font — high contrast, classical, editorial. Does it feel like Deb, or does it read as too formal / literary?</p>
+  </div>
+
+  <!-- INTER -->
+  <div class="font-group">
+    <div class="font-meta">
+      <span class="font-label">Inter</span>
+      <span class="font-tag current">current · body / UI</span>
+    </div>
+    <div class="specimen-display">
+      <div class="large" style="font-family:'Inter',sans-serif; font-weight:300; letter-spacing:-0.02em;">Deb Katz</div>
+      <div class="medium" style="font-family:'Inter',sans-serif; font-weight:300; letter-spacing:0.08em; text-transform:uppercase; font-size:1rem;">Partner to Visionary Leaders</div>
+      <div class="small" style="font-family:'Inter',sans-serif; font-weight:300;">Deb works with executives and entrepreneurs who want to lead with clarity, courage, and lasting impact. Her approach is direct, warm, and grounded in decades of real-world experience.</div>
+    </div>
+    <div class="weight-row">
+      <div class="weight-sample">
+        <span class="weight-name">Light 300</span>
+        <span style="font-family:'Inter',sans-serif; font-weight:300; font-size:0.95rem; color:rgba(240,244,248,0.6);">Visionary leadership begins here</span>
+      </div>
+      <div class="weight-sample">
+        <span class="weight-name">Regular 400</span>
+        <span style="font-family:'Inter',sans-serif; font-weight:400; font-size:0.95rem; color:rgba(240,244,248,0.75);">Visionary leadership begins here</span>
+      </div>
+      <div class="weight-sample">
+        <span class="weight-name">Medium 500</span>
+        <span style="font-family:'Inter',sans-serif; font-weight:500; font-size:0.95rem; color:rgba(240,244,248,0.85);">Visionary leadership begins here</span>
+      </div>
+    </div>
+    <p class="question">Inter is the current body font — clean, neutral, modern. It pairs well with Cormorant but is purely functional. Does it feel right as the supporting voice, or does it want more personality?</p>
+  </div>
+
+  <!-- NOTHING YOU COULD DO -->
+  <div class="font-group">
+    <div class="font-meta">
+      <span class="font-label">Nothing You Could Do</span>
+      <span class="font-tag logo">from logo · "Deb Katz" script</span>
+    </div>
+    <div class="specimen-display">
+      <div class="large" style="font-family:'Nothing You Could Do',cursive; font-weight:400;">Deb Katz</div>
+      <div class="medium" style="font-family:'Nothing You Could Do',cursive; font-weight:400; font-size:1.6rem;">Partner to Visionary Leaders</div>
+      <div class="small" style="font-family:'Nothing You Could Do',cursive; font-weight:400; font-size:1.1rem; line-height:1.9;">Deb works with executives and entrepreneurs who want to lead with clarity, courage, and lasting impact.</div>
+    </div>
+    <p class="question">This is the handwritten script from Deb's current logo. Casual and personal — great for a signature feel, but can it carry the weight of a high-end executive brand? Or does it feel too informal next to the site's dark, editorial palette?</p>
+  </div>
+
+  <!-- QUICKSAND -->
+  <div class="font-group">
+    <div class="font-meta">
+      <span class="font-label">Quicksand</span>
+      <span class="font-tag logo">from logo · tagline / all-caps</span>
+    </div>
+    <div class="specimen-display">
+      <div class="large" style="font-family:'Quicksand',sans-serif; font-weight:300; letter-spacing:0.04em;">Deb Katz</div>
+      <div class="medium" style="font-family:'Quicksand',sans-serif; font-weight:500; letter-spacing:0.2em; text-transform:uppercase; font-size:0.95rem;">Partner to Visionary Leaders</div>
+      <div class="small" style="font-family:'Quicksand',sans-serif; font-weight:300;">Deb works with executives and entrepreneurs who want to lead with clarity, courage, and lasting impact. Her approach is direct, warm, and grounded in decades of real-world experience.</div>
+    </div>
+    <div class="weight-row">
+      <div class="weight-sample">
+        <span class="weight-name">Light 300</span>
+        <span style="font-family:'Quicksand',sans-serif; font-weight:300; font-size:0.95rem; color:rgba(240,244,248,0.6);">Visionary leadership begins here</span>
+      </div>
+      <div class="weight-sample">
+        <span class="weight-name">Regular 400</span>
+        <span style="font-family:'Quicksand',sans-serif; font-weight:400; font-size:0.95rem; color:rgba(240,244,248,0.75);">Visionary leadership begins here</span>
+      </div>
+      <div class="weight-sample">
+        <span class="weight-name">Medium 500</span>
+        <span style="font-family:'Quicksand',sans-serif; font-weight:500; font-size:0.95rem; color:rgba(240,244,248,0.85);">Visionary leadership begins here</span>
+      </div>
+      <div class="weight-sample">
+        <span class="weight-name">SemiBold 600</span>
+        <span style="font-family:'Quicksand',sans-serif; font-weight:600; font-size:0.95rem; color:rgba(240,244,248,0.9);">Visionary leadership begins here</span>
+      </div>
+    </div>
+    <p class="question">Quicksand is the geometric sans from the logo tagline — soft, rounded, friendly. Could it replace Inter as the body font for more warmth? Or is it too casual / rounded for the executive positioning?</p>
   </div>
 
 </div>
