@@ -265,15 +265,11 @@
 
   /* ── ABOUT ────────────────────────────────────────────── */
   .about {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    min-height: 90vh;
-  }
-  .about-text {
-    padding: 7rem 5rem 7rem 7rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    padding: 8rem 0;
+    max-width: 52rem;
+    margin: 0 auto;
+    padding-left: 7rem;
+    padding-right: 7rem;
   }
   .section-label {
     font-family: 'Inter', sans-serif;
@@ -284,46 +280,30 @@
     color: var(--wine);
     margin-bottom: 2rem;
   }
-  .about-text h2 {
+  .about h2 {
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(2.2rem, 3.5vw, 3.2rem);
     font-weight: 400;
     line-height: 1.15;
     color: var(--white);
-    margin-bottom: 2.5rem;
+    margin-bottom: 2.8rem;
   }
-  .about-text p {
+  .about p {
     font-family: 'Inter', sans-serif;
     font-size: 0.95rem;
     font-weight: 300;
-    line-height: 1.85;
+    line-height: 1.9;
     color: rgba(240,244,248,0.78);
-    margin-bottom: 1.4rem;
-    max-width: 34rem;
+    margin-bottom: 1.5rem;
   }
-  .about-text p strong {
-    color: var(--white);
-    font-weight: 400;
+  .about p:last-child { margin-bottom: 0; }
+  .about a {
+    color: rgba(240,244,248,0.6);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(240,244,248,0.2);
+    transition: color 0.2s, border-color 0.2s;
   }
-  .about-photo {
-    position: relative;
-    overflow: hidden;
-  }
-  .about-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
-    display: block;
-    filter: saturate(0.92);
-  }
-  .about-photo::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to left, transparent 60%, var(--black) 100%);
-    z-index: 1;
-  }
+  .about a:hover { color: var(--white); border-color: rgba(240,244,248,0.5); }
 
   /* ── REVERENCE / IRREVERENCE MODULE ──────────────────── */
   .tension-module {
@@ -681,15 +661,11 @@
 
 <!-- ABOUT -->
 <section class="about" id="about">
-  <div class="about-text">
-    <span class="section-label reveal">About Deb</span>
-    <h2 class="reveal">She has spent her life<br>learning how freedom<br>is made.</h2>
-    <p class="reveal">Deb Katz is an executive coach and partner to visionary leaders — founders, executives, coaches who are <strong>successful, but not yet free</strong>. She brings to her work more than two decades of coaching, executive facilitation, and team leadership, alongside a background in hospice nursing that taught her what it means to be fully present with another person at the edge of what matters most.</p>
-    <p class="reveal">She leads Signal Forums, coaches one-on-one, facilitates teams and boards, and shows up as a <em>balcony coach</em> — stepping into the elevated observer's perspective to help leaders see what they can't see from the ground of their own doing.</p>
-  </div>
-  <div class="about-photo">
-    <img src="images/about.jpg" alt="Deb Katz" />
-  </div>
+  <span class="section-label reveal">About Deb</span>
+  <h2 class="reveal">She has spent her life<br>learning how freedom<br>is made.</h2>
+  <p class="reveal">Deb works with trailblazers — founders, executives, coaches — who are successful but not yet free. Leaders whose drive has carried them far, and whose patterns are beginning to limit what they can create next. With relentless love and exacting attention, she helps them recover the heart of the seeker, the mind of the visionary, and the will of the warrior — so they can reckon with their power and forge freedom.</p>
+  <p class="reveal">Her formation is not linear. She came to coaching through hospice nursing, where she learned to be fully present with another when it matters most. She trained in earth-based wisdom with RainbowHawk and WindEagle of <a href="https://ehama.org" target="_blank" rel="noopener">Ehama Institute</a> — a homecoming to what can be sensed before it can be named. And she has studied in the mystery schools, lineages that deepened her capacity to hold a person in the fire without flinching.</p>
+  <p class="reveal">Today, Deb coaches leaders one-on-one, leads Signal Forums, and facilitates teams and boards at pivotal moments.</p>
 </section>
 
 <!-- REVERENCE / IRREVERENCE MODULE -->
