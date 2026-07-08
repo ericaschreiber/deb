@@ -262,84 +262,15 @@
 
   /* ── POSITIONING STATEMENT ────────────────────────────── */
   .positioning {
-    background: var(--teal-mid);
-    padding: 7rem 8rem;
-    text-align: center;
-    position: relative;
-    isolation: isolate;
-    overflow: hidden;
-  }
-  .pos-bg {
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    transition: opacity 0.7s ease;
-    pointer-events: none;
-  }
-  .pos-bg.active { opacity: 1; }
-  .pos-bg-grain {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
-    opacity: 0;
-    mix-blend-mode: soft-light;
-  }
-  .pos-bg-grain.active { opacity: 0.6; }
-  .pos-bg-pattern {
     background:
       radial-gradient(ellipse at 28% 35%, #2e6570 0%, transparent 55%),
       radial-gradient(ellipse at 78% 75%, #142830 0%, transparent 50%),
-      radial-gradient(ellipse at 55% 10%, #255560 0%, transparent 40%);
-    opacity: 0;
+      radial-gradient(ellipse at 55% 10%, #255560 0%, transparent 40%),
+      var(--teal-mid);
+    padding: 7rem 8rem;
+    text-align: center;
   }
-  .pos-bg-pattern.active { opacity: 1; /* gradient depth */ }
-  .pos-content { position: relative; z-index: 1; }
-  .pos-controls {
-    position: absolute;
-    bottom: 1.8rem;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    z-index: 2;
-  }
-  .pos-arrow {
-    background: rgba(13,13,13,0.25);
-    border: 1px solid rgba(240,244,248,0.2);
-    color: var(--white);
-    cursor: pointer;
-    width: 2.2rem;
-    height: 2.2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.85rem;
-    backdrop-filter: blur(4px);
-    transition: background 0.2s;
-  }
-  .pos-arrow:hover { background: rgba(13,13,13,0.5); }
-  .pos-dots-row { display: flex; gap: 0.5rem; align-items: center; }
-  .pos-dot {
-    width: 5px; height: 5px;
-    border-radius: 50%;
-    background: rgba(240,244,248,0.3);
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    transition: background 0.2s, transform 0.2s;
-  }
-  .pos-dot.active { background: var(--white); transform: scale(1.4); }
-  .pos-label-tag {
-    position: absolute;
-    bottom: 1.8rem;
-    right: 2rem;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.58rem;
-    font-weight: 500;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: rgba(240,244,248,0.35);
-    z-index: 2;
-  }
+  .pos-content { position: relative; }
   .positioning p {
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(1.6rem, 2.6vw, 2.3rem);
@@ -954,22 +885,9 @@
 
 <!-- POSITIONING STATEMENT -->
 <section class="positioning">
-  <div class="pos-bg pos-bg-flat"></div>
-  <div class="pos-bg pos-bg-grain"></div>
-  <div class="pos-bg pos-bg-pattern"></div>
   <div class="pos-content">
     <p class="reveal">Deb partners with trailblazers who find themselves in repeating and recycling territories — which limits the possibilities for what they can create next. With relentless love and exacting attention, she helps them recover the heart of the seeker, the mind of the visionary, and the will of the warrior—so they can reckon with their power, make the next brave choice, and forge freedom.</p>
   </div>
-  <div class="pos-controls">
-    <button class="pos-arrow" id="pos-prev">&#8592;</button>
-    <div class="pos-dots-row">
-      <button class="pos-dot active" data-i="0"></button>
-      <button class="pos-dot" data-i="1"></button>
-      <button class="pos-dot" data-i="2"></button>
-    </div>
-    <button class="pos-arrow" id="pos-next">&#8594;</button>
-  </div>
-  <span class="pos-label-tag" id="pos-label">Flat color</span>
 </section>
 
 <!-- ABOUT -->
@@ -1240,30 +1158,6 @@
   document.getElementById('testi-prev').addEventListener('click', () => testiGo(testiIdx - 1));
   document.getElementById('testi-next').addEventListener('click', () => testiGo(testiIdx + 1));
   testiDots.forEach(d => d.addEventListener('click', () => testiGo(+d.dataset.i)));
-
-  // ── POSITIONING SLIDER ──────────────────────────────────
-  const posBgs = [
-    document.querySelector('.pos-bg-flat'),
-    document.querySelector('.pos-bg-grain'),
-    document.querySelector('.pos-bg-pattern'),
-  ];
-  const posDots = document.querySelectorAll('.pos-dot');
-  const posLabel = document.getElementById('pos-label');
-  const posLabels = ['Flat color', 'Noise grain', 'Gradient depth'];
-  let posIdx = 0;
-
-  function posGo(n) {
-    posBgs[posIdx].classList.remove('active');
-    posDots[posIdx].classList.remove('active');
-    posIdx = (n + 3) % 3;
-    posBgs[posIdx].classList.add('active');
-    posDots[posIdx].classList.add('active');
-    posLabel.textContent = posLabels[posIdx];
-  }
-
-  document.getElementById('pos-prev').addEventListener('click', () => posGo(posIdx - 1));
-  document.getElementById('pos-next').addEventListener('click', () => posGo(posIdx + 1));
-  posDots.forEach(d => d.addEventListener('click', () => posGo(+d.dataset.i)));
 
   // ── ABOUT SLIDER ────────────────────────────────────────
   const aboutSlides = document.querySelectorAll('.about-slide');
