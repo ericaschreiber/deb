@@ -309,11 +309,13 @@
   .tension-module {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    align-items: start;
   }
   .tension-photo {
-    position: relative;
+    position: sticky;
+    top: 0;
+    height: 100vh;
     overflow: hidden;
-    min-height: 70vh;
   }
   .tension-photo img {
     width: 100%;
