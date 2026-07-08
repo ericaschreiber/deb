@@ -247,47 +247,20 @@
   }
   .hero-dot.active { background: var(--white); transform: scale(1.4); }
 
-  /* ── POSITIONING PULL QUOTE ───────────────────────────── */
-  .pull-quote {
+  /* ── POSITIONING STATEMENT ────────────────────────────── */
+  .positioning {
     background: var(--teal-mid);
-    padding: 6rem 8rem;
+    padding: 7rem 8rem;
     text-align: center;
-    position: relative;
-    overflow: hidden;
   }
-  .pull-quote::before {
-    content: '\201C';
-    position: absolute;
-    top: -1.5rem;
-    left: 5rem;
+  .positioning p {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 18rem;
-    color: rgba(255,255,255,0.04);
-    line-height: 1;
-    pointer-events: none;
-  }
-  .pull-quote blockquote {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+    font-size: clamp(1.6rem, 2.6vw, 2.3rem);
     font-weight: 400;
-    font-style: italic;
-    line-height: 1.55;
+    line-height: 1.6;
     color: var(--white);
-    max-width: 52rem;
+    max-width: 54rem;
     margin: 0 auto;
-    position: relative;
-    z-index: 1;
-  }
-  .pull-quote cite {
-    display: block;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.68rem;
-    font-weight: 500;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--teal);
-    margin-top: 2.2rem;
-    font-style: normal;
   }
 
   /* ── ABOUT ────────────────────────────────────────────── */
@@ -701,12 +674,9 @@
 
 </div>
 
-<!-- POSITIONING PULL QUOTE -->
-<section class="pull-quote">
-  <blockquote class="reveal">
-    Partners with trailblazers who find themselves in repeating and recycling territories — which limits the possibilities for what they can create next. With relentless love and exacting attention, she helps them recover the heart of the seeker, the mind of the visionary, and the will of the warrior. So they can reckon with their power, make the next brave choice, and forge freedom.
-  </blockquote>
-  <cite class="reveal">The work</cite>
+<!-- POSITIONING STATEMENT -->
+<section class="positioning">
+  <p class="reveal">Deb partners with trailblazers who find themselves in repeating and recycling territories — which limits the possibilities for what you can create next. With relentless love and exacting attention, she helps you recover the heart of the seeker, the mind of the visionary, and the will of the warrior — so you can reckon with your power, make the next brave choice, and forge freedom.</p>
 </section>
 
 <!-- ABOUT -->
