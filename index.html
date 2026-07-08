@@ -383,10 +383,66 @@
   /* ── ABOUT ───────────────────────────────────────────── */
   .about-section {
     background: var(--black);
+    position: relative;
+  }
+  .about-slider {
+    display: grid;
+  }
+  .about-slide {
+    grid-area: 1 / 1;
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: stretch;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.7s ease;
   }
+  .about-slide.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .about-slide-reversed .about-photo-col::after {
+    background:
+      linear-gradient(to left, rgba(13,13,13,0.92) 0%, rgba(13,13,13,0.5) 20%, transparent 42%),
+      linear-gradient(to bottom, rgba(13,13,13,0.92) 0%, rgba(13,13,13,0.3) 12%, transparent 28%),
+      linear-gradient(to right, rgba(13,13,13,0.85) 0%, rgba(13,13,13,0.3) 12%, transparent 28%),
+      linear-gradient(to top, rgba(13,13,13,0.85) 0%, rgba(13,13,13,0.3) 12%, transparent 28%);
+  }
+  .about-nav {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    z-index: 10;
+  }
+  .about-arrow {
+    background: rgba(240,244,248,0.06);
+    border: 1px solid rgba(240,244,248,0.15);
+    color: var(--white);
+    cursor: pointer;
+    width: 2.2rem;
+    height: 2.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    transition: background 0.2s;
+  }
+  .about-arrow:hover { background: rgba(240,244,248,0.12); }
+  .about-dots-row { display: flex; gap: 0.5rem; align-items: center; }
+  .about-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: rgba(240,244,248,0.25);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .about-dot.active { background: var(--white); transform: scale(1.4); }
   .about-photo-col {
     overflow: hidden;
     min-height: 600px;
@@ -900,17 +956,47 @@
 
 <!-- ABOUT -->
 <section class="about-section" id="about">
-  <div class="about-photo-col">
-    <img src="images/laugh.jpg" alt="Deb Katz" />
+  <div class="about-slider">
+
+    <div class="about-slide active">
+      <div class="about-photo-col">
+        <img src="images/laugh.jpg" alt="Deb Katz" />
+      </div>
+      <div class="about-text-col">
+        <span class="section-label reveal">About Deb</span>
+        <p class="about-quote reveal">"The deepest transformation begins when we stop protecting ourselves and remember who we are."</p>
+        <div class="about-rule reveal"></div>
+        <p class="reveal">Deb works with trailblazers—founders, executives, coaches—who are successful but not yet free. Leaders whose drive has carried them far, and whose patterns are limiting what they can create next.</p>
+        <p class="reveal">Her path hasn't been a straight line. She came to coaching through hospice nursing, where she learned to be fully present when it matters most. Deb trained in earth-based wisdom with RainbowHawk and WindEagle of <a href="https://ehama.org" target="_blank" rel="noopener">Ehama Institute</a>. She was a coach and founding member of Conscious Leadership Group from 2017–2025.</p>
+        <p class="reveal">Today, Deb coaches leaders, facilitates team trainings, leads Signal Forums and Intensives, supervises coaches, and speaks.</p>
+        <a href="/about" class="more-link reveal">Full bio →</a>
+      </div>
+    </div>
+
+    <div class="about-slide about-slide-reversed">
+      <div class="about-text-col" style="border-left: none; border-right: 1px solid rgba(240,244,248,0.07);">
+        <span class="section-label">About Deb</span>
+        <p class="about-quote">"The deepest transformation begins when we stop protecting ourselves and remember who we are."</p>
+        <div class="about-rule"></div>
+        <p>Deb works with trailblazers—founders, executives, coaches—who are successful but not yet free. Leaders whose drive has carried them far, and whose patterns are limiting what they can create next.</p>
+        <p>Her path hasn't been a straight line. She came to coaching through hospice nursing, where she learned to be fully present when it matters most. Deb trained in earth-based wisdom with RainbowHawk and WindEagle of <a href="https://ehama.org" target="_blank" rel="noopener">Ehama Institute</a>. She was a coach and founding member of Conscious Leadership Group from 2017–2025.</p>
+        <p>Today, Deb coaches leaders, facilitates team trainings, leads Signal Forums and Intensives, supervises coaches, and speaks.</p>
+        <a href="/about" class="more-link">Full bio →</a>
+      </div>
+      <div class="about-photo-col">
+        <img src="images/laugh.jpg" alt="Deb Katz" />
+      </div>
+    </div>
+
   </div>
-  <div class="about-text-col">
-    <span class="section-label reveal">About Deb</span>
-    <p class="about-quote reveal">"The deepest transformation begins when we stop protecting ourselves and remember who we are."</p>
-    <div class="about-rule reveal"></div>
-    <p class="reveal">Deb works with trailblazers—founders, executives, coaches—who are successful but not yet free. Leaders whose drive has carried them far, and whose patterns are limiting what they can create next.</p>
-    <p class="reveal">Her path hasn't been a straight line. She came to coaching through hospice nursing, where she learned to be fully present when it matters most. Deb trained in earth-based wisdom with RainbowHawk and WindEagle of <a href="https://ehama.org" target="_blank" rel="noopener">Ehama Institute</a>. She was a coach and founding member of Conscious Leadership Group from 2017–2025.</p>
-    <p class="reveal">Today, Deb coaches leaders, facilitates team trainings, leads Signal Forums and Intensives, supervises coaches, and speaks.</p>
-    <a href="/about" class="more-link reveal">Full bio →</a>
+
+  <div class="about-nav">
+    <button class="about-arrow" id="about-prev">&#8592;</button>
+    <div class="about-dots-row">
+      <button class="about-dot active" data-i="0"></button>
+      <button class="about-dot" data-i="1"></button>
+    </div>
+    <button class="about-arrow" id="about-next">&#8594;</button>
   </div>
 </section>
 
@@ -1157,6 +1243,23 @@
   document.getElementById('pos-prev').addEventListener('click', () => posGo(posIdx - 1));
   document.getElementById('pos-next').addEventListener('click', () => posGo(posIdx + 1));
   posDots.forEach(d => d.addEventListener('click', () => posGo(+d.dataset.i)));
+
+  // ── ABOUT SLIDER ────────────────────────────────────────
+  const aboutSlides = document.querySelectorAll('.about-slide');
+  const aboutDots = document.querySelectorAll('.about-dot');
+  let aboutIdx = 0;
+
+  function aboutGo(n) {
+    aboutSlides[aboutIdx].classList.remove('active');
+    aboutDots[aboutIdx].classList.remove('active');
+    aboutIdx = (n + 2) % 2;
+    aboutSlides[aboutIdx].classList.add('active');
+    aboutDots[aboutIdx].classList.add('active');
+  }
+
+  document.getElementById('about-prev').addEventListener('click', () => aboutGo(aboutIdx - 1));
+  document.getElementById('about-next').addEventListener('click', () => aboutGo(aboutIdx + 1));
+  aboutDots.forEach(d => d.addEventListener('click', () => aboutGo(+d.dataset.i)));
 
   // ── CONTACT SLIDER ──────────────────────────────────────
   const conBgs = [
