@@ -663,9 +663,9 @@
     text-transform: uppercase;
     margin-bottom: 1.2rem;
   }
-  /* Option A: gold tags */
-  .off-opt-a .offering-card .tag { color: rgba(200,150,42,0.6); }
-  /* Option B: teal tags (current) */
+  /* Option A: wine eyebrow, white tags */
+  .off-opt-a .offering-card .tag { color: rgba(240,244,248,0.4); }
+  /* Option B: wine eyebrow, teal tags */
   .off-opt-b .offerings-header .section-label { color: var(--wine); }
   .off-opt-b .offering-card .tag { color: var(--teal); }
 
@@ -1058,10 +1058,10 @@
 <section class="offerings" id="offerings">
   <div class="offerings-slider">
 
-    <!-- Option A: gold-forward -->
+    <!-- Option A: wine eyebrow, white tags -->
     <div class="offerings-option off-opt-a active">
       <div class="offerings-header">
-        <span class="section-label" style="color:#C8962A;">The offerings</span>
+        <span class="section-label">The offerings</span>
         <h2 class="reveal">Ways to work together</h2>
       </div>
       <div class="offerings-grid">
@@ -1121,7 +1121,7 @@
     <button class="off-dot active" data-i="0"></button>
     <button class="off-dot" data-i="1"></button>
     <button class="off-arrow" id="off-next">&#8594;</button>
-    <span class="off-label-tag" id="off-label">Option A — gold</span>
+    <span class="off-label-tag" id="off-label">Option A — white tags</span>
   </div>
 </section>
 
@@ -1163,7 +1163,7 @@
   const offOptions = document.querySelectorAll('.offerings-option');
   const offDots = document.querySelectorAll('.off-dot');
   const offLabel = document.getElementById('off-label');
-  const offLabels = ['Option A — gold', 'Option B — current'];
+  const offLabels = ['Option A — white tags', 'Option B — teal tags'];
   let offIdx = 0;
   function offGo(n) {
     offOptions[offIdx].classList.remove('active');
