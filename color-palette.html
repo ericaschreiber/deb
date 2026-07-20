@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deb Katz — Palette Exploration</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&family=Nothing+You+Could+Do&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ── BASE PALETTE ──────────────────────────────────────
+   These vars are overridden per-treatment below.
+   Gold (#C8962A) stays fixed across all treatments.
+   ───────────────────────────────────────────────────── */
+:root {
+  --black:    #0D0D0D;
+  --teal:     #2E6068;
+  --teal-mid: #1E4249;
+  --wine:     #67263A;
+  --gold:     #C8962A;
+  --white:    #F0F4F8;
+}
+
+html { scroll-behavior: smooth; }
+body { background: var(--black); color: var(--white); font-family: 'Inter', sans-serif; font-weight: 300; -webkit-font-smoothing: antialiased; }
+
+/* ── SWITCHER ──────────────────────────────────────── */
+.switcher {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: rgba(13,13,13,0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(240,244,248,0.08);
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 0;
+  padding: 0;
+}
+.sw-btn {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(240,244,248,0.35);
+  background: transparent;
+  border: none;
+  border-right: 1px solid rgba(240,244,248,0.08);
+  padding: 0.9rem 2rem;
+  cursor: pointer;
+  transition: color 0.2s, background 0.2s;
+  white-space: nowrap;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+}
+.sw-btn:last-child { border-right: none; }
+.sw-btn:hover { color: rgba(240,244,248,0.7); }
+.sw-btn.active { color: var(--white); background: rgba(240,244,248,0.04); }
+.sw-swatch {
+  width: 28px; height: 6px; border-radius: 3px;
+  display: flex; gap: 2px;
+}
+.sw-swatch span { flex: 1; border-radius: 2px; }
+.back-link {
+  position: absolute;
+  right: 1.5rem;
+  top: 50%; transform: translateY(-50%);
+  font-size: 0.55rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(240,244,248,0.25);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.back-link:hover { color: rgba(240,244,248,0.6); }
+
+/* ── PAGE OFFSET ───────────────────────────────────── */
+.page { padding-top: 56px; }
+
+/* ── NAV ───────────────────────────────────────────── */
+nav {
+  position: fixed;
+  top: 56px; left: 0; right: 0;
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.4rem 3rem;
+  transition: background 0.3s;
+}
+nav.scrolled { background: rgba(13,13,13,0.92); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(240,244,248,0.07); }
+.nav-name {
+  font-family: 'Nothing You Could Do', cursive;
+  font-size: 1.4rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  word-spacing: -0.25em;
+  color: var(--white);
+  text-decoration: none;
+}
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--white);
+  text-decoration: none;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+.nav-links a:hover { opacity: 1; }
+
+/* ── HERO ───────────────────────────────────────────── */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+  align-items: stretch;
+  margin-top: 56px;
+}
+.hero-photo { position: relative; overflow: hidden; min-height: 70vh; }
+.hero-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+.hero-photo::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(to right, transparent 70%, var(--black) 100%);
+  pointer-events: none;
+}
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8rem 5rem 5rem 3rem;
+}
+.hero-eyebrow {
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--wine);
+  margin-bottom: 1.8rem;
+}
+.hero-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(4rem, 7vw, 7rem);
+  font-weight: 300;
+  line-height: 0.92;
+  color: var(--teal);
+  margin-bottom: 2.8rem;
+}
+.hero-name em { font-style: normal; display: block; }
+.hero-line { width: 2.5rem; height: 1px; background: var(--gold); margin-bottom: 2rem; }
+.hero-tagline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.5rem, 2.2vw, 2rem);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.45;
+  color: rgba(240,244,248,0.85);
+}
+
+/* ── POSITIONING ────────────────────────────────────── */
+.positioning {
+  padding: 7rem 8rem;
+  text-align: center;
+}
+.positioning p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.5rem, 2.4vw, 2.2rem);
+  font-weight: 300;
+  line-height: 1.65;
+  color: rgba(240,244,248,0.92);
+  max-width: 52rem;
+  margin: 0 auto;
+}
+
+/* ── ABOUT ──────────────────────────────────────────── */
+.about { background: var(--black); display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; border-top: 1px solid rgba(240,244,248,0.07); }
+.about-photo { position: relative; min-height: 60vh; }
+.about-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 65% 15%; }
+.about-photo::after {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(to right, rgba(13,13,13,0.92) 0%, rgba(13,13,13,0.5) 20%, transparent 42%),
+    linear-gradient(to bottom, rgba(13,13,13,0.92) 0%, rgba(13,13,13,0.3) 12%, transparent 28%),
+    linear-gradient(to left, rgba(13,13,13,0.85) 0%, rgba(13,13,13,0.3) 12%, transparent 28%),
+    linear-gradient(to top, rgba(13,13,13,0.85) 0%, rgba(13,13,13,0.3) 12%, transparent 28%);
+}
+.about-text {
+  padding: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-left: 1px solid rgba(240,244,248,0.07);
+}
+.section-label {
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--wine);
+  margin-bottom: 2rem;
+}
+.about-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.5rem, 2.2vw, 2rem);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.45;
+  color: var(--white);
+  margin-bottom: 2.5rem;
+}
+.about-rule { width: 2rem; height: 1px; background: var(--gold); margin-bottom: 2rem; }
+.about-text p {
+  font-size: 0.9rem;
+  line-height: 1.9;
+  color: rgba(240,244,248,0.75);
+  margin-bottom: 1.2rem;
+}
+.more-link {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(240,244,248,0.45);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(240,244,248,0.18);
+  padding-bottom: 0.2rem;
+  align-self: flex-start;
+}
+
+/* ── TESTIMONIALS ───────────────────────────────────── */
+.testimonials {
+  padding: 7rem;
+  border-top: 1px solid rgba(240,244,248,0.07);
+}
+.testi-header { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 4rem; }
+.testi-header h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 3vw, 3rem);
+  font-weight: 400;
+  color: var(--white);
+}
+.testi-body { display: grid; grid-template-columns: 280px 1fr; gap: 6rem; align-items: center; }
+.testi-photo-placeholder {
+  width: 220px; height: 260px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 300;
+  color: rgba(240,244,248,0.4);
+  border: 1px solid rgba(240,244,248,0.1);
+}
+.testi-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.35rem, 1.8vw, 1.7rem);
+  font-style: italic;
+  line-height: 1.65;
+  color: rgba(240,244,248,0.92);
+  margin-bottom: 1.8rem;
+}
+.testi-attribution { border-top: 1px solid rgba(240,244,248,0.15); padding-top: 1.2rem; }
+.testi-name { font-size: 0.88rem; font-weight: 500; letter-spacing: 0.03em; color: var(--gold); margin-bottom: 0.3rem; }
+.testi-role { font-size: 0.72rem; font-weight: 400; letter-spacing: 0.04em; color: rgba(200,150,42,0.65); }
+
+/* ── OFFERINGS ──────────────────────────────────────── */
+.offerings { background: var(--black); padding: 7rem; border-top: 1px solid rgba(240,244,248,0.07); }
+.offerings-header { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 4rem; }
+.offerings-header h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 3vw, 3rem);
+  font-weight: 400;
+  color: var(--white);
+}
+.offerings-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(240,244,248,0.07); }
+.offering-card { background: var(--black); padding: 3rem 2.5rem; }
+.offering-card .tag {
+  display: inline-block;
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(240,244,248,0.4);
+  margin-bottom: 1.2rem;
+}
+.offering-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+.offering-card p { font-size: 0.88rem; font-weight: 300; line-height: 1.75; color: rgba(240,244,248,0.65); }
+
+/* ── CONTACT ────────────────────────────────────────── */
+.contact {
+  padding: 7rem;
+  text-align: center;
+}
+.contact h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 3.5vw, 3.5rem);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.3;
+  color: var(--white);
+  margin-bottom: 1.5rem;
+}
+.contact p { font-size: 0.9rem; color: rgba(240,244,248,0.75); line-height: 1.8; margin-bottom: 3rem; }
+.contact-btn {
+  background: transparent;
+  border: 1px solid rgba(240,244,248,0.45);
+  color: var(--white);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  padding: 1rem 2.5rem;
+  cursor: pointer;
+}
+
+/* ── FOOTER ─────────────────────────────────────────── */
+footer {
+  background: var(--black);
+  border-top: 1px solid rgba(240,244,248,0.07);
+  padding: 3rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+}
+.foot-name { font-family: 'Cormorant Garamond', serif; font-size: 0.95rem; letter-spacing: 0.1em; color: rgba(240,244,248,0.45); }
+.foot-copy { font-size: 0.65rem; letter-spacing: 0.1em; color: rgba(240,244,248,0.25); }
+
+
+/* ══════════════════════════════════════════════════════
+   PALETTE TREATMENTS
+   All use the same ratio: wine eyebrow · teal name · gold rules
+   Only the teal and berry/wine hex values change.
+   ══════════════════════════════════════════════════════ */
+
+/* ── CURRENT ────────────────────────────────────────────
+   teal #2E6068  ·  wine #67263A
+   Erica's pick — muted, sophisticated, depth
+   ────────────────────────────────────────────────────── */
+.p-current {
+  --teal:     #2E6068;
+  --teal-mid: #1E4249;
+  --wine:     #67263A;
+}
+.p-current .positioning {
+  background:
+    radial-gradient(ellipse at 28% 35%, #2e6570 0%, transparent 55%),
+    radial-gradient(ellipse at 78% 75%, #142830 0%, transparent 50%),
+    radial-gradient(ellipse at 55% 10%, #255560 0%, transparent 40%),
+    #1E4249;
+}
+.p-current .testimonials {
+  background:
+    radial-gradient(ellipse at 28% 35%, #2e6570 0%, transparent 55%),
+    radial-gradient(ellipse at 78% 75%, #142830 0%, transparent 50%),
+    radial-gradient(ellipse at 55% 10%, #255560 0%, transparent 40%),
+    #1E4249;
+}
+.p-current .contact {
+  background:
+    radial-gradient(ellipse at 28% 35%, #7a2d46 0%, transparent 55%),
+    radial-gradient(ellipse at 78% 75%, #3a1020 0%, transparent 50%),
+    radial-gradient(ellipse at 60% 10%, #6e2540 0%, transparent 40%),
+    #67263A;
+}
+
+/* ── A — PREMIUM & WARM ─────────────────────────────────
+   teal #0F6F73  ·  berry #7A1F45
+   Deb + ChatGPT's favorite — richer, warmer, more saturated
+   ────────────────────────────────────────────────────── */
+.p-a {
+  --teal:     #0F6F73;
+  --teal-mid: #0a4a4e;
+  --wine:     #7A1F45;
+}
+.p-a .positioning {
+  background:
+    radial-gradient(ellipse at 28% 35%, #157f84 0%, transparent 55%),
+    radial-gradient(ellipse at 78% 75%, #063035 0%, transparent 50%),
+    radial-gradient(ellipse at 55% 10%, #0d6468 0%, transparent 40%),
+    #0a4a4e;
+}
+.p-a .testimonials {
+  background:
+    radial-gradient(ellipse at 28% 35%, #157f84 0%, transparent 55%),
+    radial-gradient(ellipse at 78% 75%, #063035 0%, transparent 50%),
+    radial-gradient(ellipse at 55% 10%, #0d6468 0%, transparent 40%),
+    #0a4a4e;
+}
+.p-a .contact {
+  background:
+    radial-gradient(ellipse at 28% 35%, #8f2a52 0%, transparent 55%),
+    radial-gradient(ellipse at 78% 75%, #3d0f20 0%, transparent 50%),
+    radial-gradient(ellipse at 60% 10%, #7a1f45 0%, transparent 40%),
+    #7A1F45;
+}
+
+/* ── B — MODERN & VISIONARY ─────────────────────────────
+   teal #0C6B78  ·  berry #832848
+   Slightly more blue-shifted teal, deeper berry
+   ────────────────────────────────────────────────────── */
+.p-b {
+  --teal:     #0C6B78;
+  --teal-mid: #094a54;
+  --wine:     #832848;
+}
+.p-b .positioning {
+  background:
+    radial-gradient(ellipse at 28% 35%, #137b8a 0%, transparent 55%),
+    radial-gradient(ellipse at 78% 75%, #053038 0%, transparent 50%),
+    radial-gradient(ellipse at 55% 10%, #0a6070 0%, transparent 40%),
+    #094a54;
+}
+.p-b .testimonials {
+  background:
+    radial-gradient(ellipse at 28% 35%, #137b8a 0%, transparent 55%),
+    radial-gradient(ellipse at 78% 75%, #053038 0%, transparent 50%),
+    radial-gradient(ellipse at 55% 10%, #0a6070 0%, transparent 40%),
+    #094a54;
+}
+.p-b .contact {
+  background:
+    radial-gradient(ellipse at 28% 35%, #963055 0%, transparent 55%),
+    radial-gradient(ellipse at 78% 75%, #3f0f22 0%, transparent 50%),
+    radial-gradient(ellipse at 60% 10%, #832848 0%, transparent 40%),
+    #832848;
+}
+
+/* ── D — BOLD & DECISIVE ────────────────────────────────
+   teal #006D73  ·  berry #6F163C
+   Deepest, most decisive — almost teal-black + dark claret
+   ────────────────────────────────────────────────────── */
+.p-d {
+  --teal:     #006D73;
+  --teal-mid: #004a4f;
+  --wine:     #6F163C;
+}
+.p-d .positioning {
+  background:
+    radial-gradient(ellipse at 28% 35%, #007d85 0%, transparent 55%),
+    radial-gradient(ellipse at 78% 75%, #002c30 0%, transparent 50%),
+    radial-gradient(ellipse at 55% 10%, #006065 0%, transparent 40%),
+    #004a4f;
+}
+.p-d .testimonials {
+  background:
+    radial-gradient(ellipse at 28% 35%, #007d85 0%, transparent 55%),
+    radial-gradient(ellipse at 78% 75%, #002c30 0%, transparent 50%),
+    radial-gradient(ellipse at 55% 10%, #006065 0%, transparent 40%),
+    #004a4f;
+}
+.p-d .contact {
+  background:
+    radial-gradient(ellipse at 28% 35%, #7e1a45 0%, transparent 55%),
+    radial-gradient(ellipse at 78% 75%, #370a1c 0%, transparent 50%),
+    radial-gradient(ellipse at 60% 10%, #6f163c 0%, transparent 40%),
+    #6F163C;
+}
+
+</style>
+</head>
+<body class="p-current">
+
+<!-- SWITCHER -->
+<div class="switcher">
+  <button class="sw-btn p-current active" data-p="p-current">
+    <div class="sw-swatch"><span style="background:#2E6068"></span><span style="background:#67263A"></span><span style="background:#C8962A"></span></div>
+    Current
+  </button>
+  <button class="sw-btn p-a" data-p="p-a">
+    <div class="sw-swatch"><span style="background:#0F6F73"></span><span style="background:#7A1F45"></span><span style="background:#C8962A"></span></div>
+    A — Premium &amp; Warm
+  </button>
+  <button class="sw-btn p-b" data-p="p-b">
+    <div class="sw-swatch"><span style="background:#0C6B78"></span><span style="background:#832848"></span><span style="background:#C8962A"></span></div>
+    B — Modern &amp; Visionary
+  </button>
+  <button class="sw-btn p-d" data-p="p-d">
+    <div class="sw-swatch"><span style="background:#006D73"></span><span style="background:#6F163C"></span><span style="background:#C8962A"></span></div>
+    D — Bold &amp; Decisive
+  </button>
+  <a href="/" class="back-link">← Site</a>
+</div>
+
+<div class="page">
+
+<!-- NAV -->
+<nav id="main-nav">
+  <a href="/" class="nav-name">Deb Katz</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#offerings">Offerings</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-photo">
+    <img src="images/hero.jpg" alt="Deb Katz" />
+  </div>
+  <div class="hero-text">
+    <span class="hero-eyebrow">Executive Coach &amp; Partner to Trailblazers</span>
+    <h1 class="hero-name">
+      Deb<br>
+      <em>Katz</em>
+    </h1>
+    <div class="hero-line"></div>
+    <p class="hero-tagline">Disruption isn't a problem<br>to solve — it's a signal to read.</p>
+  </div>
+</section>
+
+<!-- POSITIONING -->
+<section class="positioning">
+  <p>I partner with leaders who are building what doesn't yet exist. Together, we surface the hidden patterns shaping how you perceive, decide, and lead — expanding your capacity to meet complexity and uncertainty with greater clarity, courage, and choice. I help you recognize the signals you've been overriding so you can recover the heart of the seeker, the vision of the visionary, and the will of the warrior. You won't become a different person. You'll become more fully yourself.</p>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-photo">
+    <img src="images/laugh.jpg" alt="Deb Katz" />
+  </div>
+  <div class="about-text">
+    <span class="section-label">About Deb</span>
+    <p class="about-quote">"The deepest transformation begins when we stop protecting ourselves and remember who we are."<br><em style="font-family:'Inter',sans-serif;font-size:0.72rem;font-style:normal;letter-spacing:0.08em;opacity:0.5;display:block;margin-top:0.8rem;">— Deb Katz</em></p>
+    <div class="about-rule"></div>
+    <p>A founding member of The Conscious Leadership Group and now of The Signal Institute, I've partnered with senior leaders across industries for more than twenty years — illuminating blind spots and creating lasting change.</p>
+    <p>I came to this work through hospice nursing, where I learned to be fully present when it matters most. Leaders who work with me don't become different people — they become more fully themselves.</p>
+    <a href="/about" class="more-link">Full bio →</a>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="testi-header">
+    <span class="section-label">What clients say</span>
+    <h2>Leaders who've done the work</h2>
+  </div>
+  <div class="testi-body">
+    <div class="testi-photo-placeholder">LS</div>
+    <div>
+      <p class="testi-quote">"Working with Deb transformed how I lead. She helped me identify and work with patterns that were holding me back, while helping me recognize and celebrate the strengths of my natural leadership style."</p>
+      <div class="testi-attribution">
+        <div class="testi-name">Laela Sturdy</div>
+        <div class="testi-role">Managing Partner, CapitalG</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFERINGS -->
+<section class="offerings" id="offerings">
+  <div class="offerings-header">
+    <span class="section-label">The offerings</span>
+    <h2>Ways to work together</h2>
+  </div>
+  <div class="offerings-grid">
+    <div class="offering-card">
+      <span class="tag">One-on-one</span>
+      <h3>Executive Coaching</h3>
+      <p>Deep partnership for leaders ready to stop recycling the same issues, make the next brave choice, and forge freedom.</p>
+    </div>
+    <div class="offering-card">
+      <span class="tag">Peer cohort</span>
+      <h3>Signal Forums</h3>
+      <p>A community of visionary leaders convened for peer learning, courageous conversation, and the kind of reflection that only happens in trusted company.</p>
+    </div>
+    <div class="offering-card">
+      <span class="tag">Teams &amp; boards</span>
+      <h3>Facilitation &amp; Intensives</h3>
+      <p>High-stakes facilitation, team trainings, and board work for organizations at a pivotal moment.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <h2>Ready to make<br>the next brave choice?</h2>
+  <p>If something in you recognizes what you've read here — reach out.<br>The work begins with a conversation.</p>
+  <button class="contact-btn">Contact Deb</button>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="foot-name">Deb Katz</span>
+  <span class="foot-copy">&copy; 2026. All rights reserved.</span>
+</footer>
+
+</div><!-- /page -->
+
+<script>
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  const body = document.body;
+  const btns = document.querySelectorAll('.sw-btn');
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const p = btn.dataset.p;
+      body.className = p;
+      btns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
