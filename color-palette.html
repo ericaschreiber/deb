@@ -476,19 +476,85 @@ footer {
     #6F163C;
 }
 
+/* ── E — DEEP & DECISIVE ────────────────────────────────
+   teal #0F6F73  ·  berry #6F163C
+   A's teal + D's berry — saturated teal, darkest claret
+   ────────────────────────────────────────────────────── */
+.p-e {
+  --teal:     #0F6F73;
+  --teal-mid: #0a4a4e;
+  --wine:     #6F163C;
+}
+.p-e .positioning {
+  background:
+    radial-gradient(ellipse at 28% 35%, #157f84 0%, transparent 55%),
+    radial-gradient(ellipse at 78% 75%, #063035 0%, transparent 50%),
+    radial-gradient(ellipse at 55% 10%, #0d6468 0%, transparent 40%),
+    #0a4a4e;
+}
+.p-e .testimonials {
+  background:
+    radial-gradient(ellipse at 28% 35%, #157f84 0%, transparent 55%),
+    radial-gradient(ellipse at 78% 75%, #063035 0%, transparent 50%),
+    radial-gradient(ellipse at 55% 10%, #0d6468 0%, transparent 40%),
+    #0a4a4e;
+}
+.p-e .contact {
+  background:
+    radial-gradient(ellipse at 28% 35%, #7e1a45 0%, transparent 55%),
+    radial-gradient(ellipse at 78% 75%, #370a1c 0%, transparent 50%),
+    radial-gradient(ellipse at 60% 10%, #6f163c 0%, transparent 40%),
+    #6F163C;
+}
+
+/* ── F — WARM & GROUNDED ────────────────────────────────
+   teal #0F6F73  ·  wine #67263A
+   A's teal + Current's wine — peacock teal, familiar warmth
+   ────────────────────────────────────────────────────── */
+.p-f {
+  --teal:     #0F6F73;
+  --teal-mid: #0a4a4e;
+  --wine:     #67263A;
+}
+.p-f .positioning {
+  background:
+    radial-gradient(ellipse at 28% 35%, #157f84 0%, transparent 55%),
+    radial-gradient(ellipse at 78% 75%, #063035 0%, transparent 50%),
+    radial-gradient(ellipse at 55% 10%, #0d6468 0%, transparent 40%),
+    #0a4a4e;
+}
+.p-f .testimonials {
+  background:
+    radial-gradient(ellipse at 28% 35%, #157f84 0%, transparent 55%),
+    radial-gradient(ellipse at 78% 75%, #063035 0%, transparent 50%),
+    radial-gradient(ellipse at 55% 10%, #0d6468 0%, transparent 40%),
+    #0a4a4e;
+}
+.p-f .contact {
+  background:
+    radial-gradient(ellipse at 28% 35%, #7a2d46 0%, transparent 55%),
+    radial-gradient(ellipse at 78% 75%, #3a1020 0%, transparent 50%),
+    radial-gradient(ellipse at 60% 10%, #6e2540 0%, transparent 40%),
+    #67263A;
+}
+
 </style>
 </head>
-<body class="p-current">
+<body class="p-a">
 
 <!-- SWITCHER -->
 <div class="switcher">
-  <button class="sw-btn p-current active" data-p="p-current">
-    <div class="sw-swatch"><span style="background:#2E6068"></span><span style="background:#67263A"></span><span style="background:#C8962A"></span></div>
-    Current
-  </button>
-  <button class="sw-btn p-a" data-p="p-a">
+  <button class="sw-btn p-a active" data-p="p-a">
     <div class="sw-swatch"><span style="background:#0F6F73"></span><span style="background:#7A1F45"></span><span style="background:#C8962A"></span></div>
     A — Premium &amp; Warm
+  </button>
+  <button class="sw-btn p-e" data-p="p-e">
+    <div class="sw-swatch"><span style="background:#0F6F73"></span><span style="background:#6F163C"></span><span style="background:#C8962A"></span></div>
+    E — Deep &amp; Decisive
+  </button>
+  <button class="sw-btn p-f" data-p="p-f">
+    <div class="sw-swatch"><span style="background:#0F6F73"></span><span style="background:#67263A"></span><span style="background:#C8962A"></span></div>
+    F — Warm &amp; Grounded
   </button>
   <button class="sw-btn p-b" data-p="p-b">
     <div class="sw-swatch"><span style="background:#0C6B78"></span><span style="background:#832848"></span><span style="background:#C8962A"></span></div>
@@ -497,6 +563,10 @@ footer {
   <button class="sw-btn p-d" data-p="p-d">
     <div class="sw-swatch"><span style="background:#006D73"></span><span style="background:#6F163C"></span><span style="background:#C8962A"></span></div>
     D — Bold &amp; Decisive
+  </button>
+  <button class="sw-btn p-current" data-p="p-current">
+    <div class="sw-swatch"><span style="background:#2E6068"></span><span style="background:#67263A"></span><span style="background:#C8962A"></span></div>
+    Current
   </button>
   <a href="/" class="back-link">← Site</a>
 </div>
