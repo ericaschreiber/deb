@@ -478,11 +478,7 @@
 
   /* ── TESTIMONIALS ────────────────────────────────────── */
   .testimonials {
-    background:
-      radial-gradient(ellipse at 28% 35%, #157f84 0%, transparent 55%),
-      radial-gradient(ellipse at 78% 75%, #063035 0%, transparent 50%),
-      radial-gradient(ellipse at 55% 10%, #0d6468 0%, transparent 40%),
-      var(--teal-mid);
+    background: var(--black);
     padding: 4.5rem 7rem;
     border-top: 1px solid rgba(240,244,248,0.07);
   }
@@ -602,6 +598,11 @@
 
   /* ── OFFERINGS ───────────────────────────────────────── */
   .offerings {
+    background:
+      radial-gradient(ellipse at 28% 35%, #157f84 0%, transparent 55%),
+      radial-gradient(ellipse at 78% 75%, #063035 0%, transparent 50%),
+      radial-gradient(ellipse at 55% 10%, #0d6468 0%, transparent 40%),
+      var(--teal-mid);
     padding: 7rem;
     position: relative;
   }
@@ -634,11 +635,11 @@
     background: rgba(240,244,248,0.07);
   }
   .offering-card {
-    background: var(--black);
+    background: rgba(13,13,13,0.35);
     padding: 3rem 2.5rem;
     transition: background 0.3s;
   }
-  .offering-card:hover { background: rgba(45,94,114,0.1); }
+  .offering-card:hover { background: rgba(13,13,13,0.55); }
   .offering-card h3 {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.4rem;
@@ -903,6 +904,77 @@
   </div>
 </section>
 
+<!-- OFFERINGS -->
+<section class="offerings" id="offerings">
+  <div class="offerings-slider">
+
+    <!-- Option A: wine eyebrow, white tags -->
+    <div class="offerings-option off-opt-a active">
+      <div class="offerings-header">
+        <span class="section-label">The offerings</span>
+        <h2 class="reveal">Ways to work together</h2>
+      </div>
+      <div class="offerings-grid">
+        <div class="offering-card reveal">
+          <span class="tag">One-on-one</span>
+          <h3>Executive Coaching</h3>
+          <p>Deep partnership for leaders ready to stop recycling the same issues, make the next brave choice, and forge freedom.</p>
+        </div>
+        <div class="offering-card reveal">
+          <span class="tag">Peer cohort</span>
+          <h3>Signal Forums</h3>
+          <p>A community of visionary leaders convened for peer learning, courageous conversation, and the kind of reflection that only happens in trusted company.</p>
+        </div>
+        <div class="offering-card reveal">
+          <span class="tag">Teams &amp; boards</span>
+          <h3>Facilitation &amp; Intensives</h3>
+          <p>High-stakes facilitation, team trainings, and board work for organizations at a pivotal moment — where collective clarity is the bottleneck.</p>
+        </div>
+      </div>
+      <div class="offerings-footer reveal">
+        <a href="/offerings" class="more-link">See all offerings →</a>
+      </div>
+    </div>
+
+    <!-- Option B: current (wine eyebrow, teal tags) -->
+    <div class="offerings-option off-opt-b">
+      <div class="offerings-header">
+        <span class="section-label">The offerings</span>
+        <h2>Ways to work together</h2>
+      </div>
+      <div class="offerings-grid">
+        <div class="offering-card">
+          <span class="tag">One-on-one</span>
+          <h3>Executive Coaching</h3>
+          <p>Deep partnership for leaders ready to stop recycling the same issues, make the next brave choice, and forge freedom.</p>
+        </div>
+        <div class="offering-card">
+          <span class="tag">Peer cohort</span>
+          <h3>Signal Forums</h3>
+          <p>A community of visionary leaders convened for peer learning, courageous conversation, and the kind of reflection that only happens in trusted company.</p>
+        </div>
+        <div class="offering-card">
+          <span class="tag">Teams &amp; boards</span>
+          <h3>Facilitation &amp; Intensives</h3>
+          <p>High-stakes facilitation, team trainings, and board work for organizations at a pivotal moment — where collective clarity is the bottleneck.</p>
+        </div>
+      </div>
+      <div class="offerings-footer">
+        <a href="/offerings" class="more-link">See all offerings →</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="off-controls">
+    <button class="off-arrow" id="off-prev">&#8592;</button>
+    <button class="off-dot active" data-i="0"></button>
+    <button class="off-dot" data-i="1"></button>
+    <button class="off-arrow" id="off-next">&#8594;</button>
+    <span class="off-label-tag" id="off-label">Option A — white tags</span>
+  </div>
+</section>
+
 <!-- TESTIMONIALS -->
 <section class="testimonials" id="testimonials">
   <div class="testimonials-header">
@@ -1019,77 +1091,6 @@
     </div>
   </div>
 
-</section>
-
-<!-- OFFERINGS -->
-<section class="offerings" id="offerings">
-  <div class="offerings-slider">
-
-    <!-- Option A: wine eyebrow, white tags -->
-    <div class="offerings-option off-opt-a active">
-      <div class="offerings-header">
-        <span class="section-label">The offerings</span>
-        <h2 class="reveal">Ways to work together</h2>
-      </div>
-      <div class="offerings-grid">
-        <div class="offering-card reveal">
-          <span class="tag">One-on-one</span>
-          <h3>Executive Coaching</h3>
-          <p>Deep partnership for leaders ready to stop recycling the same issues, make the next brave choice, and forge freedom.</p>
-        </div>
-        <div class="offering-card reveal">
-          <span class="tag">Peer cohort</span>
-          <h3>Signal Forums</h3>
-          <p>A community of visionary leaders convened for peer learning, courageous conversation, and the kind of reflection that only happens in trusted company.</p>
-        </div>
-        <div class="offering-card reveal">
-          <span class="tag">Teams &amp; boards</span>
-          <h3>Facilitation &amp; Intensives</h3>
-          <p>High-stakes facilitation, team trainings, and board work for organizations at a pivotal moment — where collective clarity is the bottleneck.</p>
-        </div>
-      </div>
-      <div class="offerings-footer reveal">
-        <a href="/offerings" class="more-link">See all offerings →</a>
-      </div>
-    </div>
-
-    <!-- Option B: current (wine eyebrow, teal tags) -->
-    <div class="offerings-option off-opt-b">
-      <div class="offerings-header">
-        <span class="section-label">The offerings</span>
-        <h2>Ways to work together</h2>
-      </div>
-      <div class="offerings-grid">
-        <div class="offering-card">
-          <span class="tag">One-on-one</span>
-          <h3>Executive Coaching</h3>
-          <p>Deep partnership for leaders ready to stop recycling the same issues, make the next brave choice, and forge freedom.</p>
-        </div>
-        <div class="offering-card">
-          <span class="tag">Peer cohort</span>
-          <h3>Signal Forums</h3>
-          <p>A community of visionary leaders convened for peer learning, courageous conversation, and the kind of reflection that only happens in trusted company.</p>
-        </div>
-        <div class="offering-card">
-          <span class="tag">Teams &amp; boards</span>
-          <h3>Facilitation &amp; Intensives</h3>
-          <p>High-stakes facilitation, team trainings, and board work for organizations at a pivotal moment — where collective clarity is the bottleneck.</p>
-        </div>
-      </div>
-      <div class="offerings-footer">
-        <a href="/offerings" class="more-link">See all offerings →</a>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="off-controls">
-    <button class="off-arrow" id="off-prev">&#8592;</button>
-    <button class="off-dot active" data-i="0"></button>
-    <button class="off-dot" data-i="1"></button>
-    <button class="off-arrow" id="off-next">&#8594;</button>
-    <span class="off-label-tag" id="off-label">Option A — white tags</span>
-  </div>
 </section>
 
 <!-- CONTACT -->
