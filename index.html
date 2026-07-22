@@ -499,13 +499,17 @@
     font-weight: 400;
     color: var(--white);
   }
-  .testimonials-slider { display: grid; }
+  .testimonials-slider { display: grid; max-width: 960px; }
   .testimonial-slide {
     grid-area: 1 / 1;
     display: grid;
-    grid-template-columns: 280px 1fr;
-    gap: 6rem;
-    align-items: center;
+    grid-template-columns: 180px 1fr;
+    gap: 3rem;
+    align-items: start;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(240,244,248,0.08);
+    border-radius: 14px;
+    padding: 2.5rem 3rem;
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.6s ease;
@@ -519,44 +523,44 @@
     background: rgba(240,244,248,0.08);
     border: 1px solid rgba(240,244,248,0.12);
     font-family: 'Inter', sans-serif;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     font-weight: 300;
     letter-spacing: 0.1em;
     color: rgba(240,244,248,0.4);
-    width: 220px;
-    height: 260px;
-    border-radius: 10px;
+    width: 160px;
+    height: 190px;
+    border-radius: 8px;
   }
   .testi-photo {
-    width: 220px;
-    height: 260px;
-    border-radius: 10px;
+    width: 160px;
+    height: 190px;
+    border-radius: 8px;
     object-fit: cover;
     object-position: center top;
     display: block;
   }
-  .testi-quote-col { display: flex; flex-direction: column; justify-content: center; }
+  .testi-quote-col { display: flex; flex-direction: column; justify-content: center; padding-top: 0.25rem; }
   .testi-quote {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.35rem, 1.8vw, 1.7rem);
+    font-size: clamp(1.1rem, 1.4vw, 1.35rem);
     font-weight: 400;
     font-style: italic;
-    line-height: 1.65;
+    line-height: 1.6;
     color: rgba(240,244,248,0.92);
-    margin-bottom: 1.8rem;
+    margin-bottom: 1.4rem;
   }
-  .testi-attribution { border-top: 1px solid rgba(240,244,248,0.15); padding-top: 1.2rem; }
+  .testi-attribution { border-top: 1px solid rgba(240,244,248,0.12); padding-top: 1rem; }
   .testi-name {
     font-family: 'Inter', sans-serif;
-    font-size: 0.88rem;
+    font-size: 0.85rem;
     font-weight: 500;
     color: #C8962A;
     letter-spacing: 0.03em;
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.25rem;
   }
   .testi-role {
     font-family: 'Inter', sans-serif;
-    font-size: 0.72rem;
+    font-size: 0.7rem;
     font-weight: 400;
     color: rgba(200,150,42,0.75);
     line-height: 1.5;
@@ -566,8 +570,8 @@
     display: flex;
     align-items: center;
     gap: 1.5rem;
-    margin-top: 2rem;
-    padding-left: calc(280px + 6rem);
+    margin-top: 1.5rem;
+    padding-left: 0;
   }
   .testi-arrow {
     background: none;

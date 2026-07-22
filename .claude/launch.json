@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "debkatz-site",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "-p", "8765", "/Users/erica/Desktop/debkatz-site"],
+      "port": 8765
+    }
+  ]
+}
