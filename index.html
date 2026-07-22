@@ -1099,23 +1099,6 @@
 
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  // Offerings option slider
-  const offOptions = document.querySelectorAll('.offerings-option');
-  const offDots = document.querySelectorAll('.off-dot');
-  const offLabel = document.getElementById('off-label');
-  const offLabels = ['Option A — white tags', 'Option B — teal tags'];
-  let offIdx = 0;
-  function offGo(n) {
-    offOptions[offIdx].classList.remove('active');
-    offDots[offIdx].classList.remove('active');
-    offIdx = (n + 2) % 2;
-    offOptions[offIdx].classList.add('active');
-    offDots[offIdx].classList.add('active');
-    offLabel.textContent = offLabels[offIdx];
-  }
-  offDots.forEach(d => d.addEventListener('click', () => offGo(+d.dataset.i)));
-  document.getElementById('off-prev').addEventListener('click', () => offGo(offIdx - 1));
-  document.getElementById('off-next').addEventListener('click', () => offGo(offIdx + 1));
 
   // Hero slider
   // Testimonials slider
