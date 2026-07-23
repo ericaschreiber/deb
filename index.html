@@ -865,47 +865,17 @@
 
 <!-- ABOUT -->
 <section class="about-section" id="about">
-  <div class="about-slider">
-
-    <div class="about-slide active">
-      <div class="about-photo-col">
-        <img src="images/laugh.jpg" alt="Deb Katz" />
-      </div>
-      <div class="about-text-col">
-        <span class="section-label reveal">About Deb</span>
-        <p class="about-quote reveal">"The deepest transformation begins when we stop protecting ourselves and remember who we are." <span style="font-size:0.75em;color:rgba(240,244,248,0.45);">— Deb</span></p>
-        <div class="about-rule reveal"></div>
-        <p class="reveal">Deb works with trailblazers—founders, executives, coaches—who are successful but not yet free. Leaders whose drive has carried them far, and whose patterns are limiting what they can create next.</p>
-        <p class="reveal">Her path hasn't been a straight line. She came to coaching through hospice nursing, where she learned to be fully present when it matters most. Deb trained in earth-based wisdom with RainbowHawk and WindEagle of <a href="https://ehama.org" target="_blank" rel="noopener">Ehama Institute</a>. She was a coach and founding member of Conscious Leadership Group from 2017–2025.</p>
-        <p class="reveal">Today, Deb coaches leaders, facilitates team trainings, leads Signal Forums and Intensives, supervises coaches, and speaks.</p>
-        <a href="/about" class="more-link reveal">Full bio →</a>
-      </div>
-    </div>
-
-    <div class="about-slide">
-      <div class="about-photo-col">
-        <img src="images/laugh.jpg" alt="Deb Katz" />
-      </div>
-      <div class="about-text-col">
-        <span class="section-label">About Deb</span>
-        <p class="about-quote about-quote-inter">"The deepest transformation begins when we stop protecting ourselves and remember who we are." <span style="font-size:0.75em;color:rgba(240,244,248,0.45);">— Deb</span></p>
-        <div class="about-rule"></div>
-        <p>Deb works with trailblazers—founders, executives, coaches—who are successful but not yet free. Leaders whose drive has carried them far, and whose patterns are limiting what they can create next.</p>
-        <p>Her path hasn't been a straight line. She came to coaching through hospice nursing, where she learned to be fully present when it matters most. Deb trained in earth-based wisdom with RainbowHawk and WindEagle of <a href="https://ehama.org" target="_blank" rel="noopener">Ehama Institute</a>. She was a coach and founding member of Conscious Leadership Group from 2017–2025.</p>
-        <p>Today, Deb coaches leaders, facilitates team trainings, leads Signal Forums and Intensives, supervises coaches, and speaks.</p>
-        <a href="/about" class="more-link">Full bio →</a>
-      </div>
-    </div>
-
+  <div class="about-photo-col">
+    <img src="images/laugh.jpg" alt="Deb Katz" />
   </div>
-
-  <div class="about-nav">
-    <button class="about-arrow" id="about-prev">&#8592;</button>
-    <div class="about-dots-row">
-      <button class="about-dot active" data-i="0"></button>
-      <button class="about-dot" data-i="1"></button>
-    </div>
-    <button class="about-arrow" id="about-next">&#8594;</button>
+  <div class="about-text-col">
+    <span class="section-label reveal">About Deb</span>
+    <p class="about-quote reveal">"The deepest transformation begins when we stop protecting ourselves and remember who we are." <span style="font-size:0.75em;color:rgba(240,244,248,0.45);">— Deb</span></p>
+    <div class="about-rule reveal"></div>
+    <p class="reveal">Deb works with trailblazers—founders, executives, coaches—who are successful but not yet free. Leaders whose drive has carried them far, and whose patterns are limiting what they can create next.</p>
+    <p class="reveal">Her path hasn't been a straight line. She came to coaching through hospice nursing, where she learned to be fully present when it matters most. Deb trained in earth-based wisdom with RainbowHawk and WindEagle of <a href="https://ehama.org" target="_blank" rel="noopener">Ehama Institute</a>. She was a coach and founding member of Conscious Leadership Group from 2017–2025.</p>
+    <p class="reveal">Today, Deb coaches leaders, facilitates team trainings, leads Signal Forums and Intensives, supervises coaches, and speaks.</p>
+    <a href="/about" class="more-link reveal">Full bio →</a>
   </div>
 </section>
 
@@ -1115,22 +1085,6 @@
   document.getElementById('testi-next').addEventListener('click', () => testiGo(testiIdx + 1));
   testiDots.forEach(d => d.addEventListener('click', () => testiGo(+d.dataset.i)));
 
-  // ── ABOUT SLIDER ────────────────────────────────────────
-  const aboutSlides = document.querySelectorAll('.about-slide');
-  const aboutDots = document.querySelectorAll('.about-dot');
-  let aboutIdx = 0;
-
-  function aboutGo(n) {
-    aboutSlides[aboutIdx].classList.remove('active');
-    aboutDots[aboutIdx].classList.remove('active');
-    aboutIdx = (n + 2) % 2;
-    aboutSlides[aboutIdx].classList.add('active');
-    aboutDots[aboutIdx].classList.add('active');
-  }
-
-  document.getElementById('about-prev').addEventListener('click', () => aboutGo(aboutIdx - 1));
-  document.getElementById('about-next').addEventListener('click', () => aboutGo(aboutIdx + 1));
-  aboutDots.forEach(d => d.addEventListener('click', () => aboutGo(+d.dataset.i)));
 
 </script>
 
