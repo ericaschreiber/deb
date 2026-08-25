@@ -821,6 +821,112 @@
     color: rgba(240,244,248,0.25);
   }
 
+  /* ── CONTACT MODAL ──────────────────────────────────── */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(13,13,13,0.75);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+  }
+  .modal-overlay.open { display: flex; }
+  .modal {
+    background:
+      radial-gradient(ellipse at 20% 30%, #8f2a52 0%, transparent 55%),
+      radial-gradient(ellipse at 85% 80%, #3d0f20 0%, transparent 50%),
+      radial-gradient(ellipse at 60% 5%, #7a1f45 0%, transparent 40%),
+      var(--wine);
+    width: 90%;
+    max-width: 36rem;
+    padding: 3.5rem;
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  .modal-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.75rem;
+    background: none;
+    border: none;
+    color: rgba(240,244,248,0.5);
+    font-size: 1.4rem;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+    transition: color 0.2s;
+  }
+  .modal-close:hover { color: var(--white); }
+  .modal h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--white);
+    margin-bottom: 2rem;
+    line-height: 1.2;
+  }
+  .modal-form { display: flex; flex-direction: column; gap: 1.1rem; }
+  .modal-form label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(240,244,248,0.5);
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+  .modal-form input,
+  .modal-form textarea {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: var(--white);
+    background: rgba(240,244,248,0.06);
+    border: 1px solid rgba(240,244,248,0.18);
+    padding: 0.75rem 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .modal-form input::placeholder,
+  .modal-form textarea::placeholder { color: rgba(240,244,248,0.25); }
+  .modal-form input:focus,
+  .modal-form textarea:focus { border-color: rgba(240,244,248,0.5); }
+  .modal-form textarea { min-height: 7rem; resize: vertical; }
+  .modal-submit {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--white);
+    background: transparent;
+    border: 1px solid rgba(240,244,248,0.45);
+    padding: 1.1rem 2.8rem;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+    margin-top: 0.5rem;
+    align-self: flex-start;
+  }
+  .modal-submit:hover { background: rgba(240,244,248,0.1); border-color: var(--white); }
+  .modal-success {
+    display: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 300;
+    color: rgba(240,244,248,0.85);
+    line-height: 1.75;
+    text-align: center;
+    padding: 2rem 0;
+  }
+
   /* ── SCROLL REVEAL ───────────────────────────────────── */
   .reveal {
     opacity: 0;
@@ -1052,6 +1158,40 @@
   </div>
 </section>
 
+<!-- CONTACT MODAL -->
+<div class="modal-overlay" id="contact-modal" role="dialog" aria-modal="true" aria-label="Contact Deb">
+  <div class="modal">
+    <button class="modal-close" id="modal-close" aria-label="Close">&times;</button>
+    <h3>Let's begin with<br>a conversation.</h3>
+    <form class="modal-form" id="contact-form" action="https://formspree.io/f/REPLACE_WITH_YOUR_CODE" method="POST">
+      <label>Name <span style="color:rgba(240,244,248,0.3)">*</span>
+        <input type="text" name="name" required placeholder="Your name" />
+      </label>
+      <label>Email <span style="color:rgba(240,244,248,0.3)">*</span>
+        <input type="email" name="email" required placeholder="your@email.com" />
+      </label>
+      <label>Company <span style="color:rgba(240,244,248,0.3);font-size:0.65rem;letter-spacing:0.1em">Optional</span>
+        <input type="text" name="company" placeholder="Your organization" />
+      </label>
+      <label>Title <span style="color:rgba(240,244,248,0.3);font-size:0.65rem;letter-spacing:0.1em">Optional</span>
+        <input type="text" name="title" placeholder="Your role" />
+      </label>
+      <label>Message <span style="color:rgba(240,244,248,0.3)">*</span>
+        <textarea name="message" required placeholder="What's on your mind?"></textarea>
+      </label>
+      <label>How did you hear about Deb? <span style="color:rgba(240,244,248,0.3);font-size:0.65rem;letter-spacing:0.1em">Optional</span>
+        <input type="text" name="referral" placeholder="Referred by..." />
+      </label>
+      <!-- honeypot -->
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+      <button type="submit" class="modal-submit">Send Message</button>
+    </form>
+    <div class="modal-success" id="modal-success">
+      Thank you — Deb will be in touch soon.
+    </div>
+  </div>
+</div>
+
 <!-- FOOTER -->
 <footer>
   <span class="foot-name">Deb Katz</span>
@@ -1096,6 +1236,41 @@
   document.getElementById('testi-next').addEventListener('click', () => testiGo(testiIdx + 1));
   testiDots.forEach(d => d.addEventListener('click', () => testiGo(+d.dataset.i)));
 
+  // ── CONTACT MODAL ──────────────────────────────────────
+  const modal = document.getElementById('contact-modal');
+  const openModal = () => { modal.classList.add('open'); document.body.style.overflow = 'hidden'; };
+  const closeModal = () => { modal.classList.remove('open'); document.body.style.overflow = ''; };
+
+  document.querySelector('.contact-link').addEventListener('click', openModal);
+  document.getElementById('modal-close').addEventListener('click', closeModal);
+  modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  document.getElementById('contact-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = this.querySelector('.modal-submit');
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+    try {
+      const res = await fetch(this.action, {
+        method: 'POST',
+        body: new FormData(this),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        this.style.display = 'none';
+        document.getElementById('modal-success').style.display = 'block';
+      } else {
+        btn.textContent = 'Send Message';
+        btn.disabled = false;
+        alert('Something went wrong — please try again.');
+      }
+    } catch {
+      btn.textContent = 'Send Message';
+      btn.disabled = false;
+      alert('Something went wrong — please try again.');
+    }
+  });
 
 </script>
 
