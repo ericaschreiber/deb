@@ -329,9 +329,7 @@
   .about-section {
     background: var(--black);
     position: relative;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: stretch;
+    display: flex;
   }
   .about-slider {
     display: grid;
@@ -392,6 +390,7 @@
   }
   .about-dot.active { background: var(--white); transform: scale(1.4); }
   .about-photo-col {
+    flex: 0 0 50%;
     overflow: hidden;
     position: relative;
     min-height: 600px;
@@ -410,6 +409,7 @@
     pointer-events: none;
   }
   .about-text-col {
+    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -865,7 +865,7 @@
 <section class="positioning">
   <div class="pos-content">
     <p class="reveal">I partner with trailblazing leaders who are building what doesn't yet exist. When you're building the future, your current operating system may just be your biggest constraint.</p>
-    <p class="reveal">To effectively lead, you need to be willing to disrupt and be disrupted.</p>
+    <p class="reveal">To lead effectively, you need to be willing to disrupt and be disrupted.</p>
     <p class="reveal">Together, we surface the hidden patterns that distort your perception of reality and limit what you imagine as possible. I help you listen and respond to the signals you're overriding in your relationships and leadership.</p>
     <p class="reveal">You won't become a different person. You'll expand your capacity to navigate complexity and the unknown. You'll become more fully yourself.</p>
   </div>
