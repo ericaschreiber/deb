@@ -332,6 +332,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: stretch;
+    grid-auto-rows: 1fr;
   }
   .about-slider {
     display: grid;
@@ -393,8 +394,9 @@
   .about-dot.active { background: var(--white); transform: scale(1.4); }
   .about-photo-col {
     overflow: hidden;
-    min-height: 600px;
     position: relative;
+    min-height: 600px;
+    align-self: stretch;
   }
   .about-photo-col img {
     position: absolute;
