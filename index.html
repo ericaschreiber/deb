@@ -73,6 +73,25 @@
     transition: opacity 0.2s;
   }
   .nav-links a:hover { opacity: 1; }
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.6rem 0.4rem;
+    z-index: 200;
+  }
+  .nav-toggle span {
+    display: block;
+    width: 24px;
+    height: 1.5px;
+    background: var(--white);
+    transition: transform 0.3s ease, opacity 0.2s ease;
+  }
+  .nav-toggle span + span { margin-top: 6px; }
+  .nav-toggle.open span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+  .nav-toggle.open span:nth-child(2) { opacity: 0; }
+  .nav-toggle.open span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
 
   /* ── HERO SLIDER ─────────────────────────────────────── */
   .hero-slider {
@@ -174,7 +193,7 @@
     line-height: 1.5;
     color: var(--white);
     opacity: 0.88;
-    max-width: 22rem;
+    max-width: 30rem;
     margin-bottom: 3rem;
   }
   .hero-cta {
@@ -933,14 +952,50 @@
   }
 
   @media (max-width: 900px) {
-    nav { padding: 1.25rem 1.75rem; }
-    .nav-links { gap: 1.5rem; }
-    .nav-links a { font-size: 0.65rem; }
+    nav { padding: 1.25rem 1.5rem; }
+    .nav-toggle { display: block; }
+    .nav-links {
+      position: fixed;
+      inset: 0;
+      background: rgba(13,13,13,0.97);
+      backdrop-filter: blur(10px);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .nav-links.open { opacity: 1; pointer-events: auto; }
+    .nav-links a { font-size: 1rem; letter-spacing: 0.18em; opacity: 0.85; }
 
-    .hero { grid-template-columns: 1fr; height: auto; }
-    .hero-photo { height: 58vh; }
-    .hero-text { padding: 3.5rem 2rem 4rem; }
-    .hero-tagline { max-width: none; }
+    /* Full-bleed photo with copy overlaid, rather than stacked blocks */
+    .hero {
+      grid-template-columns: 1fr;
+      height: 100vh;
+      min-height: 560px;
+      position: relative;
+    }
+    .hero-photo {
+      position: absolute;
+      inset: 0;
+      height: 100%;
+    }
+    .hero-photo::after {
+      background: linear-gradient(to top,
+        rgba(13,13,13,0.96) 0%,
+        rgba(13,13,13,0.78) 32%,
+        rgba(13,13,13,0.28) 62%,
+        transparent 88%);
+    }
+    .hero-text {
+      position: relative;
+      z-index: 2;
+      justify-content: flex-end;
+      padding: 0 1.75rem 4rem;
+    }
+    .hero-tagline { max-width: none; font-size: 1.35rem; }
 
     .about-section {
       grid-template-columns: 1fr;
@@ -978,11 +1033,10 @@
     body { font-size: 16px; }
 
     nav { padding: 1rem 1.25rem; }
-    .nav-name { font-size: 1.15rem; }
-    .nav-links { gap: 0.9rem; }
-    .nav-links a { font-size: 0.6rem; letter-spacing: 0.1em; }
+    .nav-name { font-size: 1.2rem; }
 
-    .hero-text { padding: 3rem 1.5rem 3.5rem; }
+    .hero-text { padding: 0 1.5rem 3.5rem; }
+    .hero-tagline { font-size: 1.25rem; }
 
     .offerings-grid { grid-template-columns: 1fr; }
     .offering-card { padding: 2rem 1.75rem; }
@@ -1006,7 +1060,10 @@
 <!-- NAV -->
 <nav id="main-nav">
   <a href="#" class="nav-name">Deb Katz</a>
-  <ul class="nav-links">
+  <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#work">Work</a></li>
     <li><a href="#offerings">Offerings</a></li>
@@ -1313,6 +1370,19 @@
   document.getElementById('testi-prev').addEventListener('click', () => testiGo(testiIdx - 1));
   document.getElementById('testi-next').addEventListener('click', () => testiGo(testiIdx + 1));
   testiDots.forEach(d => d.addEventListener('click', () => testiGo(+d.dataset.i)));
+
+  // ── MOBILE NAV ─────────────────────────────────────────
+  const navToggle = document.getElementById('nav-toggle');
+  const navLinks  = document.getElementById('nav-links');
+  function setNav(open) {
+    navLinks.classList.toggle('open', open);
+    navToggle.classList.toggle('open', open);
+    navToggle.setAttribute('aria-expanded', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+  navToggle.addEventListener('click', () => setNav(!navLinks.classList.contains('open')));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setNav(false)));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') setNav(false); });
 
   // ── CONTACT MODAL ──────────────────────────────────────
   const modal = document.getElementById('contact-modal');
