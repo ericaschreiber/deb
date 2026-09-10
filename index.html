@@ -330,23 +330,8 @@
   .about-section {
     background: var(--black);
     position: relative;
-    overflow: hidden;
-  }
-  .about-slider {
     display: grid;
-    min-height: 700px;
-  }
-  .about-slide {
-    grid-area: 1 / 1;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.7s ease;
-  }
-  .about-slide.active {
-    opacity: 1;
-    pointer-events: auto;
+    grid-template-columns: 2fr 3fr;
   }
   .about-slide-reversed .about-photo-col::after {
     background:
@@ -980,68 +965,19 @@
 
 <!-- ABOUT -->
 <section class="about-section" id="about">
-  <div class="about-slider">
-
-    <!-- SLIDE 1: Current (laugh.jpg) -->
-    <div class="about-slide active">
-      <div class="about-photo-col" style="background-image:url('images/laugh.jpg');background-position:65% 15%;" role="img" aria-label="Deb Katz"></div>
-      <div class="about-text-col">
-        <span class="section-label">About Deb</span>
-        <p class="about-quote">"The deepest transformation begins when we stop protecting ourselves and remember who we are." <span style="font-size:0.75em;color:rgba(240,244,248,0.45);">— Deb</span></p>
-        <div class="about-rule"></div>
-        <p>Deb Katz has partnered with leaders and their teams for more than twenty years to create sustainable organizational change. She coaches, facilitates teams, leads Signal Forums and Intensives, trains and supervises coaches, and offers keynotes.</p>
-        <p>Deb is a founding member of <a href="https://www.thesignalinstitute.com" target="_blank" rel="noopener">The Signal Institute</a> and a former founding member of The Conscious Leadership Group. She was a cardiac and hospice nurse for a decade and had the great honor to train in earth-based wisdom with RainbowHawk and WindEagle of <a href="https://ehama.org" target="_blank" rel="noopener">Ehama Institute</a>.</p>
-        <p>Her non-linear path makes her the perfect partner to visionary leaders as they navigate complex landscapes. Leaders and their inner circles rely on Deb's no-bullshit laser-focus to illuminate blind spots and leverage superpowers to create meaningful change.</p>
-        <p>Deb is based in Portland, Oregon, where you can find her paddling the river, gardening, and getting into shenanigans with her pup Mufasa.</p>
-      </div>
-    </div>
-
-    <!-- SLIDE 2: New bio + deb-green-plant.jpeg -->
-    <div class="about-slide">
-      <div class="about-photo-col" style="background-image:url('images/deb-green-plant.jpeg');background-position:50% 15%;" role="img" aria-label="Deb Katz"></div>
-      <div class="about-text-col">
-        <span class="section-label">About Deb</span>
-        <p class="about-quote">"The deepest transformation begins when we stop protecting ourselves and remember who we are." <span style="font-size:0.75em;color:rgba(240,244,248,0.45);">— Deb</span></p>
-        <div class="about-rule"></div>
-        <p>For more than twenty years, Deb Katz has helped leaders see and face the default patterns running them, then consciously choose new ways of being and doing. Leaders rely on Deb to deliver challenging feedback (delivered with care) that is immediately actionable.</p>
-        <p>She coaches, facilitates teams, leads Signal Forums and Intensives, trains and supervises coaches, and offers keynotes. Deb is a founding member of <a href="https://www.thesignalinstitute.com" target="_blank" rel="noopener">The Signal Institute</a> and former founding member of The Conscious Leadership Group.</p>
-        <p>In her political activist days in California, Deb mobilized tens of thousands of people to reverse draconian higher education budget cuts. What she learned has shaped every client engagement since: <em>Transformation doesn't come from a reactive state. Nothing actually changes until leaders stop blaming and start examining their own part in creating what they're complaining about.</em> That insight didn't come from a book. It came from being in the field.</p>
-        <p>During a decade as a cardiac and hospice nurse, Deb mastered the distinction between urgency and emergency, while leading people through the most significant thresholds of their lives. She brings that same steadiness to the threshold every leader eventually faces; the one between who they've been and who they're capable of becoming.</p>
-        <p>Years of training with RainbowHawk and WindEagle of the <a href="https://ehama.org" target="_blank" rel="noopener">Ehama Institute</a> taught her that beneath the noise of an identity trying to secure itself through accomplishments is a truer, wilder nature longing to be remembered. Earth-based wisdom has a way of doing that; returning us to something feral and essential we never actually lost. That something is an inner, utterly trustworthy compass that never stops pointing true.</p>
-        <p>Deb's expertise is in facilitating sustainable team and culture transformation. She supports leaders to see their part in creating the dynamics they're complaining about, then guides them to the brave place most teams never reach: saying the hard things to one another, with care and without armor.</p>
-        <p><em>"Deb has held life-changing retreats for our leaders, coached us execs through myriad transformations, and fanned the growth of hundreds of our teammates. She does it with fierceness, patience, wit, grace, and an unyielding commitment to integrity."</em></p>
-        <p>Deb is based in Portland, Oregon, where she might be on the river, in the garden, or getting into shenanigans with her pup Mufasa.</p>
-      </div>
-    </div>
-
-    <!-- SLIDE 3: New bio + deb-pink-flower.jpeg -->
-    <div class="about-slide">
-      <div class="about-photo-col" style="background-image:url('images/deb-pink-flower.jpeg');background-position:50% 15%;" role="img" aria-label="Deb Katz"></div>
-      <div class="about-text-col">
-        <span class="section-label">About Deb</span>
-        <p class="about-quote">"The deepest transformation begins when we stop protecting ourselves and remember who we are." <span style="font-size:0.75em;color:rgba(240,244,248,0.45);">— Deb</span></p>
-        <div class="about-rule"></div>
-        <p>For more than twenty years, Deb Katz has helped leaders see and face the default patterns running them, then consciously choose new ways of being and doing. Leaders rely on Deb to deliver challenging feedback (delivered with care) that is immediately actionable.</p>
-        <p>She coaches, facilitates teams, leads Signal Forums and Intensives, trains and supervises coaches, and offers keynotes. Deb is a founding member of <a href="https://www.thesignalinstitute.com" target="_blank" rel="noopener">The Signal Institute</a> and former founding member of The Conscious Leadership Group.</p>
-        <p>In her political activist days in California, Deb mobilized tens of thousands of people to reverse draconian higher education budget cuts. What she learned has shaped every client engagement since: <em>Transformation doesn't come from a reactive state. Nothing actually changes until leaders stop blaming and start examining their own part in creating what they're complaining about.</em> That insight didn't come from a book. It came from being in the field.</p>
-        <p>During a decade as a cardiac and hospice nurse, Deb mastered the distinction between urgency and emergency, while leading people through the most significant thresholds of their lives. She brings that same steadiness to the threshold every leader eventually faces; the one between who they've been and who they're capable of becoming.</p>
-        <p>Years of training with RainbowHawk and WindEagle of the <a href="https://ehama.org" target="_blank" rel="noopener">Ehama Institute</a> taught her that beneath the noise of an identity trying to secure itself through accomplishments is a truer, wilder nature longing to be remembered. Earth-based wisdom has a way of doing that; returning us to something feral and essential we never actually lost. That something is an inner, utterly trustworthy compass that never stops pointing true.</p>
-        <p>Deb's expertise is in facilitating sustainable team and culture transformation. She supports leaders to see their part in creating the dynamics they're complaining about, then guides them to the brave place most teams never reach: saying the hard things to one another, with care and without armor.</p>
-        <p><em>"Deb has held life-changing retreats for our leaders, coached us execs through myriad transformations, and fanned the growth of hundreds of our teammates. She does it with fierceness, patience, wit, grace, and an unyielding commitment to integrity."</em></p>
-        <p>Deb is based in Portland, Oregon, where she might be on the river, in the garden, or getting into shenanigans with her pup Mufasa.</p>
-      </div>
-    </div>
-
-  </div><!-- /about-slider -->
-
-  <div class="about-nav">
-    <button class="about-arrow" id="about-prev">&#8592;</button>
-    <div class="about-dots-row">
-      <button class="about-dot active" data-i="0"></button>
-      <button class="about-dot" data-i="1"></button>
-      <button class="about-dot" data-i="2"></button>
-    </div>
-    <button class="about-arrow" id="about-next">&#8594;</button>
+  <div class="about-photo-col" style="background-image:url('images/deb-green-plant.jpeg');background-position:50% 10%;" role="img" aria-label="Deb Katz"></div>
+  <div class="about-text-col">
+    <span class="section-label reveal">About Deb</span>
+    <p class="about-quote reveal">"The deepest transformation begins when we stop protecting ourselves and remember who we are." <span style="font-size:0.75em;color:rgba(240,244,248,0.45);">— Deb</span></p>
+    <div class="about-rule reveal"></div>
+    <p class="reveal">For more than twenty years, Deb Katz has helped leaders see and face the default patterns running them, then consciously choose new ways of being and doing. Leaders rely on Deb to deliver challenging feedback (delivered with care) that is immediately actionable.</p>
+    <p class="reveal">She coaches, facilitates teams, leads Signal Forums and Intensives, trains and supervises coaches, and offers keynotes. Deb is a founding member of <a href="https://www.thesignalinstitute.com" target="_blank" rel="noopener">The Signal Institute</a> and former founding member of The Conscious Leadership Group.</p>
+    <p class="reveal">In her political activist days in California, Deb mobilized tens of thousands of people to reverse draconian higher education budget cuts. What she learned has shaped every client engagement since: <em>Transformation doesn't come from a reactive state. Nothing actually changes until leaders stop blaming and start examining their own part in creating what they're complaining about.</em> That insight didn't come from a book. It came from being in the field.</p>
+    <p class="reveal">During a decade as a cardiac and hospice nurse, Deb mastered the distinction between urgency and emergency, while leading people through the most significant thresholds of their lives. She brings that same steadiness to the threshold every leader eventually faces; the one between who they've been and who they're capable of becoming.</p>
+    <p class="reveal">Years of training with RainbowHawk and WindEagle of the <a href="https://ehama.org" target="_blank" rel="noopener">Ehama Institute</a> taught her that beneath the noise of an identity trying to secure itself through accomplishments is a truer, wilder nature longing to be remembered. Earth-based wisdom has a way of doing that; returning us to something feral and essential we never actually lost. That something is an inner, utterly trustworthy compass that never stops pointing true.</p>
+    <p class="reveal">Deb's expertise is in facilitating sustainable team and culture transformation. She supports leaders to see their part in creating the dynamics they're complaining about, then guides them to the brave place most teams never reach: saying the hard things to one another, with care and without armor.</p>
+    <p class="reveal"><em>"Deb has held life-changing retreats for our leaders, coached us execs through myriad transformations, and fanned the growth of hundreds of our teammates. She does it with fierceness, patience, wit, grace, and an unyielding commitment to integrity."</em></p>
+    <p class="reveal">Deb is based in Portland, Oregon, where she might be on the river, in the garden, or getting into shenanigans with her pup Mufasa.</p>
   </div>
 </section>
 
@@ -1302,21 +1238,6 @@
   document.getElementById('testi-prev').addEventListener('click', () => testiGo(testiIdx - 1));
   document.getElementById('testi-next').addEventListener('click', () => testiGo(testiIdx + 1));
   testiDots.forEach(d => d.addEventListener('click', () => testiGo(+d.dataset.i)));
-
-  // ── ABOUT SLIDER ───────────────────────────────────────
-  const aboutSlides = document.querySelectorAll('.about-slide');
-  const aboutDots   = document.querySelectorAll('.about-dot');
-  let aboutIdx = 0;
-  function aboutGo(n) {
-    aboutSlides[aboutIdx].classList.remove('active');
-    aboutDots[aboutIdx].classList.remove('active');
-    aboutIdx = (n + aboutSlides.length) % aboutSlides.length;
-    aboutSlides[aboutIdx].classList.add('active');
-    aboutDots[aboutIdx].classList.add('active');
-  }
-  document.getElementById('about-prev').addEventListener('click', () => aboutGo(aboutIdx - 1));
-  document.getElementById('about-next').addEventListener('click', () => aboutGo(aboutIdx + 1));
-  aboutDots.forEach(d => d.addEventListener('click', () => aboutGo(+d.dataset.i)));
 
   // ── CONTACT MODAL ──────────────────────────────────────
   const modal = document.getElementById('contact-modal');
