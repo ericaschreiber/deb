@@ -982,20 +982,27 @@
       inset: 0;
       height: 100%;
     }
+    .hero-photo img { object-position: center 22%; }
+    /* Opaque through the lower half so copy sits on true black,
+       then feathered upward so the photo still blends in */
     .hero-photo::after {
       background: linear-gradient(to top,
-        rgba(13,13,13,0.96) 0%,
-        rgba(13,13,13,0.78) 32%,
-        rgba(13,13,13,0.28) 62%,
-        transparent 88%);
+        rgba(13,13,13,1) 0%,
+        rgba(13,13,13,1) 44%,
+        rgba(13,13,13,0.72) 56%,
+        rgba(13,13,13,0.25) 72%,
+        transparent 90%);
     }
     .hero-text {
       position: relative;
       z-index: 2;
       justify-content: flex-end;
-      padding: 0 1.75rem 4rem;
+      padding: 0 1.75rem 3.5rem;
     }
-    .hero-tagline { max-width: none; font-size: 1.35rem; }
+    .hero-eyebrow { font-size: 0.78rem; margin-bottom: 1.1rem; }
+    .hero-name { font-size: 3rem; margin-bottom: 1.5rem; }
+    .hero-line { margin-bottom: 1.25rem; }
+    .hero-tagline { max-width: none; font-size: 1.35rem; margin-bottom: 0; }
 
     .about-section {
       grid-template-columns: 1fr;
@@ -1035,7 +1042,8 @@
     nav { padding: 1rem 1.25rem; }
     .nav-name { font-size: 1.2rem; }
 
-    .hero-text { padding: 0 1.5rem 3.5rem; }
+    .hero-text { padding: 0 1.5rem 3rem; }
+    .hero-name { font-size: 2.7rem; }
     .hero-tagline { font-size: 1.25rem; }
 
     .offerings-grid { grid-template-columns: 1fr; }
