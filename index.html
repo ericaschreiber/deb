@@ -639,8 +639,8 @@
   }
   .offerings-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.25rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
     background: transparent;
   }
   .offering-card {
@@ -680,8 +680,7 @@
     letter-spacing: 0.16em;
     text-transform: uppercase;
     display: block;
-    min-height: 2.6em;
-    margin-bottom: 1.2rem;
+    margin-bottom: 0.6rem;
   }
   /* Option A: wine eyebrow, white tags */
   .off-opt-a .offering-card .tag { color: rgba(240,244,248,0.4); }
@@ -938,10 +937,6 @@
     transform: translateY(0);
   }
   /* ── RESPONSIVE ──────────────────────────────────────── */
-  @media (max-width: 1440px) {
-    .offerings-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
-  }
-
   @media (max-width: 1200px) {
     .positioning { padding: 6rem 4rem; }
     .offerings    { padding: 6rem 4rem; }
@@ -1037,7 +1032,6 @@
 
     .offerings-grid { grid-template-columns: 1fr; }
     .offering-card { padding: 2rem 1.75rem; }
-    .offering-card .tag { min-height: 0; }
 
     .positioning   { padding: 4rem 1.5rem; }
     .offerings     { padding: 4rem 1.5rem; }
@@ -1138,12 +1132,12 @@
         <div class="offering-card reveal">
           <span class="tag">Peer Cohort</span>
           <h3>Signal Forums</h3>
-          <p>A year-long journey with a small group of leaders who are ready to go all the way.<br><a href="https://www.thesignalinstitute.com/offerings/forums" target="_blank" rel="noopener">Learn More &amp; Apply</a></p>
+          <p>A year-long journey with a small group of leaders who are ready to go all the way. <a href="https://www.thesignalinstitute.com/offerings/forums" target="_blank" rel="noopener">Learn More &amp; Apply</a></p>
         </div>
         <div class="offering-card reveal">
           <span class="tag">Offsites</span>
           <h3>Signal Intensives</h3>
-          <p>Events for leaders, coaches, or couples to interrupt limitations and liberate possibilities.<br><a href="https://www.thesignalinstitute.com/offerings/intensives" target="_blank" rel="noopener">Learn More &amp; Apply</a></p>
+          <p>Events for leaders, coaches, or couples to interrupt limitations and liberate possibilities. <a href="https://www.thesignalinstitute.com/offerings/intensives" target="_blank" rel="noopener">Learn More &amp; Apply</a></p>
         </div>
       </div>
       <div class="offerings-footer reveal">
