@@ -922,6 +922,81 @@
     opacity: 1;
     transform: translateY(0);
   }
+  /* ── RESPONSIVE ──────────────────────────────────────── */
+  @media (max-width: 1200px) {
+    .offerings-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+    .positioning { padding: 6rem 4rem; }
+    .offerings    { padding: 6rem 4rem; }
+    .contact      { padding: 6rem 4rem; }
+    .testimonials { padding: 4.5rem 4rem; }
+    .about-section { padding: 5rem 4rem; gap: 3.5rem; }
+    footer { padding: 3rem 4rem; }
+  }
+
+  @media (max-width: 900px) {
+    nav { padding: 1.25rem 1.75rem; }
+    .nav-links { gap: 1.5rem; }
+    .nav-links a { font-size: 0.65rem; }
+
+    .hero { grid-template-columns: 1fr; height: auto; }
+    .hero-photo { height: 58vh; }
+    .hero-text { padding: 3.5rem 2rem 4rem; }
+    .hero-tagline { max-width: none; }
+
+    .about-section {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      padding: 4.5rem 2rem;
+    }
+    .about-photo-col {
+      position: static;
+      width: 100%;
+      max-width: 300px;
+      height: 380px;
+    }
+
+    .positioning  { padding: 4.5rem 2rem; }
+    .offerings    { padding: 4.5rem 2rem; }
+    .contact      { padding: 4.5rem 2rem; }
+    .testimonials { padding: 4rem 2rem; }
+
+    .testimonial-slide {
+      grid-template-columns: 1fr;
+      gap: 1.75rem;
+      padding: 2rem;
+    }
+    .testi-photo { width: 130px; height: 155px; }
+
+    footer {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.6rem;
+      padding: 2.5rem 2rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    body { font-size: 16px; }
+
+    nav { padding: 1rem 1.25rem; }
+    .nav-name { font-size: 1.15rem; }
+    .nav-links { gap: 0.9rem; }
+    .nav-links a { font-size: 0.6rem; letter-spacing: 0.1em; }
+
+    .hero-text { padding: 3rem 1.5rem 3.5rem; }
+
+    .offerings-grid { grid-template-columns: 1fr; }
+    .offering-card { padding: 2rem 1.75rem; }
+    .offering-card .tag { min-height: 0; }
+
+    .positioning   { padding: 4rem 1.5rem; }
+    .offerings     { padding: 4rem 1.5rem; }
+    .contact       { padding: 4rem 1.5rem; }
+    .testimonials  { padding: 3.5rem 1.5rem; }
+    .about-section { padding: 4rem 1.5rem; }
+
+    .modal { padding: 2.5rem 1.75rem; }
+  }
 </style>
 </head>
 <body>
