@@ -330,11 +330,11 @@
   .about-section {
     background: var(--black);
     position: relative;
-  }
-  .about-inner {
-    max-width: 58rem;
-    margin: 0 auto;
-    padding: 6rem 4rem;
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 5rem;
+    padding: 6rem 7rem;
+    align-items: start;
   }
   .about-slide-reversed .about-photo-col::after {
     background:
@@ -379,22 +379,17 @@
   }
   .about-dot.active { background: var(--white); transform: scale(1.4); }
   .about-photo-col {
-    float: right;
-    width: 270px;
-    height: 340px;
-    margin: 0 0 2rem 3rem;
+    width: 320px;
+    height: 420px;
     overflow: hidden;
     background-size: cover;
     background-repeat: no-repeat;
     filter: saturate(0.9) contrast(1.05);
+    position: sticky;
+    top: 7rem;
   }
   .about-text-col {
     display: block;
-  }
-  .about-text-col::after {
-    content: '';
-    display: table;
-    clear: both;
   }
   .about-text-col .section-label {
     display: block;
@@ -959,10 +954,9 @@
 
 <!-- ABOUT -->
 <section class="about-section" id="about">
-  <div class="about-inner">
-    <div class="about-text-col">
-      <div class="about-photo-col" style="background-image:url('images/deb-green-plant.jpeg');background-position:50% 10%;" role="img" aria-label="Deb Katz"></div>
-      <span class="section-label reveal">About Deb</span>
+  <div class="about-photo-col" style="background-image:url('images/deb-green-plant.jpeg');background-position:50% 10%;" role="img" aria-label="Deb Katz"></div>
+  <div class="about-text-col">
+    <span class="section-label reveal">About Deb</span>
       <p class="about-quote reveal">"The deepest transformation begins when we stop protecting ourselves and remember who we are." <span style="font-size:0.75em;color:rgba(240,244,248,0.45);">— Deb</span></p>
       <div class="about-rule reveal"></div>
       <p class="reveal">For more than twenty years, Deb Katz has helped leaders see and face the default patterns running them, then consciously choose new ways of being and doing. Leaders rely on Deb to deliver challenging feedback (delivered with care) that is immediately actionable.</p>
@@ -973,7 +967,6 @@
       <p class="reveal">Deb's expertise is in facilitating sustainable team and culture transformation. She supports leaders to see their part in creating the dynamics they're complaining about, then guides them to the brave place most teams never reach: saying the hard things to one another, with care and without armor.</p>
       <p class="reveal"><em>"Deb has held life-changing retreats for our leaders, coached us execs through myriad transformations, and fanned the growth of hundreds of our teammates. She does it with fierceness, patience, wit, grace, and an unyielding commitment to integrity."</em></p>
       <p class="reveal">Deb is based in Portland, Oregon, where she might be on the river, in the garden, or getting into shenanigans with her pup Mufasa.</p>
-    </div>
   </div>
 </section>
 
